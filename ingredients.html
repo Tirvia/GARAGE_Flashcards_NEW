@@ -973,6 +973,12 @@ function markForget() {
 
 function animateLearnSwipe(dir, isLast) {
     learnSwiping = true;
+    // Start downloading the next recipe during the existing swipe animation.
+    const following = learnCards.slice(0, 6).map(item => {
+        const source = CARD_BY_SLOT.get(item.s+":"+item.i);
+        return { id:item.id, front:source?.front || item.front, source };
+    });
+    cardImages.prefetchNearby(following, 0, following.length);
     // Instantly reset flip before swipe
     flipInnerLearn.style.transition = 'none';
     flipContainerLearn.classList.remove('flipped');
