@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Флеш-карточки | GARAGE</title>
+    <link rel="stylesheet" href="../css/flashcards.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+</head>
+<body>
+<div class="wrap-container"> 
+    <div class="container-fluid">
+        <div class="section">
+            <h2 id="sectionTitle">Загрузка...</h2>
+
+            <!-- Прогресс + кнопка "?" + переключатель режима -->
+            <div class="progress-wrapper">
+                <div class="progress-info" id="progressInfo"></div>
+                <button class="mode-toggle" id="modeToggle" title="Показывать название блюда">
+                    <span class="mode-icon">👁</span>
+                    <span class="mode-label">Без названия</span>
+                </button>
+                <button class="help-btn" id="helpBtn">?</button>
+            </div>
+
+            <!-- Кнопка «Назад» для режима просмотра (view mode) -->
+            <div class="view-mode-bar" id="viewModeBar" style="display:none;">
+                <a href="../index.html" class="btn-back-to-menu">← Вернуться в меню</a>
+                <span class="view-mode-label">Режим просмотра</span>
+            </div>
+
+            <!-- Десктопные кнопки -->
+            <div class="buttons-container desktop-buttons">
+                <button type="button" class="btn btn-default" id="question">Загадать блюдо</button>
+                <button type="button" class="btn btn-default" id="flipCard">Посмотреть состав</button>
+            </div>
+
+            <div class="row">
+                <div class="flashcard-container">
+                    <div class="flashcard">
+                        <div class="flashcard-inner">
+                            <div class="flashcard-front">
+                                <!-- Название карточки — внутри лицевой стороны, поверх фото -->
+                                <div class="card-name-display" id="cardName"></div>
+                                <img src="" id="frontImg" class="card-image" alt="question">
+                            </div>
+                            <div class="flashcard-back">
+                                <img src="" id="backImg" class="card-image" alt="answer">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Десктопные кнопки обучения -->
+            <div class="learning-buttons desktop-only">
+                <button type="button" class="btn btn-forget" id="forgetBtn">❌ Не запомнил</button>
+                <button type="button" class="btn btn-remember" id="rememberBtn">✅ Запомнил</button>
+            </div>
+
+            <!-- Подсказка о свайпе (мобильные) -->
+            <div class="swipe-hint mobile-only">
+                ← Не запомнил &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; Запомнил →
+            </div>
+
+            <!-- Мобильные кнопки -->
+            <div class="buttons-container mobile-buttons">
+                <div class="mobile-buttons-row">
+                    <button type="button" class="btn btn-default" id="question-mobile">Загадать блюдо</button>
+                    <button type="button" class="btn btn-default" id="flipCard-mobile">Посмотреть состав</button>
+                </div>
+            </div>
+
+            <!-- Экран завершения (показывается когда все карточки пройдены) -->
+            <div class="completion-screen" id="completionScreen">
+                <div class="completion-icon">🎉</div>
+                <div class="completion-title">Все карточки выучены!</div>
+                <div class="completion-subtitle">Отличная работа! Продолжайте в том же духе.</div>
+                <div class="completion-buttons">
+                    <button class="btn btn-restart" id="restartBtn">🔄 Запустить повторно</button>
+                    <a href="../index.html" class="btn btn-menu-back">← Вернуться в меню</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script src="../js/flashcards.js"></script>
+</body>
+</html>
