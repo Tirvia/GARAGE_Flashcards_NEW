@@ -4,19 +4,11 @@ window.GARAGE_MENU = {"sections":[{"id":"zavtrak","name":"Завтраки","ico
 (function(){
   var root=new URL('../',document.currentScript.src);
   const used=new Map();
-  for(const c of window.GARAGE_MENU.cards){
-    if(!used.has(c.section)) used.set(c.section,new Set());
-    if(Number.isInteger(c.legacyIndex)) used.get(c.section).add(c.legacyIndex);
-  }
-  for(const c of window.GARAGE_MENU.cards){
-    if(!Number.isInteger(c.legacyIndex)){
-      const numbers=used.get(c.section);
-      let n=1001;
-      while(numbers.has(n)) n+=2;
-      c.legacyIndex=n;
-      numbers.add(n);
-    }
-  }
+  const all=window.GARAGE_MENU.cards;
+  function claim(c,n){if(!used.has(c.section))used.set(c.section,new Set());if(used.get(c.section).has(n))return false;c.runtimeIndex=n;used.get(c.section).add(n);return true;}
+  for(const c of all){if(c.section===c.legacySection&&Number.isInteger(c.legacyIndex))claim(c,c.legacyIndex);}
+  for(const c of all){if(!Number.isInteger(c.runtimeIndex)&&Number.isInteger(c.legacyIndex))claim(c,c.legacyIndex);}
+  for(const c of all){if(Number.isInteger(c.runtimeIndex))continue;let n=100001;for(const x of String(c.id||c.title)){n=(n*31+x.charCodeAt(0))%2000000000;}n=Math.max(100001,n);while(!claim(c,n))n++;}
   for(const c of window.GARAGE_MENU.cards){
     for(const key of ['front','back']){
       if(c[key] && !/^(?:https?:|data:)/i.test(c[key])) c[key]=new URL(c[key].replace(/^\/+/,''),root).href;
