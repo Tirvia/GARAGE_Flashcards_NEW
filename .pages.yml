@@ -72,6 +72,10 @@ content:
         options: {format: markdown, media: false}
       - {name: answerText, label: "Дополнительный текст состава (совместимость)", type: text, hidden: true}
       - {name: back, label: "Оригинальное изображение состава (резерв)", type: image, hidden: true}
+      - name: testIngredientsVerified
+        label: "Состав проверен для тестов"
+        type: boolean
+        description: "Включи только после сверки всех ингредиентов с актуальной рецептурой. Тогда блюдо появится в вопросах по составу и в ситуациях от Гостя."
       - {name: brothNote, label: "На курином бульоне", type: boolean}
       - name: status
         label: Статус
