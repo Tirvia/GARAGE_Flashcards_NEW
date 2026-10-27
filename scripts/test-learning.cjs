@@ -73,11 +73,11 @@ const example={id:'recipe-one',composition:'- Картофель',testIngredient
 const initially=reconcile([{...example}],{});
 assert.equal(initially.approvals['recipe-one'],fingerprint(example.composition),'Approval fingerprint must be recorded');
 const revised={...example,composition:'- Картофель\n- Чеснок'};
-const changed=reconcile([revised],initially.approvals);
+const approvalChanged=reconcile([revised],initially.approvals);
 assert.equal(revised.testIngredientsVerified,false,'Recipe edit must invalidate ingredient tests');
-assert.deepEqual(changed.invalidated,['recipe-one']);
+assert.deepEqual(approvalChanged.invalidated,['recipe-one']);
 const approvedAgain={...revised,testIngredientsVerified:true};
-const reapproved=reconcile([approvedAgain],changed.approvals);
+const reapproved=reconcile([approvedAgain],approvalChanged.approvals);
 assert.equal(approvedAgain.testIngredientsVerified,true,'Manual reapproval should restore tests');
 assert.equal(reapproved.approvals['recipe-one'],fingerprint(revised.composition));
 const history=[...news,{id:'older',date:'2020-01-01T00:00:00.000Z',cardId:'a',type:'updated'}];
