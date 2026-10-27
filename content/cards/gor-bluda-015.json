@@ -14,5 +14,9 @@
   "status": "published",
   "order": 62,
   "legacySection": "Gor_bluda",
-  "legacyIndex": 15
+  "legacyIndex": 15,
+  "composition": "- ‚ Рис отварной\n- ® Овощная смесь:\n- о Перец\n- о Цукини\n- о Сельдерей\n- о Лук красный\n- e Соус Азия:\n- © Рыбный соус\n- © Масло кунжутное\n- © Соус Устричный\n- © Соус Унаги\n- © Соус Свит Чили\n- ‚ Грибы шиитаке с соевым соусом\n- ‚ Курица бедрышки\n- e Кинза\n- ‚ Чеснок\n- e Перец чили\n- ‚ Кунжут белый\n- . Лайм дольки",
+  "compositionSource": "/images/Gor_bluda/16.png",
+  "compositionOcrConfidence": 81.8,
+  "compositionNeedsReview": false
 }

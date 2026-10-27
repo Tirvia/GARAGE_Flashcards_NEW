@@ -12,5 +12,9 @@
   "status": "published",
   "order": 13,
   "legacySection": "zavtrak",
-  "legacyIndex": 27
+  "legacyIndex": 27,
+  "composition": "- ® Хлеб сандвичный\n- » Салат айсберг\n- ® Свинина грудинка\n- Сыр моцарелла\n- ®» Сыр чеддер\n- Майонез\n- » Яйца\n- » Масло растительное\n- Картофель фри\n- » Кетчуп",
+  "compositionSource": "/images/zavtrak/28.png",
+  "compositionOcrConfidence": 81.4,
+  "compositionNeedsReview": false
 }

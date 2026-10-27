@@ -10,5 +10,9 @@
   "status": "published",
   "order": 167,
   "legacySection": "alco",
-  "legacyIndex": 17
+  "legacyIndex": 17,
+  "composition": "- e Мартини Фиеро\n- ® Швепс тоник\n- e Апельсин свежий",
+  "compositionSource": "/images/alco/18.png",
+  "compositionOcrConfidence": 74.5,
+  "compositionNeedsReview": true
 }

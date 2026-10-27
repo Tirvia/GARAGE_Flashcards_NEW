@@ -13,5 +13,9 @@
   "status": "published",
   "order": 95,
   "legacySection": "Pizza",
-  "legacyIndex": 27
+  "legacyIndex": 27,
+  "composition": "- Огурец консервированный\n- Свинина грудинка\n- ® Говядина котлета\n- ® Лук красный\n- » Салат Айсберг\n- » Соус Бургер\n- » Сыр Чеддер\n- ® Тесто для пиццы\n- » Сыр моцарелла\n- » Мука семола\n- « Масло розмариновое (содержит\n  - чеснок)",
+  "compositionSource": "/images/Pizza/28.png",
+  "compositionOcrConfidence": 78.6,
+  "compositionNeedsReview": false
 }

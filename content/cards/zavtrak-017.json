@@ -12,5 +12,9 @@
   "status": "published",
   "order": 8,
   "legacySection": "zavtrak",
-  "legacyIndex": 17
+  "legacyIndex": 17,
+  "composition": "- манговым кремом\n- » Сырники (творог, яйца, мука,\n  - сахар, ванильный сахар)\n- ® Малиновое пюре\n- ® Гранола ягодная\n- » Творожный крем с манго (сыр\n  - творожный, пюре манго)\n- ® Растительное масло\n- ® Сахарная пудра",
+  "compositionSource": "/images/zavtrak/18.png",
+  "compositionOcrConfidence": 90.1,
+  "compositionNeedsReview": false
 }

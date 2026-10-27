@@ -10,5 +10,9 @@
   "status": "published",
   "order": 181,
   "legacySection": "Alco_1 1",
-  "legacyIndex": 13
+  "legacyIndex": 13,
+  "composition": "- « Лимончелло\n- ® Джин\n- ® Соклимона\n- » Сахарный сироп\n- » Ванильно-сырная пена:\n  - о Сироп Ваниль\n  - © Сливки 22%\n  - © Сыр творожный\n  - © Молоко\n  - о Ксантановая камедь",
+  "compositionSource": "/images/Alco_1 1/14.png",
+  "compositionOcrConfidence": 79.5,
+  "compositionNeedsReview": false
 }

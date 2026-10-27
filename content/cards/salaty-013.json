@@ -13,5 +13,9 @@
   "status": "published",
   "order": 35,
   "legacySection": "Salaty",
-  "legacyIndex": 13
+  "legacyIndex": 13,
+  "composition": "- » Салат Оливье;\n  - о Огурец консервированный\n  - о Петрушка\n  - о Картофель отварной\n  - о Морковь отварная\n  - о Яйцо отварное\n  - о Горошек консервированный\n  - о Курица копченая\n- e Икра красная\n- ® Горошек консервированный\n- » Майонез\n- e Микрозелень",
+  "compositionSource": "/images/Salaty/14.png",
+  "compositionOcrConfidence": 91.6,
+  "compositionNeedsReview": false
 }

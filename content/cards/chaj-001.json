@@ -10,5 +10,9 @@
   "status": "published",
   "order": 144,
   "legacySection": "Chaj",
-  "legacyIndex": 1
+  "legacyIndex": 1,
+  "composition": "- » Чай Каркаде\n- . Сироп Малина\n- ® Розмарин свежий\n- ® Апельсин чипс\n- Корица в палочках\n- e Малиновое пюре (малина+сахар)",
+  "compositionSource": "/images/Chaj/2.png",
+  "compositionOcrConfidence": 79.5,
+  "compositionNeedsReview": false
 }

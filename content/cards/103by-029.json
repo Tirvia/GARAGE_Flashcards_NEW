@@ -10,5 +10,9 @@
   "status": "published",
   "order": 119,
   "legacySection": "103BY",
-  "legacyIndex": 29
+  "legacyIndex": 29,
+  "composition": "- Кофейно-миндальный\n- ® Протеин Ваниль\n- ® Молоко миндальное\n- ® Эспрессо",
+  "compositionSource": "/images/103BY/30.png",
+  "compositionOcrConfidence": 88.0,
+  "compositionNeedsReview": false
 }

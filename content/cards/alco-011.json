@@ -10,5 +10,9 @@
   "status": "published",
   "order": 164,
   "legacySection": "alco",
-  "legacyIndex": 11
+  "legacyIndex": 11,
+  "composition": "- ® Джин\n- » Мартини Бианко\n- » Вино игристое\n- e Чай анчан\n- » Кордиал клубника-фейхоа\n- ® Сахарный сироп\n- » Мята",
+  "compositionSource": "/images/alco/12.png",
+  "compositionOcrConfidence": 84.8,
+  "compositionNeedsReview": false
 }

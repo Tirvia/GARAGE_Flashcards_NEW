@@ -10,5 +10,9 @@
   "status": "published",
   "order": 185,
   "legacySection": "sezonnoe",
-  "legacyIndex": 3
+  "legacyIndex": 3,
+  "composition": "- Пюре лайм-яблоко\n  - о Пюре лайм\n  - © Сироп зеленое яблоко\n  - о Вода\n  - о Sour Safe (консервант)\n- ¢ Чай Английский завтрак чёрный\n- » Мята свежая\n- ® Корица в палочках\n- ¢ Вода питьевая\n- ® Сироп Соленая карамель",
+  "compositionSource": "/images/sezonnoe/4.png",
+  "compositionOcrConfidence": 85.0,
+  "compositionNeedsReview": false
 }

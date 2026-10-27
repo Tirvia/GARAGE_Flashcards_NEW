@@ -10,5 +10,9 @@
   "status": "published",
   "order": 127,
   "legacySection": "Sogr_napitki",
-  "legacyIndex": 11
+  "legacyIndex": 11,
+  "composition": "- эе5алкогольныйи\n- » Пюре ягодное:\n  - © Малина\n  - © Смородина\n  - о Ежевика\n  - о Сахар\n- e Нектар Вишня\n- ® Корица в палочках\n- ® Бадьян\n- ® Гвоздика\n- ® Апельсин свежий\n- ¢ Медовый сироп\n- ® Розмарин свежий",
+  "compositionSource": "/images/Sogr_napitki/12.png",
+  "compositionOcrConfidence": 77.3,
+  "compositionNeedsReview": false
 }

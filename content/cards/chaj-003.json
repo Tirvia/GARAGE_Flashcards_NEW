@@ -10,5 +10,9 @@
   "status": "published",
   "order": 145,
   "legacySection": "Chaj",
-  "legacyIndex": 3
+  "legacyIndex": 3,
+  "composition": "- » Нектар апельсиновый\n- ® Чай каркаде\n- ® Медовый сироп\n- » Лимон свежий\n- ® Апельсин свежий\n- ® Роза сушеная",
+  "compositionSource": "/images/Chaj/4.png",
+  "compositionOcrConfidence": 85.2,
+  "compositionNeedsReview": false
 }

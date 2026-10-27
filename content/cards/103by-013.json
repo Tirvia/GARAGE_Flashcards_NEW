@@ -12,5 +12,9 @@
   "status": "published",
   "order": 111,
   "legacySection": "103BY",
-  "legacyIndex": 13
+  "legacyIndex": 13,
+  "composition": "- гречкой и салатом\n- ® Гречка\n- ® Биточки куриные\n- ® Огурец свежий\n- ® Салат Айсберг\n- ® Томаты черри\n- » Масло оливковое\n- ® Заправка с медом и горчицей:\n  - о Соклайма\n  - о Горчица Французская\n  - о Мед\n  - о Масло оливковое\n- ® Соус Песто",
+  "compositionSource": "/images/103BY/14.png",
+  "compositionOcrConfidence": 89.0,
+  "compositionNeedsReview": false
 }

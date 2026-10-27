@@ -10,5 +10,9 @@
   "status": "published",
   "order": 149,
   "legacySection": "Chaj",
-  "legacyIndex": 11
+  "legacyIndex": 11,
+  "composition": "- ¢ Сироп Юдзу\n- ¢ Имбирный сироп\n- ® Соклимона\n- ®* Апельсин свежий\n- ® Розмарин свежий\n- ® Лимон свежий\n- ® Лайм свежий",
+  "compositionSource": "/images/Chaj/12.png",
+  "compositionOcrConfidence": 78.7,
+  "compositionNeedsReview": false
 }

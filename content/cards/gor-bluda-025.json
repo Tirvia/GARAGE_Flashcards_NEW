@@ -13,5 +13,9 @@
   "status": "published",
   "order": 67,
   "legacySection": "Gor_bluda",
-  "legacyIndex": 25
+  "legacyIndex": 25,
+  "composition": "- RAP А ол ый овощами\n- ® Говядина стейк\n- » Соус Песто\n- » Масло растительное\n- ® Овощи для запекания:\n  - о Перец свежий\n  - о Сельдерей\n  - о Цукини\n  - о Шампиньоны\n  - о Чеснок\n  - о Масло розмариновое\n  - о Перец черный горошек\n  - о Соус соевый\n  - о Приправа Французская\n- ® Картофельные дольки\n- e Масло розмариновое (содержит\n  - чеснок)\n- » Микрозелень",
+  "compositionSource": "/images/Gor_bluda/26.png",
+  "compositionOcrConfidence": 87.1,
+  "compositionNeedsReview": false
 }

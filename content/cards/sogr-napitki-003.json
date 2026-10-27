@@ -10,5 +10,9 @@
   "status": "published",
   "order": 123,
   "legacySection": "Sogr_napitki",
-  "legacyIndex": 3
+  "legacyIndex": 3,
+  "composition": "- ® Пюре ягодное:\n  - о Малина\n  - о Смородина\n  - о Ежевика\n  - о Сахар\n- ® Нектар апельсиновый\n- ® Корица в палочках\n- ® Апельсин слайс\n- » Мята свежая\n- ® Сахарный сироп",
+  "compositionSource": "/images/Sogr_napitki/4.png",
+  "compositionOcrConfidence": 85.8,
+  "compositionNeedsReview": false
 }

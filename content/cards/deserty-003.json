@@ -12,5 +12,9 @@
   "status": "published",
   "order": 100,
   "legacySection": "Deserty",
-  "legacyIndex": 3
+  "legacyIndex": 3,
+  "composition": "- манговым кремом\n- » Сырники (творог, яйца, мука,\n  - сахар, ванильный сахар)\n- ® Малиновое пюре\n- ® Гранола ягодная\n- » Творожный крем с манго (сыр\n  - творожный, пюре манго)\n- ® Растительное масло\n- ® Сахарная пудра",
+  "compositionSource": "/images/Deserty/4.png",
+  "compositionOcrConfidence": 90.1,
+  "compositionNeedsReview": false
 }

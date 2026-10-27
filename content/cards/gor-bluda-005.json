@@ -12,5 +12,9 @@
   "status": "published",
   "order": 57,
   "legacySection": "Gor_bluda",
-  "legacyIndex": 5
+  "legacyIndex": 5,
+  "composition": "- с говяжьими щечками в\n  - сливочном демигласе\n- © Говяжьи щечки в соусе:\n  - о Сливки 22%\n  - о Говядина щечки\n  - © Соус Демиглас\n- ® Картофельное пюре\n- (Картофель, молоко, масло сливочное)\n- » Сыр моцарелла\n- » Петрушка",
+  "compositionSource": "/images/Gor_bluda/6.png",
+  "compositionOcrConfidence": 88.6,
+  "compositionNeedsReview": false
 }

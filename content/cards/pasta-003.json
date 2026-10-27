@@ -12,5 +12,9 @@
   "status": "published",
   "order": 75,
   "legacySection": "Pasta",
-  "legacyIndex": 3
+  "legacyIndex": 3,
+  "composition": "- сливочным соусом\n- ® Макароны лингвини\n- ® Свинина грудинка\n- ® Сливки питьевые 22%\n- e Петрушка\n- e Чеснок\n- e Специя паприка\n- ® Яйцо\n- e Сыр пармезан\n- ® Масло растительное",
+  "compositionSource": "/images/Pasta/4.png",
+  "compositionOcrConfidence": 80.2,
+  "compositionNeedsReview": false
 }

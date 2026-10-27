@@ -12,5 +12,9 @@
   "status": "published",
   "order": 83,
   "legacySection": "Pizza",
-  "legacyIndex": 3
+  "legacyIndex": 3,
+  "composition": "- Колбаски охотничьи\n- ® Огурец консервированный\n- ® Свинина грудинка\n- ® Соус Рэнч (содержит чеснок)\n- e Лукжареный\n- ® Соус Горчичный\n- ® Лук красный\n- ® Тесто для пиццы\n- ¢ Сыр моцарелла\n- ® Мука семола\n- ® Масло розмариновое (содержит\n  - чеснок)",
+  "compositionSource": "/images/Pizza/4.png",
+  "compositionOcrConfidence": 78.3,
+  "compositionNeedsReview": false
 }

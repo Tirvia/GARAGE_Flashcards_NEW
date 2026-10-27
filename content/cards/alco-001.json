@@ -10,5 +10,9 @@
   "status": "published",
   "order": 161,
   "legacySection": "alco",
-  "legacyIndex": 1
+  "legacyIndex": 1,
+  "composition": "- ® Эспрессо\n- ® Коньяк Метакса\n- ® Молоко\n- ® Сливки 22%\n- ® Кленовый сироп\n- ® Сахарный сироп\n- ® Кофейный зерна",
+  "compositionSource": "/images/alco/2.png",
+  "compositionOcrConfidence": 87.9,
+  "compositionNeedsReview": false
 }

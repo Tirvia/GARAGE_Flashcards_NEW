@@ -10,5 +10,9 @@
   "status": "published",
   "order": 122,
   "legacySection": "Sogr_napitki",
-  "legacyIndex": 1
+  "legacyIndex": 1,
+  "composition": "- Эспрессо\n- » Сироп Соленая карамель\n- e Нектар апельсиновый\n- ® Апельсин чипс",
+  "compositionSource": "/images/Sogr_napitki/2.png",
+  "compositionOcrConfidence": 77.2,
+  "compositionNeedsReview": false
 }

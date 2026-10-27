@@ -12,5 +12,9 @@
   "status": "published",
   "order": 116,
   "legacySection": "103BY",
-  "legacyIndex": 23
+  "legacyIndex": 23,
+  "composition": "- шпинатом и бананом\n- e Матча-смузи\n  - о Мята\n  - о Шпинат\n  - © Молоко кокосовое\n  - © Банан\n  - о Пюре Манго\n  - о Матча\n  - о Семена чиа\n- ® Банан\n- ® Гранола Ягодная\n- Клубника сублимированная",
+  "compositionSource": "/images/103BY/24.png",
+  "compositionOcrConfidence": 81.3,
+  "compositionNeedsReview": false
 }

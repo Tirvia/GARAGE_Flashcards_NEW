@@ -13,5 +13,9 @@
   "status": "published",
   "order": 49,
   "legacySection": "Supy",
-  "legacyIndex": 1
+  "legacyIndex": 1,
+  "composition": "- ® Солянка:\n  - о Колбаски охотничьи\n  - о Колбаса с/к\n  - о Курица филе\n  - © Свинина грудинка\n  - о Свинина ветчина\n  - о Лук репчатый\n  - о Каперсы\n  - © Паста томатная\n  - © Огурцы консервированные\n  - о Масло растительное\n- ® Маслины\n- ® Лимон\n- ® Петрушка\n- » Сметана",
+  "compositionSource": "/images/Supy/2.png",
+  "compositionOcrConfidence": 88.5,
+  "compositionNeedsReview": false
 }

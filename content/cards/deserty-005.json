@@ -12,5 +12,9 @@
   "status": "published",
   "order": 101,
   "legacySection": "Deserty",
-  "legacyIndex": 5
+  "legacyIndex": 5,
+  "composition": "- ¢ Вафля\n  - о Мука\n  - о Яйцо\n  - © Молоко сгущенное\n  - © Разрыхлитель\n  - о Сухой заварной крем\n  - © Масло растительное\n- . Ананасы консервированные\n- ® Соус творожный со сгущенкой\n  - о Сыртворожный\n  - © Молоко сгущенное\n  - © Сахарная пудра\n- Мороженое пломбир\n- ¢ Топпинг шоколад\n- . Драже M&Ms\n- » Мята\n- Сахарная пудра",
+  "compositionSource": "/images/Deserty/6.png",
+  "compositionOcrConfidence": 83.9,
+  "compositionNeedsReview": false
 }

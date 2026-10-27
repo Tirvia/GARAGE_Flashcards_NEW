@@ -10,5 +10,9 @@
   "status": "published",
   "order": 138,
   "legacySection": "Kakao_kofe_matcha",
-  "legacyIndex": 11
+  "legacyIndex": 11,
+  "composition": "- ® Эспрессо\n- ¢ Молоко\n- ¢ Сироп Каштан\n- ® Какао (коммунарка)",
+  "compositionSource": "/images/Kakao_kofe_matcha/12.png",
+  "compositionOcrConfidence": 76.4,
+  "compositionNeedsReview": false
 }

@@ -12,5 +12,9 @@
   "status": "published",
   "order": 188,
   "legacySection": "sezonnoe",
-  "legacyIndex": 9
+  "legacyIndex": 9,
+  "composition": "- KRURUCUBDIN молоком\n- » Крем-суп из батата\n  - © Лук репчатый\n  - © Чеснок\n  - о Морковь\n  - © Батат\n  - © Перец черный горошек\n  - © Молоко кокосовое\n  - © соус Шрирача\n  - © Масло растительное\n- e Лукжареный в масле\n- ¢ Семечки тыквы обжаренные\n- ® Масло зеленое\n  - (шпинат, петрушка, укроп, масло растительное)",
+  "compositionSource": "/images/sezonnoe/10.png",
+  "compositionOcrConfidence": 81.8,
+  "compositionNeedsReview": false
 }

@@ -10,5 +10,9 @@
   "status": "published",
   "order": 54,
   "legacySection": "Supy",
-  "legacyIndex": 11
+  "legacyIndex": 11,
+  "composition": "- картофельными\n> дольками\n- ® Cyn холодник\n  - о Свекла\n  - о Кефир\n  - © Укроп\n  - о Огурец\n- Яйцо\n- ® Картофельные дольки\n- ® Масло розмариновое\n  - о Чеснок\n  - © Розмарин\n  - © Масло растительное",
+  "compositionSource": "/images/Supy/12.png",
+  "compositionOcrConfidence": 89.2,
+  "compositionNeedsReview": false
 }

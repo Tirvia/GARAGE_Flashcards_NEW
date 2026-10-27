@@ -10,5 +10,9 @@
   "status": "published",
   "order": 184,
   "legacySection": "sezonnoe",
-  "legacyIndex": 1
+  "legacyIndex": 1,
+  "composition": "- ¢ Сбитень основа\n  - о Вода\n  - о Мёд\n  - о Лавровый лист\n  - о Корица в палочках\n  - о Гвоздика\n  - о Имбирь\n  - о Бадьян (анис)\n  - о Черный перец горошек\n- ® Корица в палочках\n- ® Яблоко слайс\n- ® Розмарин свежий\n- ® Сок лимона\n- Сироп пряный",
+  "compositionSource": "/images/sezonnoe/2.png",
+  "compositionOcrConfidence": 85.2,
+  "compositionNeedsReview": false
 }

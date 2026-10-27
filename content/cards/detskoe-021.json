@@ -12,5 +12,9 @@
   "status": "published",
   "order": 25,
   "legacySection": "Detskoe",
-  "legacyIndex": 21
+  "legacyIndex": 21,
+  "composition": "- ® Картофельное пюре:\n  - о Картофель\n  - о Масло сливочное\n  - о Молоко\n- ® Сосиски куриные\n- ® Масло растительное\n- ® Огурец свежий\n- ¢ Томаты черри\n- Микрозелень",
+  "compositionSource": "/images/Detskoe/22.png",
+  "compositionOcrConfidence": 73.3,
+  "compositionNeedsReview": true
 }

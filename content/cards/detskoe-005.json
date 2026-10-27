@@ -10,5 +10,9 @@
   "status": "published",
   "order": 17,
   "legacySection": "Detskoe",
-  "legacyIndex": 5
+  "legacyIndex": 5,
+  "composition": "- Сухое мороженое\n- « Молоко\n- ® Топпинг шоколад\n- Сироп шоколадное печенье\n- » Сливки взбитые\n- » Сникерс мини\n- » Печенье Opeo\n- « Маршмееллоу",
+  "compositionSource": "/images/Detskoe/6.png",
+  "compositionOcrConfidence": 74.1,
+  "compositionNeedsReview": true
 }

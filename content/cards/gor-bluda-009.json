@@ -12,5 +12,9 @@
   "status": "published",
   "order": 59,
   "legacySection": "Gor_bluda",
-  "legacyIndex": 9
+  "legacyIndex": 9,
+  "composition": "- » Свинина рулька\n- » Картофельные дольки\n- ® Соус из хрена\n  - о Хрен\n  - © Сметана\n  - © Майонез\n- e Яйцо\n- e Петрушка",
+  "compositionSource": "/images/Gor_bluda/10.png",
+  "compositionOcrConfidence": 79.9,
+  "compositionNeedsReview": false
 }

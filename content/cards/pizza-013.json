@@ -13,5 +13,9 @@
   "status": "published",
   "order": 88,
   "legacySection": "Pizza",
-  "legacyIndex": 13
+  "legacyIndex": 13,
+  "composition": "- e Шампиньоны\n- Колбаса с/к\n- ® Свинина грудинка\n- ® Свинина ветчина\n- ® Томат свежий\n- ® Тесто для пиццы\n- ¢ Сыр моцарелла\n- ® Мука семола\n- ® Пицца-соус томатный\n- ® Масло розмариновое (содержит\n  - чеснок)",
+  "compositionSource": "/images/Pizza/14.png",
+  "compositionOcrConfidence": 83.9,
+  "compositionNeedsReview": false
 }

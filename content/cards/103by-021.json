@@ -12,5 +12,9 @@
   "status": "published",
   "order": 115,
   "legacySection": "103BY",
-  "legacyIndex": 21
+  "legacyIndex": 21,
+  "composition": "- ® Овощная смесь в глазури\n  - о Перец\n  - © Цукини\n  - о Сельдерей\n  - о Лук красный\n  - о Глазурь (Унаги + Свит Чили)\n- ® Глазурь (Унаги + Свит Чили)\n- e¢ Киноа\n- ® Салат Чука\n- ® Кукуруза консервированная\n- ® Редис Кимчи\n- ® Говядина ростбиф\n- ® Кунжут черный",
+  "compositionSource": "/images/103BY/22.png",
+  "compositionOcrConfidence": 78.1,
+  "compositionNeedsReview": false
 }

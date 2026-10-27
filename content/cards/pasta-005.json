@@ -12,5 +12,9 @@
   "status": "published",
   "order": 76,
   "legacySection": "Pasta",
-  "legacyIndex": 5
+  "legacyIndex": 5,
+  "composition": "- брокколи и сыром\n> дорблю\n- » Макароны лингвини\n- » Креветка маринованная\n- (содержит тимьян, чеснок, соус соевый}\n- ¢ Сливки питьевые 22%\n- e Сыр пармезан\n- e Сыр Дор Блю\n- » Брокколи маринованные\n  *(содержит чеснок, соевый соус}*\n- e Масло растительное\n- e Микрозелень\n- ® Перец черный горошек",
+  "compositionSource": "/images/Pasta/6.png",
+  "compositionOcrConfidence": 85.6,
+  "compositionNeedsReview": false
 }

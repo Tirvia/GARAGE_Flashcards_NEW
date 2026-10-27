@@ -10,5 +10,9 @@
   "status": "published",
   "order": 141,
   "legacySection": "Kakao_kofe_matcha",
-  "legacyIndex": 17
+  "legacyIndex": 17,
+  "composition": "- ® Эспрессо Двойной\n- ¢ Молоко",
+  "compositionSource": "/images/Kakao_kofe_matcha/18.png",
+  "compositionOcrConfidence": 78.1,
+  "compositionNeedsReview": false
 }

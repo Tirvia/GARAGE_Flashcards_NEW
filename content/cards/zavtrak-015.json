@@ -12,5 +12,9 @@
   "status": "published",
   "order": 7,
   "legacySection": "zavtrak",
-  "legacyIndex": 15
+  "legacyIndex": 15,
+  "composition": "- » Омлет:\n  - о Яйца\n  - о Сливки 22%\n  - о Майонез\n  - о Соль\n  - о Перец черный\n- » Растительное масло\n- » Салат:\n  - © Салат микс (Айсберг, Ромен, Лолло Россо, Шпинат)\n  - о Томат черри\n  - о Огурец свежий\n  - © Заправка =\n5\t1\t1\t1\t15\t2\t188\t740\t144\t35\t96.132957\tГорчица\n5\t1\t1\t1\t15\t3\t345\t740\t224\t35\t96.645531\tФранцузская\n4\t1\t1\t1\t16\t0\t146\t789\t198\t27\t-1\t\n5\t1\t1\t1\t16\t1\t146\t798\t12\t12\t71.900330\t= Соклайм „ Мед =» Масло оливковое\n- _ wR. we we не ef fe",
+  "compositionSource": "/images/zavtrak/16.png",
+  "compositionOcrConfidence": 84.2,
+  "compositionNeedsReview": false
 }

@@ -13,5 +13,9 @@
   "status": "published",
   "order": 44,
   "legacySection": "Zacuski",
-  "legacyIndex": 17
+  "legacyIndex": 17,
+  "composition": "- » Куриные наггетсы\n- « Куриные плечики о Глазурь (соусы Унаги + Свит Чили) о Кунжут\n- Колбаски охотничьи\n- » Луковые кольца\n- » Картофельные дольки о Масло розмариновое\n  *(содержит чеснок)*\n- » Масло растительное\n- Соус Барбекю\n- » Соус Бургер",
+  "compositionSource": "/images/Zacuski/18.png",
+  "compositionOcrConfidence": 83.7,
+  "compositionNeedsReview": false
 }

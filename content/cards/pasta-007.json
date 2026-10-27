@@ -13,5 +13,9 @@
   "status": "published",
   "order": 77,
   "legacySection": "Pasta",
-  "legacyIndex": 7
+  "legacyIndex": 7,
+  "composition": "- С.Е АМИ ТЫС\n- ® Макароны лингвини\n- ® Бульон куриный\n- » Говядина ростбиф\n- © Кунжут белый\n- ® Перец чили\n- ® Чеснок\n- ® Кинза\n- » Грибы шиитаке\n- ® Соус Азия:\n  - о Рыбный соус\n  - © Масло кунжутное\n  - о Соус Устричный\n  - © Соус Унаги\n  - © Соус Свит Чили\n- » Овощная смесь:\n  - о Перец свежий\n  - © Цукини\n  - о Сельдерей\n  - © Лук красный",
+  "compositionSource": "/images/Pasta/8.png",
+  "compositionOcrConfidence": 82.3,
+  "compositionNeedsReview": false
 }

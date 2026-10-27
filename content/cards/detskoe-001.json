@@ -10,5 +10,9 @@
   "status": "published",
   "order": 15,
   "legacySection": "Detskoe",
-  "legacyIndex": 1
+  "legacyIndex": 1,
+  "composition": "- ¢ Молоко\n- » Сироп Персик\n- » Маршмеллоу",
+  "compositionSource": "/images/Detskoe/2.png",
+  "compositionOcrConfidence": 82.8,
+  "compositionNeedsReview": false
 }

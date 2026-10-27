@@ -12,5 +12,9 @@
   "status": "published",
   "order": 107,
   "legacySection": "103BY",
-  "legacyIndex": 5
+  "legacyIndex": 5,
+  "composition": "- APEC EEE PED ee SINE Аи\n- ¢ Молоко\n- e Яйца\n- e Масло растительное\n- « Масло оливковое\n- ¢ Салат микс\n  - (Айсберг, Ромен, Лолло Россо, Шпинат)\n- » Томаты черри\n- ® Огурец свежий\n- ® Филе индейки (содержит тимьян)\n- ® Заправка с медом и горчицей:\n  - © Сок лайма\n  - © Горчица Французская\n  - о Мед\n  - о Масло оливковое",
+  "compositionSource": "/images/103BY/6.png",
+  "compositionOcrConfidence": 83.0,
+  "compositionNeedsReview": false
 }

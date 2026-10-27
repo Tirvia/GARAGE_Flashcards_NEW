@@ -12,5 +12,9 @@
   "status": "published",
   "order": 56,
   "legacySection": "Gor_bluda",
-  "legacyIndex": 3
+  "legacyIndex": 3,
+  "composition": "- картофельными дольками и зеленым салатом\n- ¢ Куриный шницель\n- ® Картофельные дольки\n- e Масло растительное\n- e Цукини\n- Огурец\n- Салат Айсберг\n- Соус зеленый:\n  - о Соклимона\n  - о Петрушка\n  - о Чеснок\n  - © Сыртворожный\n  - о Цедра лимона\n  - о Майонез\n  - о Соус Шрирача\n  - о Масло оливковое",
+  "compositionSource": "/images/Gor_bluda/4.png",
+  "compositionOcrConfidence": 82.7,
+  "compositionNeedsReview": false
 }

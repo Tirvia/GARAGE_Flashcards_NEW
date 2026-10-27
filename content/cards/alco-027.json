@@ -10,5 +10,9 @@
   "status": "published",
   "order": 172,
   "legacySection": "alco",
-  "legacyIndex": 27
+  "legacyIndex": 27,
+  "composition": "- e Ликер Апельсиновый (трипл сек}\n- ® Pom\n- » Сироп Каштан\n- Соклимона\n- + Сок ананасовый\n- Кордиал Маракуйя-ваниль\n- Лист Бамбука",
+  "compositionSource": "/images/alco/28.png",
+  "compositionOcrConfidence": 63.5,
+  "compositionNeedsReview": true
 }

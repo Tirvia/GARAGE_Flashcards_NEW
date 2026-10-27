@@ -10,5 +10,9 @@
   "status": "published",
   "order": 147,
   "legacySection": "Chaj",
-  "legacyIndex": 7
+  "legacyIndex": 7,
+  "composition": "- сосновыми шишками\n- ® Черный чай\n- e Смородина\n- ® Розмарин свежий\n- e Варенье из шишек",
+  "compositionSource": "/images/Chaj/8.png",
+  "compositionOcrConfidence": 78.4,
+  "compositionNeedsReview": false
 }

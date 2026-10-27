@@ -12,5 +12,9 @@
   "status": "published",
   "order": 43,
   "legacySection": "Zacuski",
-  "legacyIndex": 15
+  "legacyIndex": 15,
+  "composition": "- » Сыр Чеддер в панировке\n- » Масло растительное\n- » Малиновая горчица:\n  - © Горчица Французская\n  - © Соус Шрирача\n  - о Малиновое пюре\n- » Салат микс\n  - (Айсберг, Ромен, Лолло Россо, шпинат)\n- » Томат черри\n- ® Масло базилик\n  - о Масло растительное\n  - © Соус Песто",
+  "compositionSource": "/images/Zacuski/16.png",
+  "compositionOcrConfidence": 89.0,
+  "compositionNeedsReview": false
 }

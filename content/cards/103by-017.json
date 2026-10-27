@@ -12,5 +12,9 @@
   "status": "published",
   "order": 113,
   "legacySection": "103BY",
-  "legacyIndex": 17
+  "legacyIndex": 17,
+  "composition": "- e Рис круглозерный\n- Форель слаб/сол\n  - (содержит масло кунжутное, лайм)\n- » Салат Чука\n- » Яйцо\n- ¢ Огурец свежий\n- Стружка тунца\n- Соус ореховый\n- » Масло кунжутное\n- » Кунжут черный\n- » Кукуруза консервированная",
+  "compositionSource": "/images/103BY/18.png",
+  "compositionOcrConfidence": 75.4,
+  "compositionNeedsReview": true
 }

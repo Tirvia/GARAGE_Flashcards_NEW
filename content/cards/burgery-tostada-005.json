@@ -12,5 +12,9 @@
   "status": "published",
   "order": 80,
   "legacySection": "Burgery_tostada",
-  "legacyIndex": 5
+  "legacyIndex": 5,
+  "composition": "- огурцами кимчи и\n  - малиновой горчицей\n- » Булочка для бургера\n- » Говядина котлета\n- » Салат Айсберг\n- e Соус Бургер\n- » Сыр Чеддер\n- ® Масло растительное\n- Огурцы Кимчи\n  - (содержит чеснок, уксус, соевый соус, паприку красную, соус Кимчи)\n- » Малиновая горчица\n  - о Горчица Французская\n  - о Соус Шрирача\n  - о Малиновое пюре",
+  "compositionSource": "/images/Burgery_tostada/6.png",
+  "compositionOcrConfidence": 82.6,
+  "compositionNeedsReview": false
 }

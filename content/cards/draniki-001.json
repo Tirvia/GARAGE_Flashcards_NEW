@@ -13,5 +13,9 @@
   "status": "published",
   "order": 69,
   "legacySection": "Draniki",
-  "legacyIndex": 1
+  "legacyIndex": 1,
+  "composition": "- эсаром и трионпым соусом\n- » Драники\n  *(лук, картофель, яйцо, мука)*\n- » Масло растительное\n- . Куриное бедро\n- ® Глазурь (Соусы Унаги + Свит Чили\n- Соус Грибной:\n  - о Лук репчатый\n  - © Шампиньоны\n  - © Чеснок\n  - © Сливки 22%\n  - © Сметана\n- e Микрозелень\n- » Масло зеленое\n  *(шпинат, петрушка, укроп, масло* растительное)",
+  "compositionSource": "/images/Draniki/2.png",
+  "compositionOcrConfidence": 79.0,
+  "compositionNeedsReview": false
 }

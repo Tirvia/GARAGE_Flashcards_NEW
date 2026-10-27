@@ -13,5 +13,9 @@
   "status": "published",
   "order": 81,
   "legacySection": "Burgery_tostada",
-  "legacyIndex": 7
+  "legacyIndex": 7,
+  "composition": "- и соусом Тартар\n- ¢ Булочка для бургера\n- « Котлета куриная в панировке (x2)\n- ¢ Свинина грудинка чипсы\n- Салат Айсберг\n- e Соус Taptap\n  - о Огурец консервированный\n  - о Чеснок\n  - о Каперсы\n  - о Майонез\n  - о Лук красный\n- « Сыр Чеддер\n- e¢ Огурцы Кимчи\n  - (содержит чеснок, уксус, соевый соус, паприку красную, соус Кимчи)",
+  "compositionSource": "/images/Burgery_tostada/8.png",
+  "compositionOcrConfidence": 83.1,
+  "compositionNeedsReview": false
 }

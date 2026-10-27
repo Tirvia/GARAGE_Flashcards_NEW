@@ -14,5 +14,9 @@
   "status": "published",
   "order": 41,
   "legacySection": "Zacuski",
-  "legacyIndex": 11
+  "legacyIndex": 11,
+  "composition": "- » Колбаса пепперони\n- » Колбаса с/к\n- . Говядина ростбиф\n- » Свинина грудинка\n- © Свинина ветчина\n- » Соус из хрена\n  *(хрен, сметана, майонез}*\n- » Капуста маринованная:\n  - © Капуста\n  - © Морковь\n  - © Уксус\n  - © Чеснок\n  - о Тмин\n  - © Растительное масло\n- » Опята консервированные\n- e Лукзеленый\n- ® Оливки\n- © Маслины\n- ¢ Огурец консервированный",
+  "compositionSource": "/images/Zacuski/12.png",
+  "compositionOcrConfidence": 84.6,
+  "compositionNeedsReview": false
 }

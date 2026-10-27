@@ -12,5 +12,9 @@
   "status": "published",
   "order": 68,
   "legacySection": "Gor_bluda",
-  "legacyIndex": 27
+  "legacyIndex": 27,
+  "composition": "- и ГРУ ЛЬМЬНИ Я\n- ® Говядина щечки\n- » Картофельное пюре\n- (Картофель, масло сливочное, молоко)\n- » Соус Демиглас\n- » Микрозелель\n- ® Паста трюфельная\n- » Глазурь (Соусы Унаги+Свит Чили)\n- ® Лук малиновый\n  - о Лук красный маринованный\n  - (содержит петрушку, чеснок, уксус красный винный, сахар, масло растительное)\n  - о Малиновое пюре",
+  "compositionSource": "/images/Gor_bluda/28.png",
+  "compositionOcrConfidence": 74.2,
+  "compositionNeedsReview": true
 }

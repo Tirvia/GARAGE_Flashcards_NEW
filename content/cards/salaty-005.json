@@ -12,5 +12,9 @@
   "status": "published",
   "order": 31,
   "legacySection": "Salaty",
-  "legacyIndex": 5
+  "legacyIndex": 5,
+  "composition": "- ® Салат микс\n  - (Айсберг, Ромен, Лолло Россо, шпинат)\n- ®» Соус Цезарь\n  - © Соклимона\n  - © Чеснок\n  - о Соевый соус\n  - о Майонез\n  - © Масло растительное\n- » Томат черри\n- ® Гренки с паприкой\n- » Сыр пармезан\n- ® Куриное филе\n- ® Масло базилик\n  - © Масло растительное\n  - © Соус Песто",
+  "compositionSource": "/images/Salaty/6.png",
+  "compositionOcrConfidence": 87.9,
+  "compositionNeedsReview": false
 }

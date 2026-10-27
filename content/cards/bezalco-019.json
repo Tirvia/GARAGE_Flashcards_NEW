@@ -10,5 +10,9 @@
   "status": "published",
   "order": 157,
   "legacySection": "Bezalco",
-  "legacyIndex": 19
+  "legacyIndex": 19,
+  "composition": "- » Лайм\n- e Мята\n- » Пюре ягодное:\n  - © Малина\n  - © Смородина\n  - © Ежевика\n  - © Сахар\n- ¢ Бонаква/спрайт",
+  "compositionSource": "/images/Bezalco/20.png",
+  "compositionOcrConfidence": 85.8,
+  "compositionNeedsReview": false
 }

@@ -13,5 +13,9 @@
   "status": "published",
   "order": 11,
   "legacySection": "zavtrak",
-  "legacyIndex": 23
+  "legacyIndex": 23,
+  "composition": "- ® Свинина грудинка\n- © Шампиньоны обжаренные с\n  - трюфелем\n  - © (Содержит чеснок, тимьян\n- ® Томат свежий\n- ® Глазурь (Унаги + Свит Чили)\n- » Яйца\n- ® Хлеб сандвичный\n- » Колбаски охотничьи\n- ® Фасоль в соусе\n- ® Масло растительное\n- ® Микрозелень",
+  "compositionSource": "/images/zavtrak/24.png",
+  "compositionOcrConfidence": 85.7,
+  "compositionNeedsReview": false
 }

@@ -12,5 +12,9 @@
   "status": "published",
   "order": 110,
   "legacySection": "103BY",
-  "legacyIndex": 11
+  "legacyIndex": 11,
+  "composition": "- о мл о Aw BPNGaniv\n- Картофельные дольки\n- ® Салат Айсберг\n- ® Говядина ростбиф\n- ¢ Томаты черри\n- ® ЯЙЦО\n- ® Соус ореховый\n- © Кунжут черный",
+  "compositionSource": "/images/103BY/12.png",
+  "compositionOcrConfidence": 73.9,
+  "compositionNeedsReview": true
 }

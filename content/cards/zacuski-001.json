@@ -12,5 +12,9 @@
   "status": "published",
   "order": 36,
   "legacySection": "Zacuski",
-  "legacyIndex": 1
+  "legacyIndex": 1,
+  "composition": "- ® Говядина Тартар\n- ® Смесь для тартара:\n  - о Огурец консервированный\n  - © Горчица Французская\n  - о Каперсы\n  - о Кетчуп\n  - о Масло оливковое\n  - о Лук малиновый (лук красный маринованный + малиновое пюре)\n- ® Чипсы из тортильи\n- ® Трюфельный майонез (паста\n  - трюфельная + майонез}\n- ® Микрозелень\n- » Перец черный горошек",
+  "compositionSource": "/images/Zacuski/2.png",
+  "compositionOcrConfidence": 87.6,
+  "compositionNeedsReview": false
 }

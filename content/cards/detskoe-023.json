@@ -12,5 +12,9 @@
   "status": "published",
   "order": 26,
   "legacySection": "Detskoe",
-  "legacyIndex": 23
+  "legacyIndex": 23,
+  "composition": "- » Макароны лингвини\n- ® Бульон куриный\n- » Сливки 22%\n- e Сыр Чеддер\n- » Томаты черри\n- e Сыр Пармезан\n- e Микрозелень",
+  "compositionSource": "/images/Detskoe/24.png",
+  "compositionOcrConfidence": 80.0,
+  "compositionNeedsReview": false
 }

@@ -10,5 +10,9 @@
   "status": "published",
   "order": 126,
   "legacySection": "Sogr_napitki",
-  "legacyIndex": 9
+  "legacyIndex": 9,
+  "composition": "- ® Эспрессо\n- ® Сливки 33%\n- ® Молоко\n- ® Апельсин чипс\n- ® Кленовый сироп\n- » Пюре апельсин-корица-имбирь",
+  "compositionSource": "/images/Sogr_napitki/10.png",
+  "compositionOcrConfidence": 79.4,
+  "compositionNeedsReview": false
 }

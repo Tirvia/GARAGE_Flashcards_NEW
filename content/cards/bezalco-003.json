@@ -10,5 +10,9 @@
   "status": "published",
   "order": 150,
   "legacySection": "Bezalco",
-  "legacyIndex": 3
+  "legacyIndex": 3,
+  "composition": "- › Чай Каркаде\n- › Нектар вишневый\n- › Чай Анчан\n- › Сахарный сироп\n- » Джус Болл (клубника/манго/яблокс",
+  "compositionSource": "/images/Bezalco/4.png",
+  "compositionOcrConfidence": 79.2,
+  "compositionNeedsReview": false
 }

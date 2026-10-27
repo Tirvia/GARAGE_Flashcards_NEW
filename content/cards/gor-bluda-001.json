@@ -13,5 +13,9 @@
   "status": "published",
   "order": 55,
   "legacySection": "Gor_bluda",
-  "legacyIndex": 1
+  "legacyIndex": 1,
+  "composition": "- картофельным пюре\n  - и грибным соусом\n- Биточки куриные\n- » Картофельное пюре\n- « Томат черри\n- « Масло зеленое\n  - (шпинат, петрушка, укроп, масло растительное)\n- « Микрозелень\n- » Грибы опята\n- « Масло растительное\n- Соус грибной:\n  - о Лук репчатый\n  - о Шампиньоны\n  - о Чеснок\n  - о Сливки 22%\n  - о Сметана",
+  "compositionSource": "/images/Gor_bluda/2.png",
+  "compositionOcrConfidence": 85.6,
+  "compositionNeedsReview": false
 }

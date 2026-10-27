@@ -12,5 +12,9 @@
   "status": "published",
   "order": 2,
   "legacySection": "zavtrak",
-  "legacyIndex": 5
+  "legacyIndex": 5,
+  "composition": "- ® Овсяные хлопья\n- » Молоко/вода (выбор)\n- » Масло зеленое\n- » Микрозелень\n- » Свинина грудинка чипсы\n- ® Сыр пармезан\n- ® Соль\n- ® Сахар",
+  "compositionSource": "/images/zavtrak/6.png",
+  "compositionOcrConfidence": 86.9,
+  "compositionNeedsReview": false
 }

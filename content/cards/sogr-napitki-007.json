@@ -10,5 +10,9 @@
   "status": "published",
   "order": 125,
   "legacySection": "Sogr_napitki",
-  "legacyIndex": 7
+  "legacyIndex": 7,
+  "composition": "- ¢ Молоко\n- . Какао (коммунарка)\n- ® Сливки 10%\n- ¢ Сироп Ваниль\n- Пудра из каркаде\n- e Малиновое пюре (малина+сахар)",
+  "compositionSource": "/images/Sogr_napitki/8.png",
+  "compositionOcrConfidence": 74.7,
+  "compositionNeedsReview": true
 }

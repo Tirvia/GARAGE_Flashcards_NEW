@@ -12,5 +12,9 @@
   "status": "published",
   "order": 3,
   "legacySection": "zavtrak",
-  "legacyIndex": 7
+  "legacyIndex": 7,
+  "composition": "- e Овсяные хлопья\n- ® Молоко/вода (выбор)\n- e Цукаты из киви\n- ¢ Гранола Ягодная\n- ® Малиновое пюре",
+  "compositionSource": "/images/zavtrak/8.png",
+  "compositionOcrConfidence": 85.4,
+  "compositionNeedsReview": false
 }

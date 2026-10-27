@@ -12,5 +12,9 @@
   "status": "published",
   "order": 96,
   "legacySection": "Pizza",
-  "legacyIndex": 29
+  "legacyIndex": 29,
+  "composition": "- ® Соус сырный\n- ® Сыр deta\n- ® Сыр Дор Блю\n- ® Сыр проволоне\n- ® Сыр Чеддер\n- ® Медтрюфельный\n  *(Мед, паста трюфельная)*\n- ® Тесто для пиццы\n- ® Сыр моцарелла\n- ® Мука семола\n- ® Масло розмариновое (содержит\n- чеснок)",
+  "compositionSource": "/images/Pizza/30.png",
+  "compositionOcrConfidence": 87.9,
+  "compositionNeedsReview": false
 }

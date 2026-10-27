@@ -12,5 +12,9 @@
   "status": "published",
   "order": 114,
   "legacySection": "103BY",
-  "legacyIndex": 19
+  "legacyIndex": 19,
+  "composition": "- ® Куриное филе\n- ® Масло растительное\n- ® Салат Айсберг\n- ¢ Томат черри\n- ® Соус Дзадзики\n  - о Огурец свежий\n  - о Йогурт греческий 2%\n  - о Чеснок свежий\n  - о Петрушка\n- ¢ Кукуруза консервированная\n- e Сыр пармезан",
+  "compositionSource": "/images/103BY/20.png",
+  "compositionOcrConfidence": 83.7,
+  "compositionNeedsReview": false
 }

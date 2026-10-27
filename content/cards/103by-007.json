@@ -12,5 +12,9 @@
   "status": "published",
   "order": 108,
   "legacySection": "103BY",
-  "legacyIndex": 7
+  "legacyIndex": 7,
+  "composition": "- APEC EEE PED ee SINE Аи\n- ¢ Молоко\n- e Яйца\n- e Масло растительное\n- ¢ Салат микс\n  - (Айсберг, Ромен, Лолло Россо, Шпинат)\n- » Томаты черри\n- ® Огурец свежий\n- » Креветка маринованная\n- (содержит тимьян, чеснок, соус соевый)\n- ® Заправка с медом и горчицей:\n  - © Сок лайма\n  - © Горчица Французская\n  - о Мед\n  - о Масло оливковое",
+  "compositionSource": "/images/103BY/8.png",
+  "compositionOcrConfidence": 83.5,
+  "compositionNeedsReview": false
 }

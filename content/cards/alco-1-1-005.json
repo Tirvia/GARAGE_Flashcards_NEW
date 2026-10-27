@@ -10,5 +10,9 @@
   "status": "published",
   "order": 177,
   "legacySection": "Alco_1 1",
-  "legacyIndex": 5
+  "legacyIndex": 5,
+  "composition": "- e Малиновое пюре\n- » Соклимона\n- e Сироп Малина\n- ® Спрайт\n- ® Джин\n- e Лимон свежий\n- e Лайм свежий",
+  "compositionSource": "/images/Alco_1 1/6.png",
+  "compositionOcrConfidence": 82.7,
+  "compositionNeedsReview": false
 }

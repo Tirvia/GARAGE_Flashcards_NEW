@@ -10,5 +10,9 @@
   "status": "published",
   "order": 153,
   "legacySection": "Bezalco",
-  "legacyIndex": 11
+  "legacyIndex": 11,
+  "composition": "- » Сухое мороженое\n- Молоко\n- » Сахарный сироп\n- » Малиновое пюре\n- » Пудра из каркаде\n- « Взбитые сливки",
+  "compositionSource": "/images/Bezalco/12.png",
+  "compositionOcrConfidence": 74.1,
+  "compositionNeedsReview": true
 }

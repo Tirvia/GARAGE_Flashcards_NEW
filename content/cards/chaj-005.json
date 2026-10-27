@@ -10,5 +10,9 @@
   "status": "published",
   "order": 146,
   "legacySection": "Chaj",
-  "legacyIndex": 5
+  "legacyIndex": 5,
+  "composition": "- Имбирный сироп:\n  - © Имбирный корень\n  - о Соклимона\n  - © Сахарный сироп\n- ® Апельсин свежий",
+  "compositionSource": "/images/Chaj/6.png",
+  "compositionOcrConfidence": 83.9,
+  "compositionNeedsReview": false
 }

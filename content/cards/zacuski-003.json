@@ -12,5 +12,9 @@
   "status": "published",
   "order": 37,
   "legacySection": "Zacuski",
-  "legacyIndex": 3
+  "legacyIndex": 3,
+  "composition": "- Говядина корпачо\n- « Рукола\n- Каперсы\n- ¢ Лимон\n- e Масло оливковое\n- ¢ Сыр пармезан",
+  "compositionSource": "/images/Zacuski/4.png",
+  "compositionOcrConfidence": 70.6,
+  "compositionNeedsReview": true
 }

@@ -13,5 +13,9 @@
   "status": "published",
   "order": 50,
   "legacySection": "Supy",
-  "legacyIndex": 3
+  "legacyIndex": 3,
+  "composition": "- трюфельной пастой\n- » Грибной крем-суп:\n  - о Лук репчатый\n  - о Шампиньоны\n  - о Чеснок\n  - © Паста трюфельная\n  - о Масло сливочное\n  - о Сливки питьевые 22%\n- ® Масло зеленое:\n  - о Шпинат\n  - о Петрушка\n  - о Укроп\n  - © Масло растительное\n- ® Лук жареный в масле\n- ® Свинина грудинка чипсы",
+  "compositionSource": "/images/Supy/4.png",
+  "compositionOcrConfidence": 89.7,
+  "compositionNeedsReview": false
 }

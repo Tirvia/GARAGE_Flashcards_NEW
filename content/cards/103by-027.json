@@ -12,5 +12,9 @@
   "status": "published",
   "order": 118,
   "legacySection": "103BY",
-  "legacyIndex": 27
+  "legacyIndex": 27,
+  "composition": "- картофельными\n> дольками\n- ® Картофельные дольки\n- « Креветка маринованная\n- « Тортилья\n- « Сыр Чеддер\n- Салат Айсберг\n- Соус Дзадзики\n  - о Огурец свежий\n  - о Йогурт греческий 2%\n  - о Чеснок свежий\n  - о Петрушка\n- « Кукуруза консервированная",
+  "compositionSource": "/images/103BY/28.png",
+  "compositionOcrConfidence": 85.7,
+  "compositionNeedsReview": false
 }

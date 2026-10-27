@@ -13,5 +13,9 @@
   "status": "published",
   "order": 38,
   "legacySection": "Zacuski",
-  "legacyIndex": 5
+  "legacyIndex": 5,
+  "composition": "- дальневосточным\n> гребешком\n- Форель слаб/сол\n  - (содержит кунжутное масло, лайм}\n- » Перец чили\n- » Масло зеленое\n  - (шпинат, петрушка, укроп, масло растительное)\n- e Микрозелень\n- e Гребешок маринованный в соли\n  - и растительном масле\n- » Соус Тайгермилк:\n  - © Имбирь\n  - © Перец чили\n  - © Чеснок\n  - о Соклайма\n  - © Цедра лайма\n  - © Пюре манго",
+  "compositionSource": "/images/Zacuski/6.png",
+  "compositionOcrConfidence": 85.9,
+  "compositionNeedsReview": false
 }

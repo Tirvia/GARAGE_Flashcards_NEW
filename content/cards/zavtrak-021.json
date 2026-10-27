@@ -12,5 +12,9 @@
   "status": "published",
   "order": 10,
   "legacySection": "zavtrak",
-  "legacyIndex": 21
+  "legacyIndex": 21,
+  "composition": "- Скрэмбл:\n  - о Яйца\n  - о Майонез\n  - о Перец черный горошек\n  - © Соус Песто\n  - о Масло сливочное\n- » Салат:\n  - о Томат черри\n  - © Салат микс (Айсберг, Ромен, Лолло Россо, Шпинат)\n  - о Огурец свежий\n  - о Заправка = Горчица Французская = Сок лайм =» Мед =» Масло оливковое\n- ® Свинина грудинка\n- ae NAravnnranoa.LL,",
+  "compositionSource": "/images/zavtrak/22.png",
+  "compositionOcrConfidence": 80.0,
+  "compositionNeedsReview": false
 }

@@ -10,5 +10,9 @@
   "status": "published",
   "order": 155,
   "legacySection": "Bezalco",
-  "legacyIndex": 15
+  "legacyIndex": 15,
+  "composition": "- Сухое мороженое\n- ® Молоко\n- » Гоппинг Шоколад\n- » Печенье Орео\n- » Сливки взбитые",
+  "compositionSource": "/images/Bezalco/16.png",
+  "compositionOcrConfidence": 78.0,
+  "compositionNeedsReview": false
 }

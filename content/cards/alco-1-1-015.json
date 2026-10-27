@@ -10,5 +10,9 @@
   "status": "published",
   "order": 182,
   "legacySection": "Alco_1 1",
-  "legacyIndex": 15
+  "legacyIndex": 15,
+  "composition": "- ® Джин\n- ® Сливки 10%\n- » Сироп Мята (мохито)",
+  "compositionSource": "/images/Alco_1 1/16.png",
+  "compositionOcrConfidence": 73.5,
+  "compositionNeedsReview": true
 }

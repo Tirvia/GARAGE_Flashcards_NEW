@@ -12,5 +12,9 @@
   "status": "published",
   "order": 85,
   "legacySection": "Pizza",
-  "legacyIndex": 7
+  "legacyIndex": 7,
+  "composition": "- Колбаса пепперони\n- ® Тесто для пиццы\n- ¢ Сыр моцарелла\n- ® Мука семола\n- ® Пицца-соус томатный\n- ® Масло розмариновое (содержит\n  - чеснок)",
+  "compositionSource": "/images/Pizza/8.png",
+  "compositionOcrConfidence": 84.0,
+  "compositionNeedsReview": false
 }

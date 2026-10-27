@@ -13,5 +13,9 @@
   "status": "published",
   "order": 97,
   "legacySection": "Pizza",
-  "legacyIndex": 31
+  "legacyIndex": 31,
+  "composition": "- ® Соус Тайгермилк со сливками\n- (Имбирь, перец чили, чеснок, сок лайма,\n  - цедра лайма, пюре манго, сливки 22%}\n- ® Креветка маринованная\n- (содержит тимьян, чеснок, соус соевый)\n- ¢ Стружка тунца\n- e Лук красный\n- e Цукини\n- ¢ Томат свежий\n- ® Тесто для пиццы\n- e Сыр моцарелла\n- e Мука семола\n- Масло розмариновое (содержит\n  - чеснок)",
+  "compositionSource": "/images/Pizza/32.png",
+  "compositionOcrConfidence": 78.7,
+  "compositionNeedsReview": false
 }

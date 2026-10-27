@@ -12,5 +12,9 @@
   "status": "published",
   "order": 91,
   "legacySection": "Pizza",
-  "legacyIndex": 19
+  "legacyIndex": 19,
+  "composition": "- ® Свинина грудинка\n- ® Свинина рваная\n- ® Сыр deta\n- ® Томат свежий\n- Соус барбекю\n- ® Лук жареный в масле\n- ® Перец Халапеньо\n- ® Тесто для пиццы\n- ¢ Сыр моцарелла\n- ® Мука семола\n- ® Масло розмариновое (содержит\n  - чеснок)",
+  "compositionSource": "/images/Pizza/20.png",
+  "compositionOcrConfidence": 79.2,
+  "compositionNeedsReview": false
 }

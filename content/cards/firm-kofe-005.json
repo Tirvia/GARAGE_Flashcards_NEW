@@ -10,5 +10,9 @@
   "status": "published",
   "order": 130,
   "legacySection": "Firm_kofe",
-  "legacyIndex": 5
+  "legacyIndex": 5,
+  "composition": "- Эспрессо\n- Лайм\n- » Лимон\n- » Швепс тоник",
+  "compositionSource": "/images/Firm_kofe/6.png",
+  "compositionOcrConfidence": 70.6,
+  "compositionNeedsReview": true
 }

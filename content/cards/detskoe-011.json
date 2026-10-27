@@ -12,5 +12,9 @@
   "status": "published",
   "order": 20,
   "legacySection": "Detskoe",
-  "legacyIndex": 11
+  "legacyIndex": 11,
+  "composition": "- ® Бульон куриный\n- ® Яйцо отварное\n- ® Куриное филе\n- ¢ Укроп",
+  "compositionSource": "/images/Detskoe/12.png",
+  "compositionOcrConfidence": 86.5,
+  "compositionNeedsReview": false
 }

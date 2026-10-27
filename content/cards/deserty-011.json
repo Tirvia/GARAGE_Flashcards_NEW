@@ -12,5 +12,9 @@
   "status": "published",
   "order": 104,
   "legacySection": "Deserty",
-  "legacyIndex": 11
+  "legacyIndex": 11,
+  "composition": "- » Медовик\n  - о Мука\n  - о Сливочное масло\n  - о Яйца\n  - о Сахар\n  - о Мёд\n  - © Сода\n  - о Уксус\n  - о Сметана\n  - © Сливки\n  - о Сахарная пудра\n- e Шоколадная стружка\n- » Шоколадные шарики",
+  "compositionSource": "/images/Deserty/12.png",
+  "compositionOcrConfidence": 90.0,
+  "compositionNeedsReview": false
 }

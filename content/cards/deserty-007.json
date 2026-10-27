@@ -12,5 +12,9 @@
   "status": "published",
   "order": 102,
   "legacySection": "Deserty",
-  "legacyIndex": 7
+  "legacyIndex": 7,
+  "composition": "- ¢ Вафля\n  - о Мука\n  - о Яйцо\n  - © Молоко сгущенное\n  - © Разрыхлитель\n  - о Сухой заварной крем\n  - © Масло растительное\n- » Банан\n- ® Соус творожный со сгущенкой\n  - о Сыртворожный\n  - © Молоко сгущенное\n  - © Сахарная пудра\n- Мороженое пломбир\n- . Топпинг карамель\n- e Арахис с солью\n- » Мята\n- Сахарная пудра",
+  "compositionSource": "/images/Deserty/8.png",
+  "compositionOcrConfidence": 83.6,
+  "compositionNeedsReview": false
 }

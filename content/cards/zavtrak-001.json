@@ -12,5 +12,9 @@
   "status": "published",
   "order": 0,
   "legacySection": "zavtrak",
-  "legacyIndex": 1
+  "legacyIndex": 1,
+  "composition": "- » Куриный бульон\n- » Филе куриное\n- » Отварное яйцо\n- » Укроп",
+  "compositionSource": "/images/zavtrak/2.png",
+  "compositionOcrConfidence": 88.7,
+  "compositionNeedsReview": false
 }

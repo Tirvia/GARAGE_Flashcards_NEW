@@ -13,5 +13,9 @@
   "status": "published",
   "order": 87,
   "legacySection": "Pizza",
-  "legacyIndex": 11
+  "legacyIndex": 11,
+  "composition": "- ® Шампиньоны\n- ® Свинина грудинка\n- ® Свинина рваная\n- ® Луккарамельный (содержит\n  - соевый соус)\n- Соус барбекю\n- ® Тесто для пиццы\n- ¢ Сыр моцарелла\n- ® Мука семола\n- ® Масло розмариновое (содержит\n  - чеснок)",
+  "compositionSource": "/images/Pizza/12.png",
+  "compositionOcrConfidence": 83.0,
+  "compositionNeedsReview": false
 }

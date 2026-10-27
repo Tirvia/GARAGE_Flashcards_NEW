@@ -13,5 +13,9 @@
   "status": "published",
   "order": 1,
   "legacySection": "zavtrak",
-  "legacyIndex": 3
+  "legacyIndex": 3,
+  "composition": "- трюфельными\n- шампиньонами\n- » Гречка отварная\n- ® Сливки 22%\n- ® Шампиньоны обжаренные\n  - с трюфельной пастой\n- (содержат чеснок, тимьян)\n- » Трюфельная паста\n- » Свинина грудинка чипсы\n- ® Сыр пармезан\n- ® Масло зеленое\n- » Микрозелень",
+  "compositionSource": "/images/zavtrak/4.png",
+  "compositionOcrConfidence": 88.4,
+  "compositionNeedsReview": false
 }
