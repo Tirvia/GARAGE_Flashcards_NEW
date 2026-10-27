@@ -20,24 +20,33 @@ content:
       - name: section
         label: Раздел
         type: reference
-        options: {collection: sections, value: "{id}", label: "{name}"}
+        options: {collection: sections, value: "{fields.id}", label: "{fields.name}"}
       - name: tags
         label: Категории состава
         type: reference
-        options: {collection: tags, multiple: true, value: "{id}", label: "{name}"}
+        options: {collection: tags, multiple: true, value: "{fields.id}", label: "{fields.name}"}
       - {name: front, label: "Фото блюда", type: image}
       - name: composition
         label: "Состав блюда (редактируемый текст)"
         type: rich-text
-        options: {format: markdown}
+        description: "Для мелкого текста выдели нужные слова и выбери курсив (I). Вложенный список тоже отображается меньшим шрифтом. В режиме Source можно заключить фрагмент в *звёздочки*."
+        options: {format: markdown, media: false}
       - name: compositionAlign
         label: "Расположение текста состава"
         type: select
-        options: {values: [auto, center, left]}
+        options:
+          values:
+            - {name: auto, label: "Автоматически"}
+            - {name: center, label: "По центру"}
+            - {name: left, label: "По левому краю"}
       - name: compositionFont
         label: "Размер текста состава"
         type: select
-        options: {values: [auto, normal, small]}
+        options:
+          values:
+            - {name: auto, label: "Автоматически"}
+            - {name: normal, label: "Обычный"}
+            - {name: small, label: "Уменьшенный"}
       - {name: answerText, label: "Дополнительный текст состава (совместимость)", type: text, hidden: true}
       - {name: back, label: "Оригинальное изображение состава (резерв)", type: image, hidden: true}
       - {name: brothNote, label: "На курином бульоне", type: boolean}
@@ -65,7 +74,7 @@ content:
       - name: group
         label: Группа
         type: reference
-        options: {collection: groups, value: "{id}", label: "{name}"}
+        options: {collection: groups, value: "{fields.id}", label: "{fields.name}"}
       - {name: order, label: Порядок, type: number}
       - name: status
         label: Статус
