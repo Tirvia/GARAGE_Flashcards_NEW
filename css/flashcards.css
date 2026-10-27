@@ -520,3 +520,4 @@ body {
     }
     .card-name-display { font-size: 0.95rem; padding: 10px 12px 26px; }
 }
+\n.flashcard-back { background: white url("../images/composition-background.png") center / 100% 100% no-repeat; }\n
