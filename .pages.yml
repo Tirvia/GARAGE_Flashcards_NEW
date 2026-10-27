@@ -13,7 +13,7 @@ content:
       primary: title
       fields: [title, section, status]
     fields:
-      - {name: id, label: "ID карточки", type: string, required: true}
+      - {name: id, label: "ID карточки", type: string, required: true, hidden: true}
       - {name: title, label: "Название", type: string, required: true}
       - name: section
         label: Раздел
@@ -24,49 +24,66 @@ content:
         type: reference
         options: {collection: tags, multiple: true, value: "{id}", label: "{name}"}
       - {name: front, label: "Фото блюда", type: image}
-      - {name: back, label: "Состав изображением", type: image}
-      - {name: answerText, label: "Состав текстом", type: text}
+      - name: composition
+        label: "Состав блюда (редактируемый текст)"
+        type: rich-text
+        options: {format: markdown}
+      - {name: answerText, label: "Дополнительный текст состава (совместимость)", type: text, hidden: true}
+      - {name: back, label: "Оригинальное изображение состава (резерв)", type: image, hidden: true}
       - {name: brothNote, label: "На курином бульоне", type: boolean}
       - name: status
         label: Статус
         type: select
         options: {values: [published, draft, archived]}
       - {name: order, label: "Порядок", type: number}
-      - {name: legacySection, label: "Прежний раздел", type: string}
-      - {name: legacyIndex, label: "Прежний номер", type: number}
+      - {name: legacySection, label: "Прежний раздел", type: string, hidden: true}
+      - {name: legacyIndex, label: "Прежний номер", type: number, hidden: true}
+      - {name: compositionSource, label: "Источник состава", type: string, hidden: true}
+      - {name: compositionOcrConfidence, label: "Качество распознавания", type: number, hidden: true}
+      - {name: compositionNeedsReview, label: "Проверить состав", type: boolean, hidden: true}
   - name: sections
-    label: Разделы меню
+    label: "Разделы меню"
     type: collection
     path: content/sections
     format: json
     filename: "{id}.json"
     fields:
-      - {name: id, label: Код, type: string}
+      - {name: id, label: Код, type: string, required: true}
       - {name: name, label: Название, type: string}
       - {name: icon, label: Значок, type: string}
-      - {name: group, label: Группа, type: string}
+      - name: group
+        label: Группа
+        type: reference
+        options: {collection: groups, value: "{id}", label: "{name}"}
       - {name: order, label: Порядок, type: number}
-      - {name: status, label: Статус, type: string}
+      - name: status
+        label: Статус
+        type: select
+        options: {values: [published, draft, archived]}
   - name: groups
-    label: Группы меню
+    label: "Группы меню"
     type: collection
     path: content/groups
     format: json
     filename: "{id}.json"
     fields:
-      - {name: id, type: string}
+      - {name: id, type: string, required: true}
       - {name: name, type: string}
       - {name: order, type: number}
-      - {name: status, type: string}
+      - name: status
+        type: select
+        options: {values: [published, draft, archived]}
   - name: tags
-    label: Категории состава
+    label: "Категории состава"
     type: collection
     path: content/tags
     format: json
     filename: "{id}.json"
     fields:
-      - {name: id, type: string}
+      - {name: id, type: string, required: true}
       - {name: name, type: string}
       - {name: icon, type: string}
       - {name: order, type: number}
-      - {name: status, type: string}
+      - name: status
+        type: select
+        options: {values: [published, draft, archived]}
