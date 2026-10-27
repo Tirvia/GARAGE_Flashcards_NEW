@@ -30,6 +30,14 @@ content:
         label: "Состав блюда (редактируемый текст)"
         type: rich-text
         options: {format: markdown}
+      - name: compositionAlign
+        label: "Расположение текста состава"
+        type: select
+        options: {values: [auto, center, left]}
+      - name: compositionFont
+        label: "Размер текста состава"
+        type: select
+        options: {values: [auto, normal, small]}
       - {name: answerText, label: "Дополнительный текст состава (совместимость)", type: text, hidden: true}
       - {name: back, label: "Оригинальное изображение состава (резерв)", type: image, hidden: true}
       - {name: brothNote, label: "На курином бульоне", type: boolean}
