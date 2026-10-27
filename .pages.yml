@@ -48,9 +48,10 @@ content:
     type: collection
     path: content/sections
     format: json
-    filename: "{id}.json"
+    filename: "{primary}.json"
+    view: {primary: name}
     fields:
-      - {name: id, label: Код, type: string, required: true}
+      - {name: id, label: Код, type: string, hidden: true}
       - {name: name, label: Название, type: string}
       - {name: icon, label: Значок, type: string}
       - name: group
@@ -67,9 +68,10 @@ content:
     type: collection
     path: content/groups
     format: json
-    filename: "{id}.json"
+    filename: "{primary}.json"
+    view: {primary: name}
     fields:
-      - {name: id, type: string, required: true}
+      - {name: id, type: string, hidden: true}
       - {name: name, type: string}
       - {name: order, type: number}
       - name: status
@@ -80,9 +82,10 @@ content:
     type: collection
     path: content/tags
     format: json
-    filename: "{id}.json"
+    filename: "{primary}.json"
+    view: {primary: name}
     fields:
-      - {name: id, type: string, required: true}
+      - {name: id, type: string, hidden: true}
       - {name: name, type: string}
       - {name: icon, type: string}
       - {name: order, type: number}
