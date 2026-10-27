@@ -8,12 +8,14 @@ content:
     type: collection
     path: content/cards
     format: json
-    filename: "{id}.json"
+    filename: "{year}{month}{day}{hour}{minute}{second}-{primary}.json"
+    operations:
+      rename: false
     view:
       primary: title
       fields: [title, section, status]
     fields:
-      - {name: id, label: "ID карточки", type: string, required: true, hidden: true}
+      - {name: id, label: "ID карточки", type: string, hidden: true}
       - {name: title, label: "Название", type: string, required: true}
       - name: section
         label: Раздел
