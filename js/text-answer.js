@@ -2,7 +2,7 @@
 const esc=s=>String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
 function wrap(s,cap){const words=s.split(/\s+/),out=[];let line="";for(const w of words){if(line&&(line+" "+w).length>cap){out.push(line);line=w}else line+=(line?" ":"")+w}if(line)out.push(line);return out}
 window.GARAGE_answerSrc=function(c){
-if(!c)return "";const input=(c.composition||c.answerText||"").trim();if(!input)return c.back||"";
+if(!c)return "";const input=(c.composition||c.answerText||"").trim();if(c.compositionNeedsReview && c.back)return c.back;if(!input)return c.back||"";
 const script=document.querySelector("script[src*=menu-data]");
 const bg=script?new URL("../images/composition-background.png",script.src).href:new URL("images/composition-background.png",location.href).href;
 const rows=input.split(/\r?\n/).filter(x=>x.trim()).map(s=>{const minor=/^\s{2,}[-*+]\s/.test(s),center=/^\s*>/.test(s),note=/^\s*\*/.test(s)&&!/^\s*[-*+]\s/.test(s);return {kind:center?"center":minor?"nested":note?"note":"item",value:s.replace(/^\s*>\s*/,"").replace(/^\s*[-*+]\s+/,"").replace(/^\s*\*(.*?)\*\s*$/,"$1").replace(/\*\*/g,"").trim()}});
