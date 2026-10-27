@@ -1,0 +1,8 @@
+{
+  "id": "Kakao_kofe_matcha",
+  "name": "Какао, кофе, матча",
+  "icon": "🍵",
+  "group": "bar",
+  "order": 14,
+  "status": "published"
+}

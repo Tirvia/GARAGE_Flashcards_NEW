@@ -1,0 +1,16 @@
+{
+  "id": "burgery-tostada-005",
+  "title": "Бургер с говядиной, огурцами кимчи и малиновой горчицей",
+  "section": "Burgery_tostada",
+  "tags": [
+    "говядина"
+  ],
+  "brothNote": false,
+  "front": "/images/Burgery_tostada/5.png",
+  "back": "/images/Burgery_tostada/6.png",
+  "answerText": "",
+  "status": "published",
+  "order": 80,
+  "legacySection": "Burgery_tostada",
+  "legacyIndex": 5
+}

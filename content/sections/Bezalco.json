@@ -1,0 +1,8 @@
+{
+  "id": "Bezalco",
+  "name": "Безалкогольные коктейли",
+  "icon": "🥤",
+  "group": "bar",
+  "order": 16,
+  "status": "published"
+}

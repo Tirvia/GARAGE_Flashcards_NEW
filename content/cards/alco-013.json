@@ -1,0 +1,14 @@
+{
+  "id": "alco-013",
+  "title": "Бетон",
+  "section": "alco",
+  "tags": [],
+  "brothNote": false,
+  "front": "/images/alco/13.png",
+  "back": "/images/alco/14.png",
+  "answerText": "",
+  "status": "published",
+  "order": 165,
+  "legacySection": "alco",
+  "legacyIndex": 13
+}

@@ -1,0 +1,18 @@
+{
+  "id": "zacuski-011",
+  "title": "Мясное плато",
+  "section": "Zacuski",
+  "tags": [
+    "говядина",
+    "свинина",
+    "грибы"
+  ],
+  "brothNote": false,
+  "front": "/images/Zacuski/11.png",
+  "back": "/images/Zacuski/12.png",
+  "answerText": "",
+  "status": "published",
+  "order": 41,
+  "legacySection": "Zacuski",
+  "legacyIndex": 11
+}

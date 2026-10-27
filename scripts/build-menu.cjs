@@ -1,0 +1,11 @@
+const fs=require('fs'),path=require('path');
+const base=path.resolve(__dirname,'..');
+function read(dir){return fs.readdirSync(path.join(base,'content',dir)).filter(n=>n.endsWith('.json')).map(n=>JSON.parse(fs.readFileSync(path.join(base,'content',dir,n),'utf8')))}
+const cards=read('cards'),sections=read('sections'),groups=read('groups'),tags=read('tags');
+function unique(a,field){const v=a.map(x=>x[field]);if(new Set(v).size!==v.length)throw Error('Duplicate '+field)}
+unique(cards,'id');unique(sections,'id');unique(groups,'id');unique(tags,'id');
+for(const c of cards){if(!sections.some(s=>s.id===c.section))throw Error('Missing section '+c.id);if(!c.title||!c.front)throw Error('Incomplete '+c.id);for(const t of c.tags||[])if(!tags.some(x=>x.id===t))throw Error('Missing tag '+t)}
+for(const s of sections)if(!groups.some(g=>g.id===s.group))throw Error('Missing group '+s.id);
+for(const g of groups)g.sections=sections.filter(s=>s.group===g.id).sort((a,b)=>a.order-b.order).map(s=>s.id);
+const text='/* Generated from content/*.json. Do not edit manually. */\\nwindow.GARAGE_MENU = '+JSON.stringify({sections,groups,tags,cards})+';\\n';
+fs.mkdirSync(path.join(base,'js'),{recursive:true});fs.writeFileSync(path.join(base,'js','menu-data.js'),text);console.log('Built',cards.length,'cards');

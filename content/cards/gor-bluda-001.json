@@ -1,0 +1,17 @@
+{
+  "id": "gor-bluda-001",
+  "title": "Куриные биточки с картофельным пюре и грибным соусом",
+  "section": "Gor_bluda",
+  "tags": [
+    "курица",
+    "грибы"
+  ],
+  "brothNote": false,
+  "front": "/images/Gor_bluda/1.png",
+  "back": "/images/Gor_bluda/2.png",
+  "answerText": "",
+  "status": "published",
+  "order": 55,
+  "legacySection": "Gor_bluda",
+  "legacyIndex": 1
+}

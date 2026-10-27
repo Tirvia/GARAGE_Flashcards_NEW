@@ -1,0 +1,16 @@
+{
+  "id": "salaty-003",
+  "title": "Цезарь с креветками",
+  "section": "Salaty",
+  "tags": [
+    "морепродукты"
+  ],
+  "brothNote": false,
+  "front": "/images/Salaty/3.png",
+  "back": "/images/Salaty/4.png",
+  "answerText": "",
+  "status": "published",
+  "order": 30,
+  "legacySection": "Salaty",
+  "legacyIndex": 3
+}

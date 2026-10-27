@@ -1,0 +1,17 @@
+{
+  "id": "detskoe-025",
+  "title": "Лингвини с ветчиной и курицей",
+  "section": "Detskoe",
+  "tags": [
+    "курица",
+    "свинина"
+  ],
+  "brothNote": false,
+  "front": "/images/Detskoe/25.png",
+  "back": "/images/Detskoe/26.png",
+  "answerText": "",
+  "status": "published",
+  "order": 27,
+  "legacySection": "Detskoe",
+  "legacyIndex": 25
+}

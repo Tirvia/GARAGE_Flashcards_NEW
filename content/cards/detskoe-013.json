@@ -1,0 +1,16 @@
+{
+  "id": "detskoe-013",
+  "title": "Бургер с куриным бедром",
+  "section": "Detskoe",
+  "tags": [
+    "курица"
+  ],
+  "brothNote": false,
+  "front": "/images/Detskoe/13.png",
+  "back": "/images/Detskoe/14.png",
+  "answerText": "",
+  "status": "published",
+  "order": 21,
+  "legacySection": "Detskoe",
+  "legacyIndex": 13
+}

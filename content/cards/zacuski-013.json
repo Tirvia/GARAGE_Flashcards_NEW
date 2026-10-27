@@ -1,0 +1,16 @@
+{
+  "id": "zacuski-013",
+  "title": "Картофель фри с наггетсами",
+  "section": "Zacuski",
+  "tags": [
+    "курица"
+  ],
+  "brothNote": false,
+  "front": "/images/Zacuski/13.png",
+  "back": "/images/Zacuski/14.png",
+  "answerText": "",
+  "status": "published",
+  "order": 42,
+  "legacySection": "Zacuski",
+  "legacyIndex": 13
+}

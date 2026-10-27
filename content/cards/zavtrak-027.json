@@ -1,0 +1,16 @@
+{
+  "id": "zavtrak-027",
+  "title": "Американский завтрак",
+  "section": "zavtrak",
+  "tags": [
+    "свинина"
+  ],
+  "brothNote": false,
+  "front": "/images/zavtrak/27.png",
+  "back": "/images/zavtrak/28.png",
+  "answerText": "",
+  "status": "published",
+  "order": 13,
+  "legacySection": "zavtrak",
+  "legacyIndex": 27
+}

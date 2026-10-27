@@ -1,0 +1,17 @@
+{
+  "id": "zacuski-017",
+  "title": "Пивной набор",
+  "section": "Zacuski",
+  "tags": [
+    "курица",
+    "свинина"
+  ],
+  "brothNote": false,
+  "front": "/images/Zacuski/17.png",
+  "back": "/images/Zacuski/18.png",
+  "answerText": "",
+  "status": "published",
+  "order": 44,
+  "legacySection": "Zacuski",
+  "legacyIndex": 17
+}

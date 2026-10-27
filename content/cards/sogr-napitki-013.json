@@ -1,0 +1,14 @@
+{
+  "id": "sogr-napitki-013",
+  "title": "Глинтвейн алкогольный",
+  "section": "Sogr_napitki",
+  "tags": [],
+  "brothNote": false,
+  "front": "/images/Sogr_napitki/13.png",
+  "back": "/images/Sogr_napitki/14.png",
+  "answerText": "",
+  "status": "published",
+  "order": 128,
+  "legacySection": "Sogr_napitki",
+  "legacyIndex": 13
+}

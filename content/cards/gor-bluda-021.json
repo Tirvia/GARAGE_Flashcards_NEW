@@ -1,0 +1,17 @@
+{
+  "id": "gor-bluda-021",
+  "title": "Стейк из лосося с печеными овощами",
+  "section": "Gor_bluda",
+  "tags": [
+    "рыба",
+    "грибы"
+  ],
+  "brothNote": false,
+  "front": "/images/Gor_bluda/21.png",
+  "back": "/images/Gor_bluda/22.png",
+  "answerText": "",
+  "status": "published",
+  "order": 65,
+  "legacySection": "Gor_bluda",
+  "legacyIndex": 21
+}

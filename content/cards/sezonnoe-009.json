@@ -1,0 +1,16 @@
+{
+  "id": "sezonnoe-009",
+  "title": "Крем-суп из батата с кокосовым молоком",
+  "section": "sezonnoe",
+  "tags": [
+    "вегетарианское"
+  ],
+  "brothNote": false,
+  "front": "/images/sezonnoe/9.png",
+  "back": "/images/sezonnoe/10.png",
+  "answerText": "",
+  "status": "published",
+  "order": 188,
+  "legacySection": "sezonnoe",
+  "legacyIndex": 9
+}

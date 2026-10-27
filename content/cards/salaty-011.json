@@ -1,0 +1,16 @@
+{
+  "id": "salaty-011",
+  "title": "Зеленый салат с соусом Ростбиф",
+  "section": "Salaty",
+  "tags": [
+    "вегетарианское"
+  ],
+  "brothNote": false,
+  "front": "/images/Salaty/11.png",
+  "back": "/images/Salaty/12.png",
+  "answerText": "",
+  "status": "published",
+  "order": 34,
+  "legacySection": "Salaty",
+  "legacyIndex": 11
+}

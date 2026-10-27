@@ -1,0 +1,17 @@
+{
+  "id": "pizza-021",
+  "title": "Вегетарианская",
+  "section": "Pizza",
+  "tags": [
+    "вегетарианское",
+    "грибы"
+  ],
+  "brothNote": false,
+  "front": "/images/Pizza/21.png",
+  "back": "/images/Pizza/22.png",
+  "answerText": "",
+  "status": "published",
+  "order": 92,
+  "legacySection": "Pizza",
+  "legacyIndex": 21
+}

@@ -1,0 +1,16 @@
+{
+  "id": "draniki-009",
+  "title": "Драники с риетом из копченого судака",
+  "section": "Draniki",
+  "tags": [
+    "рыба"
+  ],
+  "brothNote": false,
+  "front": "/images/Draniki/9.png",
+  "back": "/images/Draniki/10.png",
+  "answerText": "",
+  "status": "published",
+  "order": 73,
+  "legacySection": "Draniki",
+  "legacyIndex": 9
+}

@@ -1,0 +1,18 @@
+{
+  "id": "gor-bluda-015",
+  "title": "Рис в азиатском стиле с курицей",
+  "section": "Gor_bluda",
+  "tags": [
+    "курица",
+    "грибы",
+    "рыба"
+  ],
+  "brothNote": false,
+  "front": "/images/Gor_bluda/15.png",
+  "back": "/images/Gor_bluda/16.png",
+  "answerText": "",
+  "status": "published",
+  "order": 62,
+  "legacySection": "Gor_bluda",
+  "legacyIndex": 15
+}

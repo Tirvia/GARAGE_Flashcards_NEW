@@ -1,0 +1,14 @@
+{
+  "id": "alco-011",
+  "title": "Сприц мейджик",
+  "section": "alco",
+  "tags": [],
+  "brothNote": false,
+  "front": "/images/alco/11.png",
+  "back": "/images/alco/12.png",
+  "answerText": "",
+  "status": "published",
+  "order": 164,
+  "legacySection": "alco",
+  "legacyIndex": 11
+}

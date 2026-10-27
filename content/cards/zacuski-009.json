@@ -1,0 +1,16 @@
+{
+  "id": "zacuski-009",
+  "title": "Риет из судака",
+  "section": "Zacuski",
+  "tags": [
+    "рыба"
+  ],
+  "brothNote": false,
+  "front": "/images/Zacuski/9.png",
+  "back": "/images/Zacuski/10.png",
+  "answerText": "",
+  "status": "published",
+  "order": 40,
+  "legacySection": "Zacuski",
+  "legacyIndex": 9
+}

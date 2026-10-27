@@ -1,0 +1,16 @@
+{
+  "id": "sezonnoe-011",
+  "title": "Тартар из тунца",
+  "section": "sezonnoe",
+  "tags": [
+    "рыба"
+  ],
+  "brothNote": false,
+  "front": "/images/sezonnoe/11.png",
+  "back": "/images/sezonnoe/12.png",
+  "answerText": "",
+  "status": "published",
+  "order": 189,
+  "legacySection": "sezonnoe",
+  "legacyIndex": 11
+}

@@ -1,0 +1,16 @@
+{
+  "id": "zavtrak-021",
+  "title": "Скрэмбл с беконом и салатом",
+  "section": "zavtrak",
+  "tags": [
+    "свинина"
+  ],
+  "brothNote": false,
+  "front": "/images/zavtrak/21.png",
+  "back": "/images/zavtrak/22.png",
+  "answerText": "",
+  "status": "published",
+  "order": 10,
+  "legacySection": "zavtrak",
+  "legacyIndex": 21
+}

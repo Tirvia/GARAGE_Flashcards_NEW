@@ -1,0 +1,16 @@
+{
+  "id": "zavtrak-029",
+  "title": "Сэндвич с говядиной",
+  "section": "zavtrak",
+  "tags": [
+    "говядина"
+  ],
+  "brothNote": false,
+  "front": "/images/zavtrak/29.png",
+  "back": "/images/zavtrak/30.png",
+  "answerText": "",
+  "status": "published",
+  "order": 14,
+  "legacySection": "zavtrak",
+  "legacyIndex": 29
+}

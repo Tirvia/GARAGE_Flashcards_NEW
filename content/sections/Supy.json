@@ -1,0 +1,8 @@
+{
+  "id": "Supy",
+  "name": "Супы",
+  "icon": "🍲",
+  "group": "dinner",
+  "order": 4,
+  "status": "published"
+}

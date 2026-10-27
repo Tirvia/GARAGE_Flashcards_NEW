@@ -1,0 +1,17 @@
+{
+  "id": "supy-001",
+  "title": "Солянка GARAGE",
+  "section": "Supy",
+  "tags": [
+    "курица",
+    "свинина"
+  ],
+  "brothNote": false,
+  "front": "/images/Supy/1.png",
+  "back": "/images/Supy/2.png",
+  "answerText": "",
+  "status": "published",
+  "order": 49,
+  "legacySection": "Supy",
+  "legacyIndex": 1
+}

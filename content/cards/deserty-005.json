@@ -1,0 +1,16 @@
+{
+  "id": "deserty-005",
+  "title": "Баблс с ананасом",
+  "section": "Deserty",
+  "tags": [
+    "вегетарианское"
+  ],
+  "brothNote": false,
+  "front": "/images/Deserty/5.png",
+  "back": "/images/Deserty/6.png",
+  "answerText": "",
+  "status": "published",
+  "order": 101,
+  "legacySection": "Deserty",
+  "legacyIndex": 5
+}

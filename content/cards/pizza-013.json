@@ -1,0 +1,17 @@
+{
+  "id": "pizza-013",
+  "title": "Шеф-пицца",
+  "section": "Pizza",
+  "tags": [
+    "свинина",
+    "грибы"
+  ],
+  "brothNote": false,
+  "front": "/images/Pizza/13.png",
+  "back": "/images/Pizza/14.png",
+  "answerText": "",
+  "status": "published",
+  "order": 88,
+  "legacySection": "Pizza",
+  "legacyIndex": 13
+}

@@ -1,0 +1,17 @@
+{
+  "id": "gor-bluda-011",
+  "title": "Ребрышки с мятым картофелем, соусом из хрена и опятами",
+  "section": "Gor_bluda",
+  "tags": [
+    "свинина",
+    "грибы"
+  ],
+  "brothNote": false,
+  "front": "/images/Gor_bluda/11.png",
+  "back": "/images/Gor_bluda/12.png",
+  "answerText": "",
+  "status": "published",
+  "order": 60,
+  "legacySection": "Gor_bluda",
+  "legacyIndex": 11
+}

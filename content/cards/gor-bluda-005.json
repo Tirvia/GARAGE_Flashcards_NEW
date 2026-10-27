@@ -1,0 +1,16 @@
+{
+  "id": "gor-bluda-005",
+  "title": "Картофельная запеканка с говяжьими щечками в сливочном демигласе",
+  "section": "Gor_bluda",
+  "tags": [
+    "говядина"
+  ],
+  "brothNote": false,
+  "front": "/images/Gor_bluda/5.png",
+  "back": "/images/Gor_bluda/6.png",
+  "answerText": "",
+  "status": "published",
+  "order": 57,
+  "legacySection": "Gor_bluda",
+  "legacyIndex": 5
+}

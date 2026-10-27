@@ -1,0 +1,16 @@
+{
+  "id": "pasta-005",
+  "title": "Паста с креветками, брокколи и сыром дорблю",
+  "section": "Pasta",
+  "tags": [
+    "морепродукты"
+  ],
+  "brothNote": false,
+  "front": "/images/Pasta/5.png",
+  "back": "/images/Pasta/6.png",
+  "answerText": "",
+  "status": "published",
+  "order": 76,
+  "legacySection": "Pasta",
+  "legacyIndex": 5
+}

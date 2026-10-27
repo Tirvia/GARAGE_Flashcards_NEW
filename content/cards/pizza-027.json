@@ -1,0 +1,17 @@
+{
+  "id": "pizza-027",
+  "title": "Чизбургер",
+  "section": "Pizza",
+  "tags": [
+    "говядина",
+    "свинина"
+  ],
+  "brothNote": false,
+  "front": "/images/Pizza/27.png",
+  "back": "/images/Pizza/28.png",
+  "answerText": "",
+  "status": "published",
+  "order": 95,
+  "legacySection": "Pizza",
+  "legacyIndex": 27
+}

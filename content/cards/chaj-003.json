@@ -1,0 +1,14 @@
+{
+  "id": "chaj-003",
+  "title": "Чай Горячий цитрус",
+  "section": "Chaj",
+  "tags": [],
+  "brothNote": false,
+  "front": "/images/Chaj/3.png",
+  "back": "/images/Chaj/4.png",
+  "answerText": "",
+  "status": "published",
+  "order": 145,
+  "legacySection": "Chaj",
+  "legacyIndex": 3
+}

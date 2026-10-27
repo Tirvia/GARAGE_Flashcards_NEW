@@ -1,0 +1,16 @@
+{
+  "id": "zavtrak-011",
+  "title": "Омлет с салатом и курицей",
+  "section": "zavtrak",
+  "tags": [
+    "курица"
+  ],
+  "brothNote": false,
+  "front": "/images/zavtrak/11.png",
+  "back": "/images/zavtrak/12.png",
+  "answerText": "",
+  "status": "published",
+  "order": 5,
+  "legacySection": "zavtrak",
+  "legacyIndex": 11
+}

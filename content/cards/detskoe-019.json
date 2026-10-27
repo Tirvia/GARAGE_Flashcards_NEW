@@ -1,0 +1,17 @@
+{
+  "id": "detskoe-019",
+  "title": "Пицца с ветчиной, курицей и ананасами",
+  "section": "Detskoe",
+  "tags": [
+    "курица",
+    "свинина"
+  ],
+  "brothNote": false,
+  "front": "/images/Detskoe/19.png",
+  "back": "/images/Detskoe/20.png",
+  "answerText": "",
+  "status": "published",
+  "order": 24,
+  "legacySection": "Detskoe",
+  "legacyIndex": 19
+}

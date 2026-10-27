@@ -1,0 +1,16 @@
+{
+  "id": "detskoe-007",
+  "title": "Сырники с творожно-манговым кремом",
+  "section": "Detskoe",
+  "tags": [
+    "вегетарианское"
+  ],
+  "brothNote": false,
+  "front": "/images/Detskoe/7.png",
+  "back": "/images/Detskoe/8.png",
+  "answerText": "",
+  "status": "published",
+  "order": 18,
+  "legacySection": "Detskoe",
+  "legacyIndex": 7
+}

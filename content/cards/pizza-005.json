@@ -1,0 +1,16 @@
+{
+  "id": "pizza-005",
+  "title": "Гавайская с ананасами кимчи",
+  "section": "Pizza",
+  "tags": [
+    "свинина"
+  ],
+  "brothNote": false,
+  "front": "/images/Pizza/5.png",
+  "back": "/images/Pizza/6.png",
+  "answerText": "",
+  "status": "published",
+  "order": 84,
+  "legacySection": "Pizza",
+  "legacyIndex": 5
+}

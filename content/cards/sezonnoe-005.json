@@ -1,0 +1,17 @@
+{
+  "id": "sezonnoe-005",
+  "title": "Пельмени с тунцом и креветкой",
+  "section": "sezonnoe",
+  "tags": [
+    "морепродукты",
+    "рыба"
+  ],
+  "brothNote": false,
+  "front": "/images/sezonnoe/5.png",
+  "back": "/images/sezonnoe/6.png",
+  "answerText": "",
+  "status": "published",
+  "order": 186,
+  "legacySection": "sezonnoe",
+  "legacyIndex": 5
+}

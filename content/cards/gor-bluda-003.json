@@ -1,0 +1,16 @@
+{
+  "id": "gor-bluda-003",
+  "title": "Шницель из курицы с картофельными дольками и зеленым салатом",
+  "section": "Gor_bluda",
+  "tags": [
+    "курица"
+  ],
+  "brothNote": false,
+  "front": "/images/Gor_bluda/3.png",
+  "back": "/images/Gor_bluda/4.png",
+  "answerText": "",
+  "status": "published",
+  "order": 56,
+  "legacySection": "Gor_bluda",
+  "legacyIndex": 3
+}

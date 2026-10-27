@@ -1,0 +1,16 @@
+{
+  "id": "detskoe-023",
+  "title": "Лингвини с сыром",
+  "section": "Detskoe",
+  "tags": [
+    "вегетарианское"
+  ],
+  "brothNote": true,
+  "front": "/images/Detskoe/23.png",
+  "back": "/images/Detskoe/24.png",
+  "answerText": "",
+  "status": "published",
+  "order": 26,
+  "legacySection": "Detskoe",
+  "legacyIndex": 23
+}

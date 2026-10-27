@@ -1,0 +1,16 @@
+{
+  "id": "pizza-019",
+  "title": "Бонанза",
+  "section": "Pizza",
+  "tags": [
+    "свинина"
+  ],
+  "brothNote": false,
+  "front": "/images/Pizza/19.png",
+  "back": "/images/Pizza/20.png",
+  "answerText": "",
+  "status": "published",
+  "order": 91,
+  "legacySection": "Pizza",
+  "legacyIndex": 19
+}

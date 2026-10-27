@@ -1,0 +1,16 @@
+{
+  "id": "salaty-001",
+  "title": "Греческий салат с рулетиками из цукини",
+  "section": "Salaty",
+  "tags": [
+    "вегетарианское"
+  ],
+  "brothNote": false,
+  "front": "/images/Salaty/1.png",
+  "back": "/images/Salaty/2.png",
+  "answerText": "",
+  "status": "published",
+  "order": 29,
+  "legacySection": "Salaty",
+  "legacyIndex": 1
+}

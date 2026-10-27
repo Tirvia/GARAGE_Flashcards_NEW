@@ -1,0 +1,14 @@
+{
+  "id": "bezalco-003",
+  "title": "Bubble Tea Вишня",
+  "section": "Bezalco",
+  "tags": [],
+  "brothNote": false,
+  "front": "/images/Bezalco/3.png",
+  "back": "/images/Bezalco/4.png",
+  "answerText": "",
+  "status": "published",
+  "order": 150,
+  "legacySection": "Bezalco",
+  "legacyIndex": 3
+}

@@ -1,0 +1,8 @@
+{
+  "id": "Zacuski",
+  "name": "Закуски",
+  "icon": "🍢",
+  "group": "dinner",
+  "order": 3,
+  "status": "published"
+}

@@ -1,0 +1,17 @@
+{
+  "id": "draniki-001",
+  "title": "Драники с куриным бедром и грибным соусом",
+  "section": "Draniki",
+  "tags": [
+    "курица",
+    "грибы"
+  ],
+  "brothNote": false,
+  "front": "/images/Draniki/1.png",
+  "back": "/images/Draniki/2.png",
+  "answerText": "",
+  "status": "published",
+  "order": 69,
+  "legacySection": "Draniki",
+  "legacyIndex": 1
+}

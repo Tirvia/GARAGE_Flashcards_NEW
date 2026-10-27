@@ -1,0 +1,17 @@
+{
+  "id": "gor-bluda-007",
+  "title": "Рыбная котлета с пюре, икрой и соусом сливочный тайгермилк",
+  "section": "Gor_bluda",
+  "tags": [
+    "рыба",
+    "курица"
+  ],
+  "brothNote": false,
+  "front": "/images/Gor_bluda/7.png",
+  "back": "/images/Gor_bluda/8.png",
+  "answerText": "",
+  "status": "published",
+  "order": 58,
+  "legacySection": "Gor_bluda",
+  "legacyIndex": 7
+}

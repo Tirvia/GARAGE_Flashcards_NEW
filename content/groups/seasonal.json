@@ -1,0 +1,9 @@
+{
+  "id": "seasonal",
+  "name": "Сезонное",
+  "sections": [
+    "sezonnoe"
+  ],
+  "order": 4,
+  "status": "published"
+}

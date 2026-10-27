@@ -1,0 +1,16 @@
+{
+  "id": "pizza-007",
+  "title": "Пепперони",
+  "section": "Pizza",
+  "tags": [
+    "свинина"
+  ],
+  "brothNote": false,
+  "front": "/images/Pizza/7.png",
+  "back": "/images/Pizza/8.png",
+  "answerText": "",
+  "status": "published",
+  "order": 85,
+  "legacySection": "Pizza",
+  "legacyIndex": 7
+}

@@ -1,0 +1,16 @@
+{
+  "id": "zacuski-015",
+  "title": "Запеченный Чеддер",
+  "section": "Zacuski",
+  "tags": [
+    "вегетарианское"
+  ],
+  "brothNote": false,
+  "front": "/images/Zacuski/15.png",
+  "back": "/images/Zacuski/16.png",
+  "answerText": "",
+  "status": "published",
+  "order": 43,
+  "legacySection": "Zacuski",
+  "legacyIndex": 15
+}

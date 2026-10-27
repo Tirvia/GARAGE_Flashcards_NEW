@@ -1,0 +1,16 @@
+{
+  "id": "deserty-011",
+  "title": "Торт Медовик",
+  "section": "Deserty",
+  "tags": [
+    "вегетарианское"
+  ],
+  "brothNote": false,
+  "front": "/images/Deserty/11.png",
+  "back": "/images/Deserty/12.png",
+  "answerText": "",
+  "status": "published",
+  "order": 104,
+  "legacySection": "Deserty",
+  "legacyIndex": 11
+}

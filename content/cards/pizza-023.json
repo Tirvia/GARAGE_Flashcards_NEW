@@ -1,0 +1,17 @@
+{
+  "id": "pizza-023",
+  "title": "Грибная с трюфельным медом",
+  "section": "Pizza",
+  "tags": [
+    "вегетарианское",
+    "грибы"
+  ],
+  "brothNote": false,
+  "front": "/images/Pizza/23.png",
+  "back": "/images/Pizza/24.png",
+  "answerText": "",
+  "status": "published",
+  "order": 93,
+  "legacySection": "Pizza",
+  "legacyIndex": 23
+}

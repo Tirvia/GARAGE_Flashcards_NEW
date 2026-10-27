@@ -1,0 +1,16 @@
+{
+  "id": "zavtrak-007",
+  "title": "Овсянка с цукатами из киви",
+  "section": "zavtrak",
+  "tags": [
+    "вегетарианское"
+  ],
+  "brothNote": false,
+  "front": "/images/zavtrak/7.png",
+  "back": "/images/zavtrak/8.png",
+  "answerText": "",
+  "status": "published",
+  "order": 3,
+  "legacySection": "zavtrak",
+  "legacyIndex": 7
+}

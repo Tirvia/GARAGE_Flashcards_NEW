@@ -1,0 +1,16 @@
+{
+  "id": "detskoe-015",
+  "title": "Пицца с сосисками и томатами",
+  "section": "Detskoe",
+  "tags": [
+    "курица"
+  ],
+  "brothNote": false,
+  "front": "/images/Detskoe/15.png",
+  "back": "/images/Detskoe/16.png",
+  "answerText": "",
+  "status": "published",
+  "order": 22,
+  "legacySection": "Detskoe",
+  "legacyIndex": 15
+}

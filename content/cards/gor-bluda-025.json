@@ -1,0 +1,17 @@
+{
+  "id": "gor-bluda-025",
+  "title": "Вырезка из говядины с картофельными дольками и овощами",
+  "section": "Gor_bluda",
+  "tags": [
+    "говядина",
+    "грибы"
+  ],
+  "brothNote": false,
+  "front": "/images/Gor_bluda/25.png",
+  "back": "/images/Gor_bluda/26.png",
+  "answerText": "",
+  "status": "published",
+  "order": 67,
+  "legacySection": "Gor_bluda",
+  "legacyIndex": 25
+}

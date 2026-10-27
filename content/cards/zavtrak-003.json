@@ -1,0 +1,17 @@
+{
+  "id": "zavtrak-003",
+  "title": "Гречотто с трюфельными шампиньонами",
+  "section": "zavtrak",
+  "tags": [
+    "грибы",
+    "свинина"
+  ],
+  "brothNote": false,
+  "front": "/images/zavtrak/3.png",
+  "back": "/images/zavtrak/4.png",
+  "answerText": "",
+  "status": "published",
+  "order": 1,
+  "legacySection": "zavtrak",
+  "legacyIndex": 3
+}

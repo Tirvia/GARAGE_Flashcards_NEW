@@ -1,0 +1,8 @@
+{
+  "id": "Salaty",
+  "name": "Салаты",
+  "icon": "🥗",
+  "group": "dinner",
+  "order": 2,
+  "status": "published"
+}

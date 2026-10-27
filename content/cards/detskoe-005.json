@@ -1,0 +1,14 @@
+{
+  "id": "detskoe-005",
+  "title": "Коктейль молочный Обжора",
+  "section": "Detskoe",
+  "tags": [],
+  "brothNote": false,
+  "front": "/images/Detskoe/5.png",
+  "back": "/images/Detskoe/6.png",
+  "answerText": "",
+  "status": "published",
+  "order": 17,
+  "legacySection": "Detskoe",
+  "legacyIndex": 5
+}

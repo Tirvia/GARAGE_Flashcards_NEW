@@ -1,0 +1,14 @@
+{
+  "id": "firm-kofe-007",
+  "title": "Латте орео",
+  "section": "Firm_kofe",
+  "tags": [],
+  "brothNote": false,
+  "front": "/images/Firm_kofe/7.png",
+  "back": "/images/Firm_kofe/8.png",
+  "answerText": "",
+  "status": "published",
+  "order": 131,
+  "legacySection": "Firm_kofe",
+  "legacyIndex": 7
+}

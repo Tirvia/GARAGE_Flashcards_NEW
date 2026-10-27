@@ -1,0 +1,16 @@
+{
+  "id": "deserty-009",
+  "title": "Наполеон",
+  "section": "Deserty",
+  "tags": [
+    "вегетарианское"
+  ],
+  "brothNote": false,
+  "front": "/images/Deserty/9.png",
+  "back": "/images/Deserty/10.png",
+  "answerText": "",
+  "status": "published",
+  "order": 103,
+  "legacySection": "Deserty",
+  "legacyIndex": 9
+}

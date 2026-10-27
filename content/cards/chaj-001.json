@@ -1,0 +1,14 @@
+{
+  "id": "chaj-001",
+  "title": "Малиновый чай",
+  "section": "Chaj",
+  "tags": [],
+  "brothNote": false,
+  "front": "/images/Chaj/1.png",
+  "back": "/images/Chaj/2.png",
+  "answerText": "",
+  "status": "published",
+  "order": 144,
+  "legacySection": "Chaj",
+  "legacyIndex": 1
+}

@@ -1,0 +1,17 @@
+{
+  "id": "zavtrak-025",
+  "title": "Белорусский завтрак",
+  "section": "zavtrak",
+  "tags": [
+    "свинина",
+    "грибы"
+  ],
+  "brothNote": false,
+  "front": "/images/zavtrak/25.png",
+  "back": "/images/zavtrak/26.png",
+  "answerText": "",
+  "status": "published",
+  "order": 12,
+  "legacySection": "zavtrak",
+  "legacyIndex": 25
+}

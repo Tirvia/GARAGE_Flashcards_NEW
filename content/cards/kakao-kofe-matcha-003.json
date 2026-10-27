@@ -1,0 +1,14 @@
+{
+  "id": "kakao-kofe-matcha-003",
+  "title": "Американо",
+  "section": "Kakao_kofe_matcha",
+  "tags": [],
+  "brothNote": false,
+  "front": "/images/Kakao_kofe_matcha/3.png",
+  "back": "/images/Kakao_kofe_matcha/4.png",
+  "answerText": "",
+  "status": "published",
+  "order": 134,
+  "legacySection": "Kakao_kofe_matcha",
+  "legacyIndex": 3
+}

@@ -1,0 +1,14 @@
+{
+  "id": "sezonnoe-003",
+  "title": "Чай Карамельное яблоко",
+  "section": "sezonnoe",
+  "tags": [],
+  "brothNote": false,
+  "front": "/images/sezonnoe/3.png",
+  "back": "/images/sezonnoe/4.png",
+  "answerText": "",
+  "status": "published",
+  "order": 185,
+  "legacySection": "sezonnoe",
+  "legacyIndex": 3
+}

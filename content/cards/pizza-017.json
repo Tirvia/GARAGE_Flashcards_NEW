@@ -1,0 +1,16 @@
+{
+  "id": "pizza-017",
+  "title": "С говяжьими щечками",
+  "section": "Pizza",
+  "tags": [
+    "говядина"
+  ],
+  "brothNote": false,
+  "front": "/images/Pizza/17.png",
+  "back": "/images/Pizza/18.png",
+  "answerText": "",
+  "status": "published",
+  "order": 90,
+  "legacySection": "Pizza",
+  "legacyIndex": 17
+}

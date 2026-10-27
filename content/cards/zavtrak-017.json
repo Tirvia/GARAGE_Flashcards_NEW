@@ -1,0 +1,16 @@
+{
+  "id": "zavtrak-017",
+  "title": "Сырники с творожно-манговым кремом",
+  "section": "zavtrak",
+  "tags": [
+    "вегетарианское"
+  ],
+  "brothNote": false,
+  "front": "/images/zavtrak/17.png",
+  "back": "/images/zavtrak/18.png",
+  "answerText": "",
+  "status": "published",
+  "order": 8,
+  "legacySection": "zavtrak",
+  "legacyIndex": 17
+}

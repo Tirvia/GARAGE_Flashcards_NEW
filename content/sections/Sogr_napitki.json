@@ -1,0 +1,8 @@
+{
+  "id": "Sogr_napitki",
+  "name": "Согревающие напитки",
+  "icon": "☕",
+  "group": "bar",
+  "order": 12,
+  "status": "published"
+}

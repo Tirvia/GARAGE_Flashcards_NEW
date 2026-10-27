@@ -1,0 +1,16 @@
+{
+  "id": "zavtrak-009",
+  "title": "Омлет с салатом",
+  "section": "zavtrak",
+  "tags": [
+    "вегетарианское"
+  ],
+  "brothNote": false,
+  "front": "/images/zavtrak/9.png",
+  "back": "/images/zavtrak/10.png",
+  "answerText": "",
+  "status": "published",
+  "order": 4,
+  "legacySection": "zavtrak",
+  "legacyIndex": 9
+}

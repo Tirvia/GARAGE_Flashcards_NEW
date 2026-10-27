@@ -1,0 +1,18 @@
+{
+  "id": "zacuski-023",
+  "title": "Мясная доска на компанию",
+  "section": "Zacuski",
+  "tags": [
+    "курица",
+    "свинина",
+    "рыба"
+  ],
+  "brothNote": false,
+  "front": "/images/Zacuski/23.png",
+  "back": "/images/Zacuski/24.png",
+  "answerText": "",
+  "status": "published",
+  "order": 47,
+  "legacySection": "Zacuski",
+  "legacyIndex": 23
+}

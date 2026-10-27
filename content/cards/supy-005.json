@@ -1,0 +1,17 @@
+{
+  "id": "supy-005",
+  "title": "Борщ с говяжьими щечками",
+  "section": "Supy",
+  "tags": [
+    "говядина",
+    "свинина"
+  ],
+  "brothNote": true,
+  "front": "/images/Supy/5.png",
+  "back": "/images/Supy/6.png",
+  "answerText": "",
+  "status": "published",
+  "order": 51,
+  "legacySection": "Supy",
+  "legacyIndex": 5
+}

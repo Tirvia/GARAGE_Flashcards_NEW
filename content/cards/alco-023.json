@@ -1,0 +1,14 @@
+{
+  "id": "alco-023",
+  "title": "Мохито алко",
+  "section": "alco",
+  "tags": [],
+  "brothNote": false,
+  "front": "/images/alco/23.png",
+  "back": "/images/alco/24.png",
+  "answerText": "",
+  "status": "published",
+  "order": 170,
+  "legacySection": "alco",
+  "legacyIndex": 23
+}

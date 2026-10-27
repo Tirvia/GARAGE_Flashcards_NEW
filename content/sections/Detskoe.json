@@ -1,0 +1,8 @@
+{
+  "id": "Detskoe",
+  "name": "Детское меню",
+  "icon": "👶",
+  "group": "kids",
+  "order": 1,
+  "status": "published"
+}

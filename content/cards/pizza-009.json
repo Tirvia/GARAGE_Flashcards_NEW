@@ -1,0 +1,16 @@
+{
+  "id": "pizza-009",
+  "title": "Маргарита",
+  "section": "Pizza",
+  "tags": [
+    "вегетарианское"
+  ],
+  "brothNote": false,
+  "front": "/images/Pizza/9.png",
+  "back": "/images/Pizza/10.png",
+  "answerText": "",
+  "status": "published",
+  "order": 86,
+  "legacySection": "Pizza",
+  "legacyIndex": 9
+}

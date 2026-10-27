@@ -1,0 +1,14 @@
+{
+  "id": "detskoe-001",
+  "title": "Бейбичино Персик",
+  "section": "Detskoe",
+  "tags": [],
+  "brothNote": false,
+  "front": "/images/Detskoe/1.png",
+  "back": "/images/Detskoe/2.png",
+  "answerText": "",
+  "status": "published",
+  "order": 15,
+  "legacySection": "Detskoe",
+  "legacyIndex": 1
+}

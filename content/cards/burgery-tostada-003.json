@@ -1,0 +1,16 @@
+{
+  "id": "burgery-tostada-003",
+  "title": "Тостада с курицей",
+  "section": "Burgery_tostada",
+  "tags": [
+    "курица"
+  ],
+  "brothNote": false,
+  "front": "/images/Burgery_tostada/3.png",
+  "back": "/images/Burgery_tostada/4.png",
+  "answerText": "",
+  "status": "published",
+  "order": 79,
+  "legacySection": "Burgery_tostada",
+  "legacyIndex": 3
+}

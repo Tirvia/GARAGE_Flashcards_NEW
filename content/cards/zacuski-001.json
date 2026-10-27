@@ -1,0 +1,16 @@
+{
+  "id": "zacuski-001",
+  "title": "Тартар из говядины",
+  "section": "Zacuski",
+  "tags": [
+    "говядина"
+  ],
+  "brothNote": false,
+  "front": "/images/Zacuski/1.png",
+  "back": "/images/Zacuski/2.png",
+  "answerText": "",
+  "status": "published",
+  "order": 36,
+  "legacySection": "Zacuski",
+  "legacyIndex": 1
+}

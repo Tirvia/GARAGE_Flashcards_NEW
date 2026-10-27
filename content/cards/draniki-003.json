@@ -1,0 +1,16 @@
+{
+  "id": "draniki-003",
+  "title": "Драники с рулькой и яйцом",
+  "section": "Draniki",
+  "tags": [
+    "свинина"
+  ],
+  "brothNote": false,
+  "front": "/images/Draniki/3.png",
+  "back": "/images/Draniki/4.png",
+  "answerText": "",
+  "status": "published",
+  "order": 70,
+  "legacySection": "Draniki",
+  "legacyIndex": 3
+}

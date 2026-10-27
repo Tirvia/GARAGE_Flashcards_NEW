@@ -1,0 +1,18 @@
+{
+  "id": "gor-bluda-013",
+  "title": "Рис в азиатском стиле с говядиной",
+  "section": "Gor_bluda",
+  "tags": [
+    "говядина",
+    "грибы",
+    "рыба"
+  ],
+  "brothNote": false,
+  "front": "/images/Gor_bluda/13.png",
+  "back": "/images/Gor_bluda/14.png",
+  "answerText": "",
+  "status": "published",
+  "order": 61,
+  "legacySection": "Gor_bluda",
+  "legacyIndex": 13
+}

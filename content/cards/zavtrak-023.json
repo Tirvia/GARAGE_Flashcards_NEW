@@ -1,0 +1,17 @@
+{
+  "id": "zavtrak-023",
+  "title": "Английский завтрак",
+  "section": "zavtrak",
+  "tags": [
+    "свинина",
+    "грибы"
+  ],
+  "brothNote": false,
+  "front": "/images/zavtrak/23.png",
+  "back": "/images/zavtrak/24.png",
+  "answerText": "",
+  "status": "published",
+  "order": 11,
+  "legacySection": "zavtrak",
+  "legacyIndex": 23
+}

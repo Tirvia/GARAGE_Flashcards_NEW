@@ -1,0 +1,16 @@
+{
+  "id": "pasta-003",
+  "title": "Паста с беконом и сливочным соусом",
+  "section": "Pasta",
+  "tags": [
+    "свинина"
+  ],
+  "brothNote": false,
+  "front": "/images/Pasta/3.png",
+  "back": "/images/Pasta/4.png",
+  "answerText": "",
+  "status": "published",
+  "order": 75,
+  "legacySection": "Pasta",
+  "legacyIndex": 3
+}

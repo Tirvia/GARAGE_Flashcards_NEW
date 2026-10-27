@@ -1,0 +1,18 @@
+name: Import original GARAGE images
+on: workflow_dispatch
+permissions: {contents: write}
+jobs:
+  import:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download old images into new repository
+        run: |
+          git clone --depth 1 https://github.com/Tirvia/GARAGE_Flashcards.git /tmp/original
+          cp -a /tmp/original/images/. images/
+      - name: Commit images
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add images/
+          git diff --staged --quiet || (git commit -m "Copy legacy image assets" && git push)

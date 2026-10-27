@@ -1,0 +1,14 @@
+{
+  "id": "alco-001",
+  "title": "Френч кофе (со льдом / теплый)",
+  "section": "alco",
+  "tags": [],
+  "brothNote": false,
+  "front": "/images/alco/1.png",
+  "back": "/images/alco/2.png",
+  "answerText": "",
+  "status": "published",
+  "order": 161,
+  "legacySection": "alco",
+  "legacyIndex": 1
+}

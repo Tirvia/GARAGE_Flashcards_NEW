@@ -1,0 +1,16 @@
+{
+  "id": "gor-bluda-009",
+  "title": "Рулька с картофелем и яйцом",
+  "section": "Gor_bluda",
+  "tags": [
+    "свинина"
+  ],
+  "brothNote": false,
+  "front": "/images/Gor_bluda/9.png",
+  "back": "/images/Gor_bluda/10.png",
+  "answerText": "",
+  "status": "published",
+  "order": 59,
+  "legacySection": "Gor_bluda",
+  "legacyIndex": 9
+}

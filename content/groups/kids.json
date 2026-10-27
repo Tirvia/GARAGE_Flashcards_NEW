@@ -1,0 +1,9 @@
+{
+  "id": "kids",
+  "name": "Детское меню",
+  "sections": [
+    "Detskoe"
+  ],
+  "order": 1,
+  "status": "published"
+}

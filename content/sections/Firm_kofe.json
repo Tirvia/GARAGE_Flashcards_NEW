@@ -1,0 +1,8 @@
+{
+  "id": "Firm_kofe",
+  "name": "Фирменный кофе",
+  "icon": "☕",
+  "group": "bar",
+  "order": 13,
+  "status": "published"
+}

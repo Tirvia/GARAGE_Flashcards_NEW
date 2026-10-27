@@ -1,0 +1,16 @@
+{
+  "id": "deserty-001",
+  "title": "Фондан со сметанным соусом",
+  "section": "Deserty",
+  "tags": [
+    "вегетарианское"
+  ],
+  "brothNote": false,
+  "front": "/images/Deserty/1.png",
+  "back": "/images/Deserty/2.png",
+  "answerText": "",
+  "status": "published",
+  "order": 99,
+  "legacySection": "Deserty",
+  "legacyIndex": 1
+}

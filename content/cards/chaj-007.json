@@ -1,0 +1,14 @@
+{
+  "id": "chaj-007",
+  "title": "Чай Лесной с сосновыми шишками",
+  "section": "Chaj",
+  "tags": [],
+  "brothNote": false,
+  "front": "/images/Chaj/7.png",
+  "back": "/images/Chaj/8.png",
+  "answerText": "",
+  "status": "published",
+  "order": 147,
+  "legacySection": "Chaj",
+  "legacyIndex": 7
+}

@@ -1,0 +1,16 @@
+{
+  "id": "zavtrak-005",
+  "title": "Овсянка с беконом",
+  "section": "zavtrak",
+  "tags": [
+    "свинина"
+  ],
+  "brothNote": false,
+  "front": "/images/zavtrak/5.png",
+  "back": "/images/zavtrak/6.png",
+  "answerText": "",
+  "status": "published",
+  "order": 2,
+  "legacySection": "zavtrak",
+  "legacyIndex": 5
+}

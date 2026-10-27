@@ -1,0 +1,17 @@
+{
+  "id": "pizza-011",
+  "title": "Барбекю",
+  "section": "Pizza",
+  "tags": [
+    "свинина",
+    "грибы"
+  ],
+  "brothNote": false,
+  "front": "/images/Pizza/11.png",
+  "back": "/images/Pizza/12.png",
+  "answerText": "",
+  "status": "published",
+  "order": 87,
+  "legacySection": "Pizza",
+  "legacyIndex": 11
+}

@@ -1,0 +1,17 @@
+{
+  "id": "pasta-007",
+  "title": "Паста с говядиной в азиатском стиле",
+  "section": "Pasta",
+  "tags": [
+    "говядина",
+    "грибы"
+  ],
+  "brothNote": true,
+  "front": "/images/Pasta/7.png",
+  "back": "/images/Pasta/8.png",
+  "answerText": "",
+  "status": "published",
+  "order": 77,
+  "legacySection": "Pasta",
+  "legacyIndex": 7
+}

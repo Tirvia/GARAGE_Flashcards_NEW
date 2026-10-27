@@ -1,0 +1,17 @@
+{
+  "id": "pizza-025",
+  "title": "GARAGE",
+  "section": "Pizza",
+  "tags": [
+    "говядина",
+    "рыба"
+  ],
+  "brothNote": false,
+  "front": "/images/Pizza/25.png",
+  "back": "/images/Pizza/26.png",
+  "answerText": "",
+  "status": "published",
+  "order": 94,
+  "legacySection": "Pizza",
+  "legacyIndex": 25
+}

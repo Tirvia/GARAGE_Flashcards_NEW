@@ -1,0 +1,16 @@
+{
+  "id": "deserty-003",
+  "title": "Сырники с творожно-манговым кремом",
+  "section": "Deserty",
+  "tags": [
+    "вегетарианское"
+  ],
+  "brothNote": false,
+  "front": "/images/Deserty/3.png",
+  "back": "/images/Deserty/4.png",
+  "answerText": "",
+  "status": "published",
+  "order": 100,
+  "legacySection": "Deserty",
+  "legacyIndex": 3
+}

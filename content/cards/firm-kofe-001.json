@@ -1,0 +1,14 @@
+{
+  "id": "firm-kofe-001",
+  "title": "Бамбл кофе",
+  "section": "Firm_kofe",
+  "tags": [],
+  "brothNote": false,
+  "front": "/images/Firm_kofe/1.png",
+  "back": "/images/Firm_kofe/2.png",
+  "answerText": "",
+  "status": "published",
+  "order": 129,
+  "legacySection": "Firm_kofe",
+  "legacyIndex": 1
+}

@@ -1,0 +1,8 @@
+{
+  "id": "Burgery_tostada",
+  "name": "Бургеры и тостада",
+  "icon": "🍔",
+  "group": "dinner",
+  "order": 8,
+  "status": "published"
+}

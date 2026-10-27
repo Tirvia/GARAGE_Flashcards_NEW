@@ -1,0 +1,8 @@
+{
+  "id": "Deserty",
+  "name": "Десерты",
+  "icon": "🍰",
+  "group": "dinner",
+  "order": 10,
+  "status": "published"
+}

@@ -1,0 +1,8 @@
+{
+  "id": "zavtrak",
+  "name": "Завтраки",
+  "icon": "🍳",
+  "group": "breakfast",
+  "order": 0,
+  "status": "published"
+}

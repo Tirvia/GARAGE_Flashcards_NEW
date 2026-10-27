@@ -1,0 +1,8 @@
+{
+  "id": "sezonnoe",
+  "name": "Сезонное",
+  "icon": "🍂",
+  "group": "seasonal",
+  "order": 19,
+  "status": "published"
+}

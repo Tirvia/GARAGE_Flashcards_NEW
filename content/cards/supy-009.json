@@ -1,0 +1,16 @@
+{
+  "id": "supy-009",
+  "title": "Суп куриный",
+  "section": "Supy",
+  "tags": [
+    "курица"
+  ],
+  "brothNote": true,
+  "front": "/images/Supy/9.png",
+  "back": "/images/Supy/10.png",
+  "answerText": "",
+  "status": "published",
+  "order": 53,
+  "legacySection": "Supy",
+  "legacyIndex": 9
+}

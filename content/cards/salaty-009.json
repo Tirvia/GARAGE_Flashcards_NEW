@@ -1,0 +1,18 @@
+{
+  "id": "salaty-009",
+  "title": "Теплый салат с ростбифом и сливочным сыром",
+  "section": "Salaty",
+  "tags": [
+    "говядина",
+    "свинина",
+    "грибы"
+  ],
+  "brothNote": false,
+  "front": "/images/Salaty/9.png",
+  "back": "/images/Salaty/10.png",
+  "answerText": "",
+  "status": "published",
+  "order": 33,
+  "legacySection": "Salaty",
+  "legacyIndex": 9
+}

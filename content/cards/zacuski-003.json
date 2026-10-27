@@ -1,0 +1,16 @@
+{
+  "id": "zacuski-003",
+  "title": "Карпаччо из говядины",
+  "section": "Zacuski",
+  "tags": [
+    "говядина"
+  ],
+  "brothNote": false,
+  "front": "/images/Zacuski/3.png",
+  "back": "/images/Zacuski/4.png",
+  "answerText": "",
+  "status": "published",
+  "order": 37,
+  "legacySection": "Zacuski",
+  "legacyIndex": 3
+}

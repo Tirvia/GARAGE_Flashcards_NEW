@@ -1,0 +1,16 @@
+{
+  "id": "pizza-033",
+  "title": "5 сыров с пепперони",
+  "section": "Pizza",
+  "tags": [
+    "свинина"
+  ],
+  "brothNote": false,
+  "front": "/images/Pizza/33.png",
+  "back": "/images/Pizza/34.png",
+  "answerText": "",
+  "status": "published",
+  "order": 98,
+  "legacySection": "Pizza",
+  "legacyIndex": 33
+}

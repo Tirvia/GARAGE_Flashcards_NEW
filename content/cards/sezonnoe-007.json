@@ -1,0 +1,16 @@
+{
+  "id": "sezonnoe-007",
+  "title": "Свиная грудинка с пюре и домашней аджикой",
+  "section": "sezonnoe",
+  "tags": [
+    "свинина"
+  ],
+  "brothNote": false,
+  "front": "/images/sezonnoe/7.png",
+  "back": "/images/sezonnoe/8.png",
+  "answerText": "",
+  "status": "published",
+  "order": 187,
+  "legacySection": "sezonnoe",
+  "legacyIndex": 7
+}

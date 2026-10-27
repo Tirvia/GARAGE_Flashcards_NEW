@@ -1,0 +1,17 @@
+{
+  "id": "supy-003",
+  "title": "Грибной крем-суп с трюфельной пастой",
+  "section": "Supy",
+  "tags": [
+    "грибы",
+    "свинина"
+  ],
+  "brothNote": false,
+  "front": "/images/Supy/3.png",
+  "back": "/images/Supy/4.png",
+  "answerText": "",
+  "status": "published",
+  "order": 50,
+  "legacySection": "Supy",
+  "legacyIndex": 3
+}

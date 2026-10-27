@@ -1,0 +1,16 @@
+{
+  "id": "gor-bluda-027",
+  "title": "Говяжьи щечки с трюфельным пюре",
+  "section": "Gor_bluda",
+  "tags": [
+    "говядина"
+  ],
+  "brothNote": false,
+  "front": "/images/Gor_bluda/27.png",
+  "back": "/images/Gor_bluda/28.png",
+  "answerText": "",
+  "status": "published",
+  "order": 68,
+  "legacySection": "Gor_bluda",
+  "legacyIndex": 27
+}

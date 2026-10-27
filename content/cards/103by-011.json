@@ -1,0 +1,16 @@
+{
+  "id": "103by-011",
+  "title": "Салат с ростбифом и картофельными дольками",
+  "section": "103BY",
+  "tags": [
+    "говядина"
+  ],
+  "brothNote": false,
+  "front": "/images/103BY/11.png",
+  "back": "/images/103BY/12.png",
+  "answerText": "",
+  "status": "published",
+  "order": 110,
+  "legacySection": "103BY",
+  "legacyIndex": 11
+}

@@ -1,0 +1,17 @@
+{
+  "id": "zacuski-005",
+  "title": "Севиче из лосося с дальневосточным гребешком",
+  "section": "Zacuski",
+  "tags": [
+    "рыба",
+    "морепродукты"
+  ],
+  "brothNote": false,
+  "front": "/images/Zacuski/5.png",
+  "back": "/images/Zacuski/6.png",
+  "answerText": "",
+  "status": "published",
+  "order": 38,
+  "legacySection": "Zacuski",
+  "legacyIndex": 5
+}

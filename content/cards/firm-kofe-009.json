@@ -1,0 +1,14 @@
+{
+  "id": "firm-kofe-009",
+  "title": "Айс латте",
+  "section": "Firm_kofe",
+  "tags": [],
+  "brothNote": false,
+  "front": "/images/Firm_kofe/9.png",
+  "back": "/images/Firm_kofe/10.png",
+  "answerText": "",
+  "status": "published",
+  "order": 132,
+  "legacySection": "Firm_kofe",
+  "legacyIndex": 9
+}

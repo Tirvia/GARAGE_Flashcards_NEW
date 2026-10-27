@@ -1,0 +1,16 @@
+{
+  "id": "sezonnoe-013",
+  "title": "Нисуаз с тунцом",
+  "section": "sezonnoe",
+  "tags": [
+    "рыба"
+  ],
+  "brothNote": false,
+  "front": "/images/sezonnoe/13.png",
+  "back": "/images/sezonnoe/14.png",
+  "answerText": "",
+  "status": "published",
+  "order": 190,
+  "legacySection": "sezonnoe",
+  "legacyIndex": 13
+}

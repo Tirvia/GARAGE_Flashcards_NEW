@@ -1,0 +1,17 @@
+{
+  "id": "dinner",
+  "name": "Ужин",
+  "sections": [
+    "Salaty",
+    "Zacuski",
+    "Supy",
+    "Gor_bluda",
+    "Draniki",
+    "Pasta",
+    "Burgery_tostada",
+    "Pizza",
+    "Deserty"
+  ],
+  "order": 2,
+  "status": "published"
+}

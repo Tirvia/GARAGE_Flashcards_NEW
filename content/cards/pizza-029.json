@@ -1,0 +1,16 @@
+{
+  "id": "pizza-029",
+  "title": "5 сыров с трюфельным медом",
+  "section": "Pizza",
+  "tags": [
+    "вегетарианское"
+  ],
+  "brothNote": false,
+  "front": "/images/Pizza/29.png",
+  "back": "/images/Pizza/30.png",
+  "answerText": "",
+  "status": "published",
+  "order": 96,
+  "legacySection": "Pizza",
+  "legacyIndex": 29
+}

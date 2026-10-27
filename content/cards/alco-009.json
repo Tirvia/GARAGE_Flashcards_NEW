@@ -1,0 +1,14 @@
+{
+  "id": "alco-009",
+  "title": "Космо 2.0",
+  "section": "alco",
+  "tags": [],
+  "brothNote": false,
+  "front": "/images/alco/9.png",
+  "back": "/images/alco/10.png",
+  "answerText": "",
+  "status": "published",
+  "order": 163,
+  "legacySection": "alco",
+  "legacyIndex": 9
+}

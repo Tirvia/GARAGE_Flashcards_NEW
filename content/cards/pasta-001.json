@@ -1,0 +1,17 @@
+{
+  "id": "pasta-001",
+  "title": "Паста с цыпленком, грибами и трюфельным соусом",
+  "section": "Pasta",
+  "tags": [
+    "курица",
+    "грибы"
+  ],
+  "brothNote": false,
+  "front": "/images/Pasta/1.png",
+  "back": "/images/Pasta/2.png",
+  "answerText": "",
+  "status": "published",
+  "order": 74,
+  "legacySection": "Pasta",
+  "legacyIndex": 1
+}

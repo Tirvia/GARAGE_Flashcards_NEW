@@ -1,0 +1,17 @@
+{
+  "id": "burgery-tostada-007",
+  "title": "Бургер с курицей, беконом и соусом Тартар",
+  "section": "Burgery_tostada",
+  "tags": [
+    "курица",
+    "свинина"
+  ],
+  "brothNote": false,
+  "front": "/images/Burgery_tostada/7.png",
+  "back": "/images/Burgery_tostada/8.png",
+  "answerText": "",
+  "status": "published",
+  "order": 81,
+  "legacySection": "Burgery_tostada",
+  "legacyIndex": 7
+}

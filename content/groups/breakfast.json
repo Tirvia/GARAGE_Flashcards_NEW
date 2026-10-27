@@ -1,0 +1,9 @@
+{
+  "id": "breakfast",
+  "name": "Завтраки",
+  "sections": [
+    "zavtrak"
+  ],
+  "order": 0,
+  "status": "published"
+}

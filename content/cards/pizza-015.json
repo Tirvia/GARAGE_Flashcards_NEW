@@ -1,0 +1,17 @@
+{
+  "id": "pizza-015",
+  "title": "Цезарь",
+  "section": "Pizza",
+  "tags": [
+    "курица",
+    "свинина"
+  ],
+  "brothNote": false,
+  "front": "/images/Pizza/15.png",
+  "back": "/images/Pizza/16.png",
+  "answerText": "",
+  "status": "published",
+  "order": 89,
+  "legacySection": "Pizza",
+  "legacyIndex": 15
+}

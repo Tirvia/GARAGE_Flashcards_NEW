@@ -1,0 +1,17 @@
+{
+  "id": "salaty-013",
+  "title": "Оливье с копченой курицей",
+  "section": "Salaty",
+  "tags": [
+    "курица",
+    "рыба"
+  ],
+  "brothNote": false,
+  "front": "/images/Salaty/13.png",
+  "back": "/images/Salaty/14.png",
+  "answerText": "",
+  "status": "published",
+  "order": 35,
+  "legacySection": "Salaty",
+  "legacyIndex": 13
+}

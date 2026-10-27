@@ -1,0 +1,16 @@
+{
+  "id": "zavtrak-019",
+  "title": "Блинчики с творогом и пюре манго",
+  "section": "zavtrak",
+  "tags": [
+    "вегетарианское"
+  ],
+  "brothNote": false,
+  "front": "/images/zavtrak/19.png",
+  "back": "/images/zavtrak/20.png",
+  "answerText": "",
+  "status": "published",
+  "order": 9,
+  "legacySection": "zavtrak",
+  "legacyIndex": 19
+}

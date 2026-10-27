@@ -1,0 +1,16 @@
+{
+  "id": "detskoe-017",
+  "title": "Куриный биточек с картофельным пюре и овощами",
+  "section": "Detskoe",
+  "tags": [
+    "курица"
+  ],
+  "brothNote": false,
+  "front": "/images/Detskoe/17.png",
+  "back": "/images/Detskoe/18.png",
+  "answerText": "",
+  "status": "published",
+  "order": 23,
+  "legacySection": "Detskoe",
+  "legacyIndex": 17
+}

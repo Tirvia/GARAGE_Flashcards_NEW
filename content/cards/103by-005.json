@@ -1,0 +1,16 @@
+{
+  "id": "103by-005",
+  "title": "Омлет с индейкой и салатом из свежих овощей",
+  "section": "103BY",
+  "tags": [
+    "индейка"
+  ],
+  "brothNote": false,
+  "front": "/images/103BY/5.png",
+  "back": "/images/103BY/6.png",
+  "answerText": "",
+  "status": "published",
+  "order": 107,
+  "legacySection": "103BY",
+  "legacyIndex": 5
+}

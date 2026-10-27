@@ -1,0 +1,16 @@
+{
+  "id": "salaty-005",
+  "title": "Цезарь с курицей",
+  "section": "Salaty",
+  "tags": [
+    "курица"
+  ],
+  "brothNote": false,
+  "front": "/images/Salaty/5.png",
+  "back": "/images/Salaty/6.png",
+  "answerText": "",
+  "status": "published",
+  "order": 31,
+  "legacySection": "Salaty",
+  "legacyIndex": 5
+}

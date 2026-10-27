@@ -1,0 +1,16 @@
+{
+  "id": "detskoe-021",
+  "title": "Сосиски с картофельным пюре",
+  "section": "Detskoe",
+  "tags": [
+    "курица"
+  ],
+  "brothNote": false,
+  "front": "/images/Detskoe/21.png",
+  "back": "/images/Detskoe/22.png",
+  "answerText": "",
+  "status": "published",
+  "order": 25,
+  "legacySection": "Detskoe",
+  "legacyIndex": 21
+}

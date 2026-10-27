@@ -1,0 +1,14 @@
+{
+  "id": "alco-025",
+  "title": "Куба Либре",
+  "section": "alco",
+  "tags": [],
+  "brothNote": false,
+  "front": "/images/alco/25.png",
+  "back": "/images/alco/26.png",
+  "answerText": "",
+  "status": "published",
+  "order": 171,
+  "legacySection": "alco",
+  "legacyIndex": 25
+}

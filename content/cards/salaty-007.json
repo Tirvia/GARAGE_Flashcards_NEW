@@ -1,0 +1,16 @@
+{
+  "id": "salaty-007",
+  "title": "Цезарь с беконом и яйцом",
+  "section": "Salaty",
+  "tags": [
+    "свинина"
+  ],
+  "brothNote": false,
+  "front": "/images/Salaty/7.png",
+  "back": "/images/Salaty/8.png",
+  "answerText": "",
+  "status": "published",
+  "order": 32,
+  "legacySection": "Salaty",
+  "legacyIndex": 7
+}

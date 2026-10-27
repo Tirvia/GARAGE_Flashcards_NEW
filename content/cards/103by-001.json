@@ -1,0 +1,16 @@
+{
+  "id": "103by-001",
+  "title": "Поке с креветкой",
+  "section": "103BY",
+  "tags": [
+    "морепродукты"
+  ],
+  "brothNote": false,
+  "front": "/images/103BY/1.png",
+  "back": "/images/103BY/2.png",
+  "answerText": "",
+  "status": "published",
+  "order": 105,
+  "legacySection": "103BY",
+  "legacyIndex": 1
+}

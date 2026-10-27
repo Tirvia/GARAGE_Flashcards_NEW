@@ -1,0 +1,16 @@
+{
+  "id": "zavtrak-015",
+  "title": "Омлет с салатом и лососем",
+  "section": "zavtrak",
+  "tags": [
+    "рыба"
+  ],
+  "brothNote": false,
+  "front": "/images/zavtrak/15.png",
+  "back": "/images/zavtrak/16.png",
+  "answerText": "",
+  "status": "published",
+  "order": 7,
+  "legacySection": "zavtrak",
+  "legacyIndex": 15
+}

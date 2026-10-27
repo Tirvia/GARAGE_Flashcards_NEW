@@ -1,0 +1,15 @@
+{
+  "id": "bar",
+  "name": "Бар",
+  "sections": [
+    "Sogr_napitki",
+    "Firm_kofe",
+    "Kakao_kofe_matcha",
+    "Chaj",
+    "Bezalco",
+    "alco",
+    "Alco_1 1"
+  ],
+  "order": 5,
+  "status": "published"
+}

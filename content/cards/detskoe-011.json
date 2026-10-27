@@ -1,0 +1,16 @@
+{
+  "id": "detskoe-011",
+  "title": "Бульон с куриным филе",
+  "section": "Detskoe",
+  "tags": [
+    "курица"
+  ],
+  "brothNote": false,
+  "front": "/images/Detskoe/11.png",
+  "back": "/images/Detskoe/12.png",
+  "answerText": "",
+  "status": "published",
+  "order": 20,
+  "legacySection": "Detskoe",
+  "legacyIndex": 11
+}

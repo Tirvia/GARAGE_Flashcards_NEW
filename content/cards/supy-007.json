@@ -1,0 +1,17 @@
+{
+  "id": "supy-007",
+  "title": "Том ям с морепродуктами",
+  "section": "Supy",
+  "tags": [
+    "морепродукты",
+    "грибы"
+  ],
+  "brothNote": true,
+  "front": "/images/Supy/7.png",
+  "back": "/images/Supy/8.png",
+  "answerText": "",
+  "status": "published",
+  "order": 52,
+  "legacySection": "Supy",
+  "legacyIndex": 7
+}

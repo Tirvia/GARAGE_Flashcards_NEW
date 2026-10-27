@@ -1,0 +1,16 @@
+{
+  "id": "detskoe-027",
+  "title": "Картофель фри с наггетсами",
+  "section": "Detskoe",
+  "tags": [
+    "курица"
+  ],
+  "brothNote": false,
+  "front": "/images/Detskoe/27.png",
+  "back": "/images/Detskoe/28.png",
+  "answerText": "",
+  "status": "published",
+  "order": 28,
+  "legacySection": "Detskoe",
+  "legacyIndex": 27
+}

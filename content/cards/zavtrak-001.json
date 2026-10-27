@@ -1,0 +1,16 @@
+{
+  "id": "zavtrak-001",
+  "title": "Бульон с куриным филе",
+  "section": "zavtrak",
+  "tags": [
+    "курица"
+  ],
+  "brothNote": false,
+  "front": "/images/zavtrak/1.png",
+  "back": "/images/zavtrak/2.png",
+  "answerText": "",
+  "status": "published",
+  "order": 0,
+  "legacySection": "zavtrak",
+  "legacyIndex": 1
+}

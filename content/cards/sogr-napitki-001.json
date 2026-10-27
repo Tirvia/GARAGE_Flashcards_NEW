@@ -1,0 +1,14 @@
+{
+  "id": "sogr-napitki-001",
+  "title": "Горячий бамбл",
+  "section": "Sogr_napitki",
+  "tags": [],
+  "brothNote": false,
+  "front": "/images/Sogr_napitki/1.png",
+  "back": "/images/Sogr_napitki/2.png",
+  "answerText": "",
+  "status": "published",
+  "order": 122,
+  "legacySection": "Sogr_napitki",
+  "legacyIndex": 1
+}

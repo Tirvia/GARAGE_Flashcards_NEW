@@ -1,0 +1,16 @@
+{
+  "id": "zacuski-025",
+  "title": "Гренки с балтийским соусом",
+  "section": "Zacuski",
+  "tags": [
+    "рыба"
+  ],
+  "brothNote": false,
+  "front": "/images/Zacuski/25.png",
+  "back": "/images/Zacuski/26.png",
+  "answerText": "",
+  "status": "published",
+  "order": 48,
+  "legacySection": "Zacuski",
+  "legacyIndex": 25
+}

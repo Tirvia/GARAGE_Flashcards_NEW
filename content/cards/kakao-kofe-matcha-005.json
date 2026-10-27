@@ -1,0 +1,14 @@
+{
+  "id": "kakao-kofe-matcha-005",
+  "title": "Капучино",
+  "section": "Kakao_kofe_matcha",
+  "tags": [],
+  "brothNote": false,
+  "front": "/images/Kakao_kofe_matcha/5.png",
+  "back": "/images/Kakao_kofe_matcha/6.png",
+  "answerText": "",
+  "status": "published",
+  "order": 135,
+  "legacySection": "Kakao_kofe_matcha",
+  "legacyIndex": 5
+}

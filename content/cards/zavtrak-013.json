@@ -1,0 +1,16 @@
+{
+  "id": "zavtrak-013",
+  "title": "Омлет с салатом и беконом",
+  "section": "zavtrak",
+  "tags": [
+    "свинина"
+  ],
+  "brothNote": false,
+  "front": "/images/zavtrak/13.png",
+  "back": "/images/zavtrak/14.png",
+  "answerText": "",
+  "status": "published",
+  "order": 6,
+  "legacySection": "zavtrak",
+  "legacyIndex": 13
+}

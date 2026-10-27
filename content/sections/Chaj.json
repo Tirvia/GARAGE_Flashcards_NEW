@@ -1,0 +1,8 @@
+{
+  "id": "Chaj",
+  "name": "Чай",
+  "icon": "☕",
+  "group": "bar",
+  "order": 15,
+  "status": "published"
+}

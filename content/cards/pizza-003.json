@@ -1,0 +1,16 @@
+{
+  "id": "pizza-003",
+  "title": "Баварская",
+  "section": "Pizza",
+  "tags": [
+    "свинина"
+  ],
+  "brothNote": false,
+  "front": "/images/Pizza/3.png",
+  "back": "/images/Pizza/4.png",
+  "answerText": "",
+  "status": "published",
+  "order": 83,
+  "legacySection": "Pizza",
+  "legacyIndex": 3
+}

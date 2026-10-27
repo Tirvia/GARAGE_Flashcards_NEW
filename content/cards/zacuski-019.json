@@ -1,0 +1,16 @@
+{
+  "id": "zacuski-019",
+  "title": "Жареные креветки с тайским айоли",
+  "section": "Zacuski",
+  "tags": [
+    "морепродукты"
+  ],
+  "brothNote": false,
+  "front": "/images/Zacuski/19.png",
+  "back": "/images/Zacuski/20.png",
+  "answerText": "",
+  "status": "published",
+  "order": 45,
+  "legacySection": "Zacuski",
+  "legacyIndex": 19
+}

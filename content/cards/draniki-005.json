@@ -1,0 +1,16 @@
+{
+  "id": "draniki-005",
+  "title": "Драники с беконом и сметаной",
+  "section": "Draniki",
+  "tags": [
+    "свинина"
+  ],
+  "brothNote": false,
+  "front": "/images/Draniki/5.png",
+  "back": "/images/Draniki/6.png",
+  "answerText": "",
+  "status": "published",
+  "order": 71,
+  "legacySection": "Draniki",
+  "legacyIndex": 5
+}

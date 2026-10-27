@@ -1,0 +1,14 @@
+{
+  "id": "sogr-napitki-003",
+  "title": "Чай ягодный цитрус",
+  "section": "Sogr_napitki",
+  "tags": [],
+  "brothNote": false,
+  "front": "/images/Sogr_napitki/3.png",
+  "back": "/images/Sogr_napitki/4.png",
+  "answerText": "",
+  "status": "published",
+  "order": 123,
+  "legacySection": "Sogr_napitki",
+  "legacyIndex": 3
+}

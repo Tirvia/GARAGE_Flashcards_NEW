@@ -1,0 +1,16 @@
+{
+  "id": "draniki-007",
+  "title": "Драники с лососем и зеленым соусом",
+  "section": "Draniki",
+  "tags": [
+    "рыба"
+  ],
+  "brothNote": false,
+  "front": "/images/Draniki/7.png",
+  "back": "/images/Draniki/8.png",
+  "answerText": "",
+  "status": "published",
+  "order": 72,
+  "legacySection": "Draniki",
+  "legacyIndex": 7
+}

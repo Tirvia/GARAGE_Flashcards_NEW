@@ -1,0 +1,14 @@
+{
+  "id": "sezonnoe-001",
+  "title": "Сбитень БА",
+  "section": "sezonnoe",
+  "tags": [],
+  "brothNote": false,
+  "front": "/images/sezonnoe/1.png",
+  "back": "/images/sezonnoe/2.png",
+  "answerText": "",
+  "status": "published",
+  "order": 184,
+  "legacySection": "sezonnoe",
+  "legacyIndex": 1
+}

@@ -1,0 +1,8 @@
+{
+  "id": "Pasta",
+  "name": "Паста",
+  "icon": "🍝",
+  "group": "dinner",
+  "order": 7,
+  "status": "published"
+}

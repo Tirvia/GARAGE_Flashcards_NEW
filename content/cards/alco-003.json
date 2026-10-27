@@ -1,0 +1,14 @@
+{
+  "id": "alco-003",
+  "title": "Белый русский",
+  "section": "alco",
+  "tags": [],
+  "brothNote": false,
+  "front": "/images/alco/3.png",
+  "back": "/images/alco/4.png",
+  "answerText": "",
+  "status": "published",
+  "order": 162,
+  "legacySection": "alco",
+  "legacyIndex": 3
+}

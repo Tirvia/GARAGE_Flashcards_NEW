@@ -1,0 +1,17 @@
+{
+  "id": "pizza-031",
+  "title": "С креветкой и стружкой тунца",
+  "section": "Pizza",
+  "tags": [
+    "морепродукты",
+    "рыба"
+  ],
+  "brothNote": false,
+  "front": "/images/Pizza/31.png",
+  "back": "/images/Pizza/32.png",
+  "answerText": "",
+  "status": "published",
+  "order": 97,
+  "legacySection": "Pizza",
+  "legacyIndex": 31
+}

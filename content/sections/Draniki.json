@@ -1,0 +1,8 @@
+{
+  "id": "Draniki",
+  "name": "Драники",
+  "icon": "🥞",
+  "group": "dinner",
+  "order": 6,
+  "status": "published"
+}

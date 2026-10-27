@@ -1,0 +1,8 @@
+{
+  "id": "alco",
+  "name": "Алкогольные коктейли",
+  "icon": "🍹",
+  "group": "bar",
+  "order": 17,
+  "status": "published"
+}

@@ -1,0 +1,16 @@
+{
+  "id": "burgery-tostada-001",
+  "title": "Тостада с говядиной",
+  "section": "Burgery_tostada",
+  "tags": [
+    "говядина"
+  ],
+  "brothNote": false,
+  "front": "/images/Burgery_tostada/1.png",
+  "back": "/images/Burgery_tostada/2.png",
+  "answerText": "",
+  "status": "published",
+  "order": 78,
+  "legacySection": "Burgery_tostada",
+  "legacyIndex": 1
+}

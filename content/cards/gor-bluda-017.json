@@ -1,0 +1,17 @@
+{
+  "id": "gor-bluda-017",
+  "title": "Запеченная свинина в сливочном соусе",
+  "section": "Gor_bluda",
+  "tags": [
+    "свинина",
+    "грибы"
+  ],
+  "brothNote": false,
+  "front": "/images/Gor_bluda/17.png",
+  "back": "/images/Gor_bluda/18.png",
+  "answerText": "",
+  "status": "published",
+  "order": 63,
+  "legacySection": "Gor_bluda",
+  "legacyIndex": 17
+}

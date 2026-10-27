@@ -1,0 +1,16 @@
+{
+  "id": "detskoe-009",
+  "title": "Нарисуй свой сырник",
+  "section": "Detskoe",
+  "tags": [
+    "вегетарианское"
+  ],
+  "brothNote": false,
+  "front": "/images/Detskoe/9.png",
+  "back": "/images/Detskoe/10.png",
+  "answerText": "",
+  "status": "published",
+  "order": 19,
+  "legacySection": "Detskoe",
+  "legacyIndex": 9
+}

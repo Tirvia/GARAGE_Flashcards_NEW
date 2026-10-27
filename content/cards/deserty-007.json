@@ -1,0 +1,16 @@
+{
+  "id": "deserty-007",
+  "title": "Баблс с бананом",
+  "section": "Deserty",
+  "tags": [
+    "вегетарианское"
+  ],
+  "brothNote": false,
+  "front": "/images/Deserty/7.png",
+  "back": "/images/Deserty/8.png",
+  "answerText": "",
+  "status": "published",
+  "order": 102,
+  "legacySection": "Deserty",
+  "legacyIndex": 7
+}
