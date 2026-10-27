@@ -18,6 +18,25 @@ for(const card of cards){
   card.compositionEdited=Boolean(baseline[card.id] && baseline[card.id]!==signature(card.composition||card.answerText||''));
 }
 
+// Keep approved recipe questions in sync with their last manually confirmed text.
+// Changing a recipe automatically removes its question approval until re-checked.
+const approvalsFile=path.join(base,'data','ingredient-approvals.json');
+const priorApprovals=fs.existsSync(approvalsFile)?JSON.parse(fs.readFileSync(approvalsFile,'utf8')):{};
+const {approvals,invalidated}=require('./ingredient-approvals.cjs').reconcile(cards,priorApprovals);
+if(invalidated.length){
+  const byId=new Map(cards.map(c=>[c.id,c]));
+  for(const file of fs.readdirSync(path.join(base,'content','cards')).filter(x=>x.endsWith('.json'))){
+    const filePath=path.join(base,'content','cards',file);
+    const entry=JSON.parse(fs.readFileSync(filePath,'utf8'));
+    if(!invalidated.includes(entry.id))continue;
+    const card=byId.get(entry.id);
+    if(card)fs.writeFileSync(filePath,JSON.stringify(card,null,2)+'\n','utf8');
+  }
+  console.log('Ingredient quiz approval reset after recipe changes:',invalidated.join(', '));
+}
+fs.mkdirSync(path.dirname(approvalsFile),{recursive:true});
+fs.writeFileSync(approvalsFile,JSON.stringify(approvals,null,2)+'\n','utf8');
+
 function unique(a,field){const v=a.map(x=>x[field]);if(new Set(v).size!==v.length)throw Error('Duplicate '+field)}
 unique(cards,'id');unique(sections,'id');unique(groups,'id');unique(tags,'id');
 for(const c of cards){if(!sections.some(s=>s.id===c.section))throw Error('Missing section '+c.id);if(!c.title||!c.front)throw Error('Incomplete '+c.id);for(const t of c.tags||[])if(!tags.some(x=>x.id===t))throw Error('Missing tag '+t)}
