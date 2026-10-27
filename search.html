@@ -426,6 +426,7 @@
 
 <script src="js/menu-data.js"></script>
 <script src="js/text-answer.js"></script>
+<script src="js/card-image-loader.js"></script>
 <script>
 
 const M=window.GARAGE_MENU;
@@ -503,8 +504,10 @@ function openCard(s, i, n) {
 
     flipNameOverlay.textContent = n;
     cardSectionLbl.textContent  = (ICONS[s]||'') + ' ' + (SECS[s]||s);
-    cardFrontImg.src = (ALL.find(x=>x.s===s&&x.i===i)?.front || `images/${s}/${i}.png`);
-    cardBackImg.src  = window.GARAGE_answerSrc(M.cards.find(x=>x.section===s&&x.runtimeIndex===i));
+    const source = M.cards.find(x=>x.section===s&&x.runtimeIndex===i);
+    window.GARAGE_cardImages.showPair(cardFrontImg, cardBackImg,
+        source?.front || (ALL.find(x=>x.s===s&&x.i===i)?.front || ""),
+        window.GARAGE_cardImages.answer(source));
 
     emptyState.style.display  = 'none';
     cardViewer.style.display  = 'flex';
