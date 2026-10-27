@@ -10,17 +10,20 @@
     const a=[...array];for(let i=a.length-1;i>0;i--){const j=Math.floor(rng()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;
   };
   const normalize=t=>String(t||"").trim().toLocaleLowerCase("ru").replace(/ё/g,"е").replace(/[.:;!,]+$/g,"").replace(/\s+/g," ");
-  function getIngredients(card){
+  function readIngredients(card,includeNested){
     if(!card || card.testIngredientsVerified!==true || card.compositionNeedsReview===true)return [];
     const result=[];
     for(const line of String(card.composition||"").split(/\r?\n/)){
-      const m=/^[-*+]\s+(.+)/.exec(line);if(!m)continue;
+      const expression=includeNested?/^\s*[-*+]\s+(.+)/:/^[-*+]\s+(.+)/;
+      const m=expression.exec(line);if(!m)continue;
       const text=m[1].trim().replace(/:$/,"").replace(/\*\*/g,"").trim();
       const key=normalize(text);
-      if(text.length>2&&!result.some(x=>x.key===key))result.push({id:key,label:text});
+      if(text.length>2&&!result.some(x=>x.id===key))result.push({id:key,label:text});
     }
     return result;
   }
+  const getIngredients=card=>readIngredients(card,false);
+  const allIngredients=card=>readIngredients(card,true);
   const cardsInScope=(menu,section="")=>menu.cards.filter(c=>c.status==="published"&&(!section||c.section===section));
   function optionsForPhoto(card,menu,rng=Math.random){
     const others=menu.cards.filter(c=>c.id!==card.id&&c.title!==card.title&&c.status==="published");
@@ -45,7 +48,8 @@
   function ingredientQuestion(card,menu,rng=Math.random){
     const included=getIngredients(card);
     if(included.length<2)return null;
-    const mine=new Set(included.map(i=>i.id));
+    // Nested sauce ingredients still count as present: never offer them as false distractors.
+    const mine=new Set(allIngredients(card).map(i=>i.id));
     const reviewed=menu.cards.filter(c=>c.id!==card.id&&c.status==="published"&&c.testIngredientsVerified&& !c.compositionNeedsReview);
     const source=new Map();
     for(const c of reviewed)for(const item of getIngredients(c))if(!mine.has(item.id)&&!source.has(item.id))source.set(item.id,item);
@@ -64,7 +68,7 @@
     const verified=menu.cards.filter(c=>c.testIngredientsVerified && !c.compositionNeedsReview && c.status==="published" && c.id!==card.id);
     const variants=shuffle(mine,rng);
     for(const ingredient of variants){
-      const wrong=shuffle(verified.filter(c=>!getIngredients(c).some(x=>x.id===ingredient.id)),rng);
+      const wrong=shuffle(verified.filter(c=>!allIngredients(c).some(x=>x.id===ingredient.id)),rng);
       if(wrong.length<3)continue;
       const candidates=shuffle([card,...wrong.slice(0,3)].map(c=>({id:c.id,label:c.title})),rng);
       return {kind:"guest",cardId:card.id,
