@@ -1,0 +1,41 @@
+name: Smoke test GARAGE learning pages
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'training.html'
+      - 'index.html'
+      - 'js/learning-*.js'
+      - 'js/menu-data.js'
+      - 'js/menu-changes.js'
+      - 'css/learning.css'
+      - 'scripts/smoke-learning.py'
+      - '.github/workflows/smoke-learning.yml'
+  workflow_dispatch:
+permissions: {contents: read}
+concurrency:
+  group: garage-learning-browser-smoke
+  cancel-in-progress: true
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install Playwright
+        run: python -m pip install playwright
+      - name: Start local GARAGE site
+        run: |
+          python -m http.server 8765 --bind 127.0.0.1 > /tmp/garage-server.log 2>&1 &
+      - name: Test in headless Chrome
+        run: python scripts/smoke-learning.py
+      - name: Store desktop and mobile screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: garage-learning-smoke-screenshots
+          path: smoke-output/
+          if-no-files-found: ignore
