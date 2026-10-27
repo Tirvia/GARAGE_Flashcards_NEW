@@ -42,7 +42,7 @@ content:
       - {name: legacyIndex, label: "Прежний номер", type: number, hidden: true}
       - {name: compositionSource, label: "Источник состава", type: string, hidden: true}
       - {name: compositionOcrConfidence, label: "Качество распознавания", type: number, hidden: true}
-      - {name: compositionNeedsReview, label: "Проверить состав", type: boolean, hidden: true}
+      - {name: compositionNeedsReview, label: "Состав требует проверки после переноса", type: boolean}
   - name: sections
     label: "Разделы меню"
     type: collection
