@@ -1,0 +1,1281 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>По составу | GARAGE</title> 
+ <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23D32F2F' rx='20'/%3E%3Ctext x='50' y='72' font-size='64' font-family='Arial, sans-serif' font-weight='bold' fill='white' text-anchor='middle'%3EG%3C/text%3E%3C/svg%3E">
+  <style>
+        * { margin:0; padding:0; box-sizing:border-box; font-family:Arial,sans-serif; }
+
+        body {
+            background:#000;
+            color:#fff;
+            min-height:100vh;
+            min-height:100dvh;
+            display:flex;
+            flex-direction:column;
+        }
+
+        /* ===== STICKY TOP ===== */
+        .sticky-top {
+            position:sticky;
+            top:0;
+            z-index:200;
+            background:#000;
+            border-bottom:1px solid #1c1c1c;
+        }
+
+        .header-row {
+            display:flex;
+            align-items:center;
+            gap:10px;
+            padding:12px 16px 8px;
+        }
+
+        .back-btn {
+            display:inline-flex;
+            align-items:center;
+            color:#666;
+            text-decoration:none;
+            font-size:0.9rem;
+            white-space:nowrap;
+            flex-shrink:0;
+            -webkit-tap-highlight-color:transparent;
+            transition:color 0.2s;
+        }
+        .back-btn:active { color:#fff; }
+
+        .page-title {
+            flex:1;
+            text-align:center;
+            font-size:0.95rem;
+            font-weight:bold;
+            color:#f0cece;
+        }
+
+        /* ===== FILTER TAGS ===== */
+        .filter-row {
+            display:flex;
+            gap:7px;
+            padding:0 12px 12px;
+            overflow-x:auto;
+            -webkit-overflow-scrolling:touch;
+            scrollbar-width:none;
+            justify-content:center;
+            flex-wrap:wrap;
+        }
+        .filter-row::-webkit-scrollbar { display:none; }
+
+        .tag-btn {
+            display:inline-flex;
+            flex-direction:row;
+            align-items:center;
+            gap:5px;
+            background:#111;
+            border:1.5px solid #252525;
+            border-radius:20px;
+            color:#888;
+            padding:6px 12px;
+            cursor:pointer;
+            white-space:nowrap;
+            flex-shrink:0;
+            -webkit-tap-highlight-color:transparent;
+            transition:all 0.18s;
+        }
+        .tag-btn:active { transform:scale(0.94); }
+
+        .tag-btn.active {
+            background:rgba(255,0,0,0.14);
+            border-color:#ff0000;
+            color:#ff4d4d;
+        }
+
+        .tag-emoji {
+            font-size:1.1rem;
+            line-height:1;
+        }
+
+        .tag-label {
+            font-size:0.8rem;
+            font-weight:500;
+            letter-spacing:0.2px;
+        }
+
+        .tag-btn.active .tag-label { font-weight:bold; }
+
+        /* ===== CONTENT ===== */
+        .content-area {
+            flex:1;
+            padding:16px 16px 60px;
+            max-width:540px;
+            width:100%;
+            margin:0 auto;
+        }
+
+        /* ===== PROMPT ===== */
+        .prompt {
+            display:flex;
+            flex-direction:column;
+            align-items:center;
+            justify-content:center;
+            padding:60px 20px;
+            text-align:center;
+        }
+        .prompt-icon { font-size:3rem; opacity:0.2; margin-bottom:14px; }
+        .prompt-text { color:#383838; font-size:0.95rem; line-height:1.7; }
+
+        /* ===== RESULTS ===== */
+        .results-header-row {
+            display:flex;
+            align-items:center;
+            justify-content:space-between;
+            gap:12px;
+            margin-bottom:14px;
+            flex-wrap:wrap;
+        }
+
+        .results-count {
+            font-size:0.8rem;
+            color:#555;
+        }
+
+        .btn-learn-all {
+            display:inline-flex;
+            align-items:center;
+            gap:7px;
+            background:linear-gradient(135deg, #1a1a1a, #0f1f0f);
+            border:1.5px solid #2a5c2a;
+            border-radius:20px;
+            color:#4caf50;
+            font-size:0.88rem;
+            font-weight:bold;
+            padding:8px 16px;
+            cursor:pointer;
+            white-space:nowrap;
+            -webkit-tap-highlight-color:transparent;
+            transition:all 0.2s;
+            box-shadow:0 2px 12px rgba(0,180,0,0.1);
+        }
+        .btn-learn-all:active,
+        .btn-learn-all:hover {
+            border-color:#4caf50;
+            box-shadow:0 4px 18px rgba(0,180,0,0.2);
+            color:#6ddd70;
+        }
+
+        .results-grid {
+            display:grid;
+            grid-template-columns:1fr 1fr;
+            gap:10px;
+        }
+
+        .dish-card {
+            background:#0f0f0f;
+            border:1.5px solid #1e1e1e;
+            border-radius:12px;
+            padding:13px 11px;
+            cursor:pointer;
+            -webkit-tap-highlight-color:transparent;
+            transition:border-color 0.18s, background 0.18s;
+        }
+        .dish-card:active,
+        .dish-card:hover {
+            border-color:rgba(255,0,0,0.4);
+            background:#141414;
+        }
+
+        .dish-name {
+            font-size:0.83rem;
+            color:#ddd;
+            line-height:1.3;
+            font-weight:500;
+        }
+        .dish-section {
+            font-size:0.7rem;
+            color:#555;
+            margin-top:3px;
+        }
+        .dish-tags {
+            display:flex;
+            flex-wrap:wrap;
+            gap:2px;
+            margin-top:8px;
+        }
+        .tag-pill {
+            font-size:1.5rem;
+            line-height:1;
+        }
+
+        .broth-note {
+            display:inline-flex;
+            align-items:center;
+            align-self:center;
+            margin-left:4px;
+            color:#777;
+            font-size:0.68rem;
+            line-height:1.1;
+            white-space:nowrap;
+        }
+
+        /* ===== CARD VIEWER (browse mode) ===== */
+        .card-viewer {
+            display:none;
+            flex-direction:column;
+            align-items:center;
+            width:100%;
+            max-width:500px;
+            margin:0 auto;
+        }
+
+        .cv-back-row {
+            width:100%;
+            display:flex;
+            align-items:center;
+            gap:10px;
+            margin-bottom:14px;
+        }
+
+        .cv-back-btn {
+            display:inline-flex;
+            align-items:center;
+            gap:5px;
+            background:#131313;
+            border:1.5px solid #252525;
+            border-radius:20px;
+            color:#777;
+            font-size:0.82rem;
+            padding:6px 14px;
+            cursor:pointer;
+            -webkit-tap-highlight-color:transparent;
+            transition:border-color 0.2s, color 0.2s;
+        }
+        .cv-back-btn:active,
+        .cv-back-btn:hover { border-color:#ff0000; color:#fff; }
+
+        .cv-card-tags {
+            flex:1;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            gap:3px;
+            font-size:1.15rem;
+            line-height:1;
+            color:#aaa;
+            min-height:1.2em;
+        }
+
+        .cv-section-label {
+            flex:1;
+            font-size:0.78rem;
+            color:#555;
+            text-align:right;
+        }
+
+        /* ===== LEARNING MODE ===== */
+        .learning-mode {
+            display:none;
+            flex-direction:column;
+            align-items:center;
+            width:100%;
+            max-width:500px;
+            margin:0 auto;
+        }
+
+        .learning-header {
+            width:100%;
+            display:flex;
+            align-items:center;
+            justify-content:space-between;
+            margin-bottom:14px;
+            gap:10px;
+        }
+
+        .learning-progress-text {
+            color:#ff4d4d;
+            font-size:0.9rem;
+            background:rgba(255,0,0,0.15);
+            padding:6px 14px;
+            border-radius:20px;
+            white-space:nowrap;
+        }
+
+        .exit-learning-btn {
+            background:#1a1a1a;
+            border:1.5px solid #333;
+            border-radius:20px;
+            color:#666;
+            font-size:0.82rem;
+            padding:6px 14px;
+            cursor:pointer;
+            -webkit-tap-highlight-color:transparent;
+            transition:all 0.2s;
+        }
+        .exit-learning-btn:active,
+        .exit-learning-btn:hover { border-color:#ff0000; color:#fff; }
+
+        .learning-card-meta {
+            flex:1;
+            display:inline-flex;
+            align-items:center;
+            justify-content:center;
+            gap:6px;
+            min-width:0;
+            padding:6px 10px;
+            background:#111;
+            border:1.5px solid #252525;
+            border-radius:20px;
+            color:#888;
+            font-size:0.82rem;
+            white-space:nowrap;
+            overflow:hidden;
+            text-overflow:ellipsis;
+        }
+
+        .learning-card-tags {
+            display:inline-flex;
+            align-items:center;
+            justify-content:center;
+            gap:2px;
+            flex-shrink:0;
+            font-size:1.05rem;
+            line-height:1;
+        }
+
+        .learning-card-section {
+            overflow:hidden;
+            text-overflow:ellipsis;
+        }
+
+        /* ===== SHARED FLIP CARD ===== */
+        .flip-container {
+            width:100%;
+            max-width:500px;
+            margin:0 auto;
+            perspective:1000px;
+            cursor:pointer;
+            -webkit-tap-highlight-color:transparent;
+            touch-action:manipulation;
+            transition:transform 0.15s;
+            display:flex;
+            justify-content:center;
+        }
+
+        .flip-inner {
+            position:relative;
+            width:-webkit-fit-content;
+            width:fit-content;
+            transition:transform 0.55s cubic-bezier(0.4,0,0.2,1);
+            transform-style:preserve-3d;
+        }
+
+        .flip-container.flipped .flip-inner { transform:rotateY(180deg); }
+
+        /* Swipe overlay tint */
+        .flip-container::after {
+            content:'';
+            position:absolute;
+            inset:0;
+            border-radius:12px;
+            pointer-events:none;
+            transition:background 0.15s;
+            z-index:3;
+        }
+        .flip-container.like::after { background:rgba(0,255,0,0.22); }
+        .flip-container.dislike::after { background:rgba(255,0,0,0.22); }
+
+        .flip-front, .flip-back {
+            position:relative;
+            backface-visibility:hidden;
+            -webkit-backface-visibility:hidden;
+            border-radius:12px;
+            overflow:hidden;
+        }
+
+        .flip-back {
+            position:absolute;
+            top:0; left:0;
+            transform:rotateY(180deg);
+        }
+
+        .flip-name-overlay {
+            position:absolute;
+            top:0; left:0; right:0;
+            z-index:2;
+            pointer-events:none;
+            color:#fff;
+            font-size:0.95rem;
+            font-weight:bold;
+            text-align:center;
+            background:linear-gradient(to bottom, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.5) 60%, rgba(0,0,0,0) 100%);
+            padding:12px 12px 32px;
+            border-radius:12px 12px 0 0;
+            text-shadow:0 1px 5px rgba(0,0,0,0.95);
+            line-height:1.35;
+        }
+
+        .card-img {
+            width:auto;
+            max-width:min(500px, calc(100vw - 32px));
+            height:auto;
+            max-height:400px;
+            display:block;
+            border-radius:12px;
+            background:#0a0a0a;
+        }
+
+        .card-img.is-loading {
+            opacity:0;
+        }
+
+        /* Flip button (shared) */
+        .flip-action-btn {
+            margin-top:13px;
+            width:100%;
+            padding:14px 20px;
+            background:#141414;
+            border:1.5px solid #252525;
+            border-radius:12px;
+            color:#bbb;
+            font-size:1rem;
+            cursor:pointer;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            gap:8px;
+            -webkit-tap-highlight-color:transparent;
+            touch-action:manipulation;
+            transition:border-color 0.2s, background 0.2s, color 0.2s;
+        }
+        .flip-action-btn:active,
+        .flip-action-btn:hover {
+            border-color:#ff0000;
+            background:rgba(255,0,0,0.07);
+            color:#fff;
+        }
+
+        .tap-hint {
+            margin-top:8px;
+            font-size:0.75rem;
+            color:#282828;
+            text-align:center;
+        }
+
+        /* Learning decision buttons */
+        .learning-decision-btns {
+            display:flex;
+            gap:12px;
+            margin-top:14px;
+            width:100%;
+        }
+
+        .btn-forget, .btn-remember {
+            flex:1;
+            padding:14px 10px;
+            border:none;
+            border-radius:12px;
+            font-size:1rem;
+            font-weight:bold;
+            cursor:pointer;
+            -webkit-tap-highlight-color:transparent;
+            transition:opacity 0.2s, transform 0.15s;
+        }
+        .btn-forget:active, .btn-remember:active { transform:scale(0.96); }
+
+        .btn-forget {
+            background:#c62828;
+            color:#fff;
+        }
+        .btn-forget:hover { background:#b71c1c; }
+
+        .btn-remember {
+            background:#2e7d32;
+            color:#fff;
+        }
+        .btn-remember:hover { background:#1b5e20; }
+
+        .swipe-hint-learning {
+            margin-top:10px;
+            font-size:0.78rem;
+            color:#2a2a2a;
+            text-align:center;
+        }
+
+        /* ===== COMPLETION SCREEN ===== */
+        .completion-screen {
+            display:none;
+            flex-direction:column;
+            align-items:center;
+            padding:40px 20px;
+            text-align:center;
+            animation:fadeUp 0.4s ease;
+        }
+
+        .completion-icon { font-size:4.5rem; margin-bottom:14px; animation:popIn 0.4s ease; }
+        .completion-title { color:#fff; font-size:1.6rem; font-weight:bold; margin-bottom:8px; }
+        .completion-sub { color:#ff4d4d; font-size:0.95rem; margin-bottom:28px; }
+
+        .completion-btns {
+            display:flex;
+            gap:12px;
+            flex-wrap:wrap;
+            justify-content:center;
+        }
+
+        .btn-restart {
+            background:#1a6e2a;
+            color:#fff;
+            border:none;
+            border-radius:10px;
+            padding:13px 22px;
+            font-size:1rem;
+            cursor:pointer;
+            -webkit-tap-highlight-color:transparent;
+            transition:background 0.2s;
+        }
+        .btn-restart:hover { background:#145520; }
+
+        .btn-back-list {
+            background:#1a1a1a;
+            color:#ccc;
+            border:1.5px solid #333;
+            border-radius:10px;
+            padding:13px 22px;
+            font-size:1rem;
+            cursor:pointer;
+            -webkit-tap-highlight-color:transparent;
+            transition:all 0.2s;
+        }
+        .btn-back-list:hover { border-color:#ff0000; color:#fff; }
+
+        @keyframes fadeUp {
+            from { opacity:0; transform:translateY(14px); }
+            to   { opacity:1; transform:translateY(0); }
+        }
+        @keyframes popIn {
+            0%   { transform:scale(0.4); opacity:0; }
+            70%  { transform:scale(1.2); }
+            100% { transform:scale(1); opacity:1; }
+        }
+
+        /* Swipe animation */
+        .flip-container.swipe-right {
+            transform:translateX(120%) rotate(20deg) !important;
+            opacity:0;
+            transition:0.35s ease !important;
+        }
+        .flip-container.swipe-left {
+            transform:translateX(-120%) rotate(-20deg) !important;
+            opacity:0;
+            transition:0.35s ease !important;
+        }
+
+        /* ===== MOBILE ===== */
+        @media (max-width:480px) {
+            .content-area { padding:14px 22px 60px 12px; }
+            .results-grid { gap:12px; }
+            .tag-btn { padding:5px 10px; gap:4px; }
+            .tag-emoji { font-size:0.95rem; }
+            .tag-label { font-size:0.72rem; }
+            .learning-header { gap:6px; }
+            .learning-progress-text { font-size:0.78rem; padding:5px 9px; }
+            .learning-card-meta { font-size:0.72rem; padding:5px 8px; gap:4px; }
+            .learning-card-tags { font-size:0.9rem; }
+            .exit-learning-btn { font-size:0.72rem; padding:5px 9px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- STICKY HEADER -->
+<div class="sticky-top" id="stickyTop">
+    <div class="header-row">
+        <a href="index.html" class="back-btn" id="mainBackBtn">← Меню</a>
+        <div class="page-title" id="pageTitle">🧪 Учить по составу</div>
+    </div>
+    <div class="filter-row" id="filterRow"></div>
+</div>
+
+<!-- CONTENT -->
+<div class="content-area">
+
+    <!-- Prompt -->
+    <div class="prompt" id="prompt">
+        <div class="prompt-icon">🧂</div>
+        <div class="prompt-text">Выбери ингредиент выше —<br>увидишь все блюда и сможешь<br>учить их отдельной группой</div>
+    </div>
+
+    <!-- Results list -->
+    <div id="resultsList" style="display:none;">
+        <div class="results-header-row">
+            <span class="results-count" id="resultsCount"></span>
+            <button class="btn-learn-all" id="btnLearnAll">
+                📚 Учить эту группу
+            </button>
+        </div>
+        <div class="results-grid" id="resultsGrid"></div>
+    </div>
+
+    <!-- Card viewer (browse) -->
+    <div class="card-viewer" id="cardViewer">
+        <div class="cv-back-row">
+            <button class="cv-back-btn" id="cvBackBtn">← К списку</button>
+            <span class="cv-card-tags" id="cvCardTags"></span>
+            <span class="cv-section-label" id="cvSectionLabel"></span>
+        </div>
+
+        <div class="flip-container" id="flipContainerBrowse">
+            <div class="flip-inner" id="flipInnerBrowse">
+                <div class="flip-front">
+                    <div class="flip-name-overlay" id="flipNameBrowse"></div>
+                    <img class="card-img" id="cardFrontBrowse" src="" alt="">
+                </div>
+                <div class="flip-back">
+                    <img class="card-img" id="cardBackBrowse" src="" alt="">
+                </div>
+            </div>
+        </div>
+
+        <button class="flip-action-btn" id="flipBtnBrowse">
+            <span>🔄</span><span id="flipTextBrowse">Посмотреть состав</span>
+        </button>
+        <div class="tap-hint">или нажми прямо на карточку</div>
+    </div>
+
+    <!-- Learning mode -->
+    <div class="learning-mode" id="learningMode">
+        <div class="learning-header">
+            <div class="learning-progress-text" id="learningProgress">Осталось: 0 / 0</div>
+            <div class="learning-card-meta" id="learningCardMeta">
+                <span class="learning-card-tags" id="learningCardTags"></span>
+                <span class="learning-card-section" id="learningCardSection"></span>
+            </div>
+            <button class="exit-learning-btn" id="exitLearningBtn">✕ Выйти</button>
+        </div>
+
+        <div class="flip-container" id="flipContainerLearn">
+            <div class="flip-inner" id="flipInnerLearn">
+                <div class="flip-front">
+                    <div class="flip-name-overlay" id="flipNameLearn"></div>
+                    <img class="card-img" id="cardFrontLearn" src="" alt="">
+                </div>
+                <div class="flip-back">
+                    <img class="card-img" id="cardBackLearn" src="" alt="">
+                </div>
+            </div>
+        </div>
+
+        <button class="flip-action-btn" id="flipBtnLearn">
+            <span>🔄</span><span id="flipTextLearn">Посмотреть состав</span>
+        </button>
+
+        <div class="learning-decision-btns">
+            <button class="btn-forget" id="forgetBtn">❌ Не запомнил</button>
+            <button class="btn-remember" id="rememberBtn">✅ Запомнил</button>
+        </div>
+        <div class="swipe-hint-learning">← свайп влево | вправо →</div>
+    </div>
+
+    <!-- Completion -->
+    <div class="completion-screen" id="completionScreen">
+        <div class="completion-icon">🎉</div>
+        <div class="completion-title">Все карточки выучены!</div>
+        <div class="completion-sub" id="completionSub">Отличная работа!</div>
+        <div class="completion-btns">
+            <button class="btn-restart" id="restartBtn">🔄 Повторить группу</button>
+            <button class="btn-back-list" id="backToListBtn">← К списку блюд</button>
+        </div>
+    </div>
+
+</div>
+
+<script>
+// ===== DATA =====
+const TAGS_META = [
+    { id:'курица',         emoji:'🐔', label:'Курица' },
+    { id:'говядина',       emoji:'🥩', label:'Говядина' },
+    { id:'свинина',        emoji:'🐷', label:'Свинина' },
+    { id:'рыба',           emoji:'🐟', label:'Рыба' },
+    { id:'морепродукты',   emoji:'🦐', label:'Море-\nпрод.' },
+    { id:'грибы',          emoji:'🍄', label:'Грибы' },
+    { id:'индейка',        emoji:'🦃', label:'Индейка' },
+    { id:'утка',           emoji:'🦆', label:'Утка' },
+    { id:'вегетарианское', emoji:'🥦', label:'Без мяса' },
+];
+
+const SECS = {
+    'zavtrak':'Завтраки','Detskoe':'Детское','Salaty':'Салаты',
+    'Zacuski':'Закуски','Supy':'Супы','Gor_bluda':'Горячие',
+    'Draniki':'Драники','Pasta':'Паста','Burgery_tostada':'Бургеры',
+    'Pizza':'Пицца','Deserty':'Десерты','103BY':'Меню состояний','sezonnoe':'Сезонное'
+    
+};
+const ICONS = {
+    'zavtrak':'🍳','Detskoe':'👶','Salaty':'🥗','Zacuski':'🍢',
+    'Supy':'🍲','Gor_bluda':'🍽️','Draniki':'🥞','Pasta':'🍝',
+    'Burgery_tostada':'🍔','Pizza':'🍕','Deserty':'🍰','103BY':'🥦','sezonnoe':'🍂'
+};
+const TAG_EMOJI = {
+    'курица':'🐔','говядина':'🥩','свинина':'🐷','рыба':'🐟',
+    'морепродукты':'🦐','грибы':'🍄','индейка':'🦃','утка':'🦆','вегетарианское':'🥦'
+};
+
+const ALL = [
+    {s:'zavtrak',i:1, n:'Бульон с куриным филе',                         t:['курица']},
+    {s:'zavtrak',i:3, n:'Гречотто с трюфельными шампиньонами',           t:['грибы','свинина']},
+    {s:'zavtrak',i:5, n:'Овсянка с беконом',                             t:['свинина']},
+    {s:'zavtrak',i:7, n:'Овсянка с цукатами из киви',                    t:['вегетарианское']},
+    {s:'zavtrak',i:9, n:'Омлет с салатом',                               t:['вегетарианское']},
+    {s:'zavtrak',i:11,n:'Омлет с салатом и курицей',                     t:['курица']},
+    {s:'zavtrak',i:13,n:'Омлет с салатом и беконом',                     t:['свинина']},
+    {s:'zavtrak',i:15,n:'Омлет с салатом и лососем',                     t:['рыба']},
+    {s:'zavtrak',i:17,n:'Сырники с творожно-манговым кремом',     t:['вегетарианское']},
+    {s:'zavtrak',i:19,n:'Блинчики с творогом и пюре манго',       t:['вегетарианское']},
+    {s:'zavtrak',i:21,n:'Скрэмбл с беконом и салатом',                   t:['свинина']},
+    {s:'zavtrak',i:23,n:'Английский завтрак',                            t:['свинина','грибы']},
+    {s:'zavtrak',i:25,n:'Белорусский завтрак',                            t:['свинина','грибы']},
+    {s:'zavtrak',i:27,n:'Американский завтрак',                          t:['свинина']},
+    {s:'zavtrak',i:29,n:'Сэндвич с говядиной',                          t:['говядина']},
+    {s:'Detskoe',i:7, n:'Сырники с творожно-манговым кремом',     t:['вегетарианское']},
+    {s:'Detskoe',i:9, n:'Нарисуй свой сырник',                           t:['вегетарианское']},
+    {s:'Detskoe',i:11,n:'Бульон с куриным филе',                         t:['курица']},
+    {s:'Detskoe',i:13,n:'Бургер с куриным бедром',                       t:['курица']},
+    {s:'Detskoe',i:15,n:'Пицца с сосисками и томатами',                  t:['курица']},
+    {s:'Detskoe',i:17,n:'Куриный биточек с картофельным пюре и овощами', t:['курица']},
+    {s:'Detskoe',i:19,n:'Пицца с ветчиной, курицей и ананасами',         t:['курица','свинина']},
+    {s:'Detskoe',i:21,n:'Сосиски с картофельным пюре',                   t:['курица']},
+    {s:'Detskoe',i:23,n:'Лингвини с сыром',                              t:['вегетарианское'], kb:true},
+    {s:'Detskoe',i:25,n:'Лингвини с ветчиной и курицей',                 t:['курица','свинина']},
+    {s:'Detskoe',i:27,n:'Картофель фри с наггетсами',                    t:['курица']},
+    {s:'Salaty',i:1, n:'Греческий салат с рулетиками из цукини',         t:['вегетарианское']},
+    {s:'Salaty',i:3, n:'Цезарь с креветками',                            t:['морепродукты']},
+    {s:'Salaty',i:5, n:'Цезарь с курицей',                               t:['курица']},
+    {s:'Salaty',i:7, n:'Цезарь с беконом и яйцом',                      t:['свинина']},
+    {s:'Salaty',i:9, n:'Теплый салат с ростбифом и сливочным сыром',     t:['говядина','свинина','грибы']},
+    {s:'Salaty',i:11,n:'Зеленый салат с соусом Ростбиф',                                t:['вегетарианское']},
+    {s:'Salaty',i:13,n:'Оливье с копченой курицей',                      t:['курица','рыба']},
+    {s:'Zacuski',i:1, n:'Тартар из говядины',                            t:['говядина']},
+    {s:'Zacuski',i:3, n:'Карпаччо из говядины',                          t:['говядина']},
+    {s:'Zacuski',i:5, n:'Севиче из лосося с дальневосточным гребешком',  t:['рыба','морепродукты']},
+    {s:'Zacuski',i:7, n:'Сельдь с печеным картофелем и малиновым луком', t:['рыба']},
+    {s:'Zacuski',i:9, n:'Риет из судака',                                t:['рыба']},
+    {s:'Zacuski',i:11,n:'Мясное плато',                                  t:['говядина','свинина','грибы']},
+    {s:'Zacuski',i:13,n:'Картофель фри с наггетсами',                    t:['курица']},
+    {s:'Zacuski',i:15,n:'Запеченный Чеддер',                             t:['вегетарианское']},
+    {s:'Zacuski',i:17,n:'Пивной набор',                                  t:['курица','свинина']},
+    {s:'Zacuski',i:19,n:'Жареные креветки с тайским айоли',              t:['морепродукты']},
+    {s:'Zacuski',i:21,n:'Крылышки в глазури Унаги и Свит Чили с кунжутом', t:['курица']},
+    {s:'Zacuski',i:23,n:'Мясная доска на компанию',                      t:['курица','свинина','рыба']},
+    {s:'Zacuski',i:25,n:'Гренки с балтийским соусом',                    t:['рыба']},
+    {s:'Supy',i:1, n:'Солянка GARAGE',                                   t:['курица','свинина']},
+    {s:'Supy',i:3, n:'Грибной крем-суп с трюфельной пастой',             t:['грибы','свинина']},
+    {s:'Supy',i:5, n:'Борщ с говяжьими щечками',                        t:['говядина','свинина'], kb:true},
+    {s:'Supy',i:7, n:'Том ям с морепродуктами',                          t:['морепродукты','грибы'], kb:true},
+    {s:'Supy',i:9, n:'Суп куриный',                          t:['курица'], kb:true},
+    {s:'Gor_bluda',i:1, n:'Куриные биточки с картофельным пюре и грибным соусом', t:['курица','грибы']},
+    {s:'Gor_bluda',i:3, n:'Шницель из курицы с картофельными дольками и зеленым салатом', t:['курица']},
+    {s:'Gor_bluda',i:5, n:'Картофельная запеканка с говяжьими щечками в сливочном демигласе', t:['говядина']},
+    {s:'Gor_bluda',i:7, n:'Рыбная котлета с пюре, икрой и соусом сливочный тайгермилк', t:['рыба','курица']},
+    {s:'Gor_bluda',i:9, n:'Рулька с картофелем и яйцом',                 t:['свинина']},
+    {s:'Gor_bluda',i:11,n:'Ребрышки с мятым картофелем, соусом из хрена и опятами', t:['свинина','грибы']},
+    {s:'Gor_bluda',i:13,n:'Рис в азиатском стиле с говядиной',           t:['говядина','грибы','рыба']},
+    {s:'Gor_bluda',i:15,n:'Рис в азиатском стиле с курицей',             t:['курица','грибы','рыба']},
+    {s:'Gor_bluda',i:17,n:'Запеченная свинина в сливочном соусе',        t:['свинина','грибы']},
+    {s:'Gor_bluda',i:19,n:'Стейк из говядины с трюфельным пюре и огурцами кимчи', t:['говядина']},
+    {s:'Gor_bluda',i:21,n:'Стейк из лосося с печеными овощами',          t:['рыба','грибы']},
+    {s:'Gor_bluda',i:23,n:'Утиное филе с пюре из корня сельдерея с ягодным конфи', t:['утка']},
+    {s:'Gor_bluda',i:25,n:'Вырезка из говядины с картофельными дольками и овощами', t:['говядина','грибы']},
+    {s:'Gor_bluda',i:27,n:'Говяжьи щечки с трюфельным пюре',            t:['говядина']},
+    {s:'Draniki',i:1, n:'Драники с куриным бедром и грибным соусом',     t:['курица','грибы']},
+    {s:'Draniki',i:3, n:'Драники с рулькой и яйцом',                     t:['свинина']},
+    {s:'Draniki',i:5, n:'Драники с беконом и сметаной',                  t:['свинина']},
+    {s:'Draniki',i:7, n:'Драники с лососем и зеленым соусом',            t:['рыба']},
+    {s:'Draniki',i:9, n:'Драники с риетом из копченого судака',          t:['рыба']},
+    {s:'Pasta',i:1, n:'Паста с цыпленком, грибами и трюфельным соусом',  t:['курица','грибы']},
+    {s:'Pasta',i:3, n:'Паста с беконом и сливочным соусом',              t:['свинина']},
+    {s:'Pasta',i:5, n:'Паста с креветками, брокколи и сыром дорблю',     t:['морепродукты']},
+    {s:'Pasta',i:7, n:'Паста с говядиной в азиатском стиле',             t:['говядина','грибы'], kb:true},
+    {s:'Burgery_tostada',i:1, n:'Тостада с говядиной',                   t:['говядина']},
+    {s:'Burgery_tostada',i:3, n:'Тостада с курицей',                     t:['курица']},
+    {s:'Burgery_tostada',i:5, n:'Бургер с говядиной, огурцами кимчи и малиновой горчицей', t:['говядина']},
+    {s:'Burgery_tostada',i:7, n:'Бургер с курицей, беконом и соусом Тартар', t:['курица','свинина']},
+    {s:'Pizza',i:1, n:'Ветчина и грибы',                                 t:['свинина','грибы']},
+    {s:'Pizza',i:3, n:'Баварская',                                        t:['свинина']},
+    {s:'Pizza',i:5, n:'Гавайская с ананасами кимчи',                     t:['свинина']},
+    {s:'Pizza',i:7, n:'Пепперони',                                        t:['свинина']},
+    {s:'Pizza',i:9, n:'Маргарита',                                        t:['вегетарианское']},
+    {s:'Pizza',i:11,n:'Барбекю',                                          t:['свинина','грибы']},
+    {s:'Pizza',i:13,n:'Шеф-пицца',                                        t:['свинина','грибы']},
+    {s:'Pizza',i:15,n:'Цезарь',                                           t:['курица','свинина']},
+    {s:'Pizza',i:17,n:'С говяжьими щечками',                             t:['говядина']},
+    {s:'Pizza',i:19,n:'Бонанза',                                          t:['свинина']},
+    {s:'Pizza',i:21,n:'Вегетарианская',                                   t:['вегетарианское','грибы']},
+    {s:'Pizza',i:23,n:'Грибная с трюфельным медом',                      t:['вегетарианское','грибы']},
+    {s:'Pizza',i:25,n:'GARAGE',                                           t:['говядина','рыба']},
+    {s:'Pizza',i:27,n:'Чизбургер',                                        t:['говядина','свинина']},
+    {s:'Pizza',i:29,n:'5 сыров с трюфельным медом',                      t:['вегетарианское']},
+    {s:'Pizza',i:31,n:'С креветкой и стружкой тунца',                    t:['морепродукты','рыба']},
+    {s:'Pizza',i:33,n:'5 сыров с пепперони',                             t:['свинина']},
+    {s:'Deserty',i:1, n:'Фондан со сметанным соусом',                    t:['вегетарианское']},
+    {s:'Deserty',i:3, n:'Сырники с творожно-манговым кремом',     t:['вегетарианское']},
+    {s:'Deserty',i:5, n:'Баблс с ананасом',                              t:['вегетарианское']},
+    {s:'Deserty',i:7, n:'Баблс с бананом',                               t:['вегетарианское']},
+     {s:'Deserty',i:9, n:'Наполеон',                               t:['вегетарианское']},
+     {s:'Deserty',i:11, n:'Торт Медовик',                               t:['вегетарианское']},
+    // 103BY
+        {s:'103BY',i:1, n:'Поке с креветкой',                t:['морепродукты']},
+    {s:'103BY',i:3, n:'Салат с маринованной свеклой',                t:['вегетарианское']},
+    {s:'103BY',i:5, n:'Омлет с индейкой и салатом из свежих овощей',     t:['индейка']},
+    {s:'103BY',i:7, n:'Омлет с креветками и салатом из свежих овощей',   t:['морепродукты']},
+    {s:'103BY',i:9, n:'Йогурт с чиа и пюре манго',                      t:['вегетарианское']},
+    {s:'103BY',i:11,n:'Салат с ростбифом и картофельными дольками',      t:['говядина']},
+    {s:'103BY',i:13,n:'Куриные биточки с гречкой и салатом',             t:['курица']},
+    {s:'103BY',i:15,n:'Киноа-боул с креветкой',                   t:['морепродукты']},
+    {s:'103BY',i:17,n:'Поке с лососем',                                  t:['рыба']},
+    {s:'103BY',i:19,n:'Салат с курицей и соусом Дзадзики',                                  t:['курица']},
+    {s:'103BY',i:21,n:'Киноа-боул с ростбифом',                                  t:['говядина']},
+    {s:'103BY',i:23,n:'Матча-смузи со шпинатом и бананом',                                  t:['вегетарианское']},
+    {s:'103BY',i:25,n:'Соба с креветками',                                  t:['морепродукты']},
+    {s:'103BY',i:27,n:'Тостада с креветками и картофельными дольками',                                  t:['морепродукты']},
+    {s:'sezonnoe',i:5,n:'Пельмени с тунцом и креветкой',                                  t:['морепродукты','рыба']},
+     {s:'sezonnoe',i:7,n:'Свиная грудинка с пюре и домашней аджикой',        t:['свинина']},
+     {s:'sezonnoe',i:9,n:'Крем-суп из батата с кокосовым молоком',                                  t:['вегетарианское']},
+     {s:'sezonnoe',i:11,n:'Тартар из тунца',                                  t:['рыба']},
+    {s:'sezonnoe',i:13,n:'Нисуаз с тунцом',                                  t:['рыба']},
+];
+
+// ===== ELEMENTS =====
+const filterRow      = document.getElementById('filterRow');
+const prompt         = document.getElementById('prompt');
+const resultsList    = document.getElementById('resultsList');
+const resultsCount   = document.getElementById('resultsCount');
+const resultsGrid    = document.getElementById('resultsGrid');
+const btnLearnAll    = document.getElementById('btnLearnAll');
+const cardViewer     = document.getElementById('cardViewer');
+const cvBackBtn      = document.getElementById('cvBackBtn');
+const cvCardTags     = document.getElementById('cvCardTags');
+const cvSectionLabel = document.getElementById('cvSectionLabel');
+const learningMode   = document.getElementById('learningMode');
+const learningProgress = document.getElementById('learningProgress');
+const learningCardMeta = document.getElementById('learningCardMeta');
+const learningCardTags = document.getElementById('learningCardTags');
+const learningCardSection = document.getElementById('learningCardSection');
+const exitLearningBtn = document.getElementById('exitLearningBtn');
+const completionScreen = document.getElementById('completionScreen');
+const completionSub  = document.getElementById('completionSub');
+const restartBtn     = document.getElementById('restartBtn');
+const backToListBtn  = document.getElementById('backToListBtn');
+const mainBackBtn    = document.getElementById('mainBackBtn');
+const stickyTop      = document.getElementById('stickyTop');
+
+// Browse card
+const flipContainerBrowse = document.getElementById('flipContainerBrowse');
+const flipInnerBrowse     = document.getElementById('flipInnerBrowse');
+const cardFrontBrowse     = document.getElementById('cardFrontBrowse');
+const cardBackBrowse      = document.getElementById('cardBackBrowse');
+const flipNameBrowse      = document.getElementById('flipNameBrowse');
+const flipBtnBrowse       = document.getElementById('flipBtnBrowse');
+const flipTextBrowse      = document.getElementById('flipTextBrowse');
+
+// Learning card
+const flipContainerLearn = document.getElementById('flipContainerLearn');
+const flipInnerLearn     = document.getElementById('flipInnerLearn');
+const cardFrontLearn     = document.getElementById('cardFrontLearn');
+const cardBackLearn      = document.getElementById('cardBackLearn');
+const flipNameLearn      = document.getElementById('flipNameLearn');
+const flipBtnLearn       = document.getElementById('flipBtnLearn');
+const flipTextLearn      = document.getElementById('flipTextLearn');
+const forgetBtn          = document.getElementById('forgetBtn');
+const rememberBtn        = document.getElementById('rememberBtn');
+
+// ===== STATE =====
+let activeTag = null;
+let activeMatches = [];
+let isBrowseFlipped = false;
+let isLearnFlipped = false;
+let browseLoadToken = 0;
+
+// Learning state
+let learnCards = [];
+let learnAll   = [];
+let learnIdx   = 0;
+
+// Swipe state
+let isDragging = false;
+let startX = 0;
+let currentX = 0;
+
+// ===== BUILD FILTER BUTTONS =====
+TAGS_META.forEach(tm => {
+    const btn = document.createElement('button');
+    btn.className = 'tag-btn';
+    btn.dataset.tag = tm.id;
+    btn.innerHTML = `<span class="tag-emoji">${tm.emoji}</span><span class="tag-label">${tm.label}</span>`;
+    btn.addEventListener('click', () => {
+        if (activeTag === tm.id) {
+            deactivateTag();
+        } else {
+            activateTag(tm.id, btn);
+        }
+    });
+    filterRow.appendChild(btn);
+});
+
+function activateTag(tagId, btn) {
+    document.querySelectorAll('.tag-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    activeTag = tagId;
+    activeMatches = ALL.filter(d => d.t.includes(tagId));
+    showResults();
+}
+
+function deactivateTag() {
+    document.querySelectorAll('.tag-btn').forEach(b => b.classList.remove('active'));
+    activeTag = null;
+    activeMatches = [];
+    showState('prompt');
+}
+
+// ===== VIEW STATES =====
+function showState(state) {
+    prompt.style.display         = 'none';
+    resultsList.style.display    = 'none';
+    cardViewer.style.display     = 'none';
+    learningMode.style.display   = 'none';
+    completionScreen.style.display = 'none';
+
+    // Show/hide filter row based on state
+    filterRow.style.display = (state === 'learning' || state === 'completion') ? 'none' : 'flex';
+    mainBackBtn.href = (state === 'learning' || state === 'completion') ? '#' : 'index.html';
+    if (state === 'learning' || state === 'completion') {
+        mainBackBtn.onclick = (e) => { e.preventDefault(); exitLearning(); };
+    } else {
+        mainBackBtn.onclick = null;
+    }
+
+    if (state === 'prompt')     { prompt.style.display = 'flex'; }
+    if (state === 'results')    { resultsList.style.display = 'block'; }
+    if (state === 'card-view')  { cardViewer.style.display = 'flex'; }
+    if (state === 'learning')   { learningMode.style.display = 'flex'; }
+    if (state === 'completion') { completionScreen.style.display = 'flex'; }
+}
+
+function showResults() {
+    const tm = TAGS_META.find(t => t.id === activeTag);
+    resultsCount.textContent = `${tm.emoji} ${tm.label} — ${activeMatches.length} блюд`;
+
+    resultsGrid.innerHTML = activeMatches.map(d => {
+        const icon = ICONS[d.s] || '📋';
+        const sec  = SECS[d.s]  || d.s;
+        const pills = d.t.map(tag => `<span class="tag-pill">${TAG_EMOJI[tag] || ''}</span>`).join('');
+        const brothNote = d.kb ? '<span class="broth-note">(на кур.бульоне)</span>' : '';
+        return `<div class="dish-card"
+                     data-s="${d.s}" data-i="${d.i}"
+                     data-n="${d.n.replace(/"/g,'&quot;')}">
+            <div class="dish-name">${d.n}</div>
+            <div class="dish-section">${sec}</div>
+            <div class="dish-tags">${pills}${brothNote}</div>
+        </div>`;
+    }).join('');
+
+    showState('results');
+}
+
+// ===== BROWSE CARD =====
+function preloadImg(src) {
+    return new Promise(resolve => {
+        const img = new Image();
+        img.onload = () => resolve(true);
+        img.onerror = () => resolve(false);
+        img.src = src;
+    });
+}
+
+function clearBrowseImages() {
+    cardFrontBrowse.classList.add('is-loading');
+    cardBackBrowse.classList.add('is-loading');
+    cardFrontBrowse.removeAttribute('src');
+    cardBackBrowse.removeAttribute('src');
+}
+
+async function openBrowseCard(s, i, n) {
+    const token = ++browseLoadToken;
+
+    isBrowseFlipped = false;
+    flipInnerBrowse.style.transition = 'none';
+    flipContainerBrowse.classList.remove('flipped');
+    flipInnerBrowse.offsetHeight;
+    flipInnerBrowse.style.transition = '';
+    flipTextBrowse.textContent = 'Посмотреть состав';
+
+    const dish = ALL.find(d => d.s === s && d.i === i && d.n === n);
+    const frontSrc = `images/${s}/${i}.png`;
+    const backSrc  = `images/${s}/${i + 1}.png`;
+
+    // Сначала очищаем старые изображения, чтобы при переходе не мелькала предыдущая карточка.
+    clearBrowseImages();
+
+    flipNameBrowse.textContent = n;
+    cvCardTags.textContent = dish ? dish.t.map(tag => TAG_EMOJI[tag] || '').join('') + (dish.kb ? ' (на кур.бульоне)' : '') : '';
+    cvSectionLabel.textContent = SECS[s] || s;
+
+    showState('card-view');
+    window.scrollTo({ top:0, behavior:'smooth' });
+
+    // Дожидаемся загрузки новой пары картинок и применяем только актуальный запрос.
+    await Promise.all([preloadImg(frontSrc), preloadImg(backSrc)]);
+    if (token !== browseLoadToken) return;
+
+    cardFrontBrowse.src = frontSrc;
+    cardBackBrowse.src  = backSrc;
+    cardFrontBrowse.classList.remove('is-loading');
+    cardBackBrowse.classList.remove('is-loading');
+}
+
+function setBrowseFlip(flipped) {
+    isBrowseFlipped = flipped;
+    flipContainerBrowse.classList.toggle('flipped', flipped);
+    flipTextBrowse.textContent = flipped ? 'Посмотреть фото' : 'Посмотреть состав';
+}
+
+cvBackBtn.addEventListener('click', () => showResults());
+flipContainerBrowse.addEventListener('click', () => setBrowseFlip(!isBrowseFlipped));
+flipBtnBrowse.addEventListener('click', e => { e.stopPropagation(); setBrowseFlip(!isBrowseFlipped); });
+
+// ===== LEARNING MODE =====
+function shuffle(arr) {
+    const a = [...arr];
+    for (let i = a.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a;
+}
+
+function startLearning() {
+    learnAll   = [...activeMatches];
+    learnCards = shuffle(learnAll);
+    learnIdx   = 0;
+    showState('learning');
+    window.scrollTo({ top:0, behavior:'smooth' });
+    showLearnCard();
+}
+
+function showLearnCard() {
+    if (!learnCards.length) {
+        showCompletion();
+        return;
+    }
+
+    isLearnFlipped = false;
+    // Reset flip instantly
+    flipInnerLearn.style.transition = 'none';
+    flipContainerLearn.classList.remove('flipped');
+    flipContainerLearn.classList.remove('like', 'dislike', 'swipe-right', 'swipe-left');
+    flipInnerLearn.offsetHeight;
+    flipInnerLearn.style.transition = '';
+    flipTextLearn.textContent = 'Посмотреть состав';
+
+    const card = learnCards[learnIdx % learnCards.length];
+    flipNameLearn.textContent = card.n;
+    cardFrontLearn.src = `images/${card.s}/${card.i}.png`;
+    cardBackLearn.src  = `images/${card.s}/${card.i + 1}.png`;
+
+    // Значки состава + категория без emoji в режиме обучения
+    learningCardTags.textContent = (card.t || []).map(tag => TAG_EMOJI[tag] || '').join('') + (card.kb ? ' (на кур.бульоне)' : '');
+    learningCardSection.textContent = SECS[card.s] || card.s;
+
+    updateLearningProgress();
+}
+
+function updateLearningProgress() {
+    learningProgress.textContent = `Осталось: ${learnCards.length} / ${learnAll.length}`;
+}
+
+function setLearnFlip(flipped) {
+    isLearnFlipped = flipped;
+    flipContainerLearn.classList.toggle('flipped', flipped);
+    flipTextLearn.textContent = flipped ? 'Посмотреть фото' : 'Посмотреть состав';
+}
+
+function markRemember() {
+    if (!learnCards.length) return;
+    learnCards.splice(0, 1);
+    updateLearningProgress();
+    if (!learnCards.length) { animateLearnSwipe('right', true); return; }
+    animateLearnSwipe('right', false);
+}
+
+function markForget() {
+    if (!learnCards.length) return;
+    const card = learnCards.splice(0, 1)[0];
+    learnCards.push(card);
+    animateLearnSwipe('left', false);
+}
+
+function animateLearnSwipe(dir, isLast) {
+    // Instantly reset flip before swipe
+    flipInnerLearn.style.transition = 'none';
+    flipContainerLearn.classList.remove('flipped');
+    flipInnerLearn.offsetHeight;
+    flipInnerLearn.style.transition = '';
+
+    const cls = dir === 'right' ? 'swipe-right' : 'swipe-left';
+    flipContainerLearn.classList.add(cls);
+    setTimeout(() => {
+        flipContainerLearn.classList.remove(cls, 'like', 'dislike');
+        if (isLast) { showCompletion(); }
+        else { showLearnCard(); }
+    }, 320);
+}
+
+function showCompletion() {
+    const tm = TAGS_META.find(t => t.id === activeTag);
+    completionSub.textContent = `${tm.emoji} ${tm.label} — все ${learnAll.length} блюд выучены!`;
+    showState('completion');
+}
+
+function exitLearning() {
+    showResults();
+    window.scrollTo({ top:0, behavior:'smooth' });
+}
+
+flipContainerLearn.addEventListener('click', () => {
+    if (!isDragging) setLearnFlip(!isLearnFlipped);
+});
+flipBtnLearn.addEventListener('click', e => { e.stopPropagation(); setLearnFlip(!isLearnFlipped); });
+forgetBtn.addEventListener('click', markForget);
+rememberBtn.addEventListener('click', markRemember);
+exitLearningBtn.addEventListener('click', exitLearning);
+restartBtn.addEventListener('click', startLearning);
+backToListBtn.addEventListener('click', () => { showResults(); window.scrollTo({ top:0, behavior:'smooth' }); });
+btnLearnAll.addEventListener('click', startLearning);
+
+// ===== SWIPE (learning mode) =====
+flipContainerLearn.addEventListener('mousedown', e => {
+    isDragging = false;
+    startX = e.pageX;
+    currentX = startX;
+    flipContainerLearn.addEventListener('mousemove', onMouseMove);
+    document.addEventListener('mouseup', onMouseUp);
+});
+
+flipContainerLearn.addEventListener('touchstart', e => {
+    isDragging = false;
+    startX = e.touches[0].pageX;
+    currentX = startX;
+}, { passive:true });
+
+flipContainerLearn.addEventListener('touchmove', e => {
+    currentX = e.touches[0].pageX;
+    const diff = currentX - startX;
+    if (Math.abs(diff) > 8) isDragging = true;
+    flipContainerLearn.style.transform = `translateX(${diff * 0.5}px) rotate(${diff * 0.02}deg)`;
+    if (diff > 30) {
+        flipContainerLearn.classList.add('like');
+        flipContainerLearn.classList.remove('dislike');
+    } else if (diff < -30) {
+        flipContainerLearn.classList.add('dislike');
+        flipContainerLearn.classList.remove('like');
+    } else {
+        flipContainerLearn.classList.remove('like','dislike');
+    }
+}, { passive:true });
+
+flipContainerLearn.addEventListener('touchend', () => {
+    flipContainerLearn.style.transform = '';
+    flipContainerLearn.classList.remove('like','dislike');
+    const diff = currentX - startX;
+    if (Math.abs(diff) > 70) {
+        diff > 0 ? markRemember() : markForget();
+    }
+    setTimeout(() => { isDragging = false; }, 50);
+});
+
+function onMouseMove(e) {
+    currentX = e.pageX;
+    const diff = currentX - startX;
+    if (Math.abs(diff) > 8) isDragging = true;
+    flipContainerLearn.style.transform = `translateX(${diff * 0.5}px) rotate(${diff * 0.02}deg)`;
+    if (diff > 30) {
+        flipContainerLearn.classList.add('like');
+        flipContainerLearn.classList.remove('dislike');
+    } else if (diff < -30) {
+        flipContainerLearn.classList.add('dislike');
+        flipContainerLearn.classList.remove('like');
+    } else {
+        flipContainerLearn.classList.remove('like','dislike');
+    }
+}
+
+function onMouseUp() {
+    flipContainerLearn.removeEventListener('mousemove', onMouseMove);
+    document.removeEventListener('mouseup', onMouseUp);
+    flipContainerLearn.style.transform = '';
+    flipContainerLearn.classList.remove('like','dislike');
+    const diff = currentX - startX;
+    if (Math.abs(diff) > 70) {
+        diff > 0 ? markRemember() : markForget();
+    }
+    setTimeout(() => { isDragging = false; }, 50);
+}
+
+// ===== RESULTS GRID TAP / SCROLL =====
+// На мобильных touchend срабатывал даже после прокрутки списка — из-за этого
+// при скролле случайно открывались карточки. Теперь карточка открывается только
+// если это был короткий тап без заметного движения пальца.
+let resultsTouchTarget = null;
+let resultsTouchStartX = 0;
+let resultsTouchStartY = 0;
+let resultsTouchMoved = false;
+let suppressResultsClickUntil = 0;
+
+function openDishCardElement(card) {
+    openBrowseCard(card.dataset.s, parseInt(card.dataset.i), card.dataset.n);
+}
+
+resultsGrid.addEventListener('click', e => {
+    if (Date.now() < suppressResultsClickUntil) return;
+    const card = e.target.closest('.dish-card');
+    if (!card) return;
+    openDishCardElement(card);
+});
+
+resultsGrid.addEventListener('touchstart', e => {
+    const card = e.target.closest('.dish-card');
+    resultsTouchTarget = card;
+    resultsTouchMoved = false;
+    if (!card || !e.touches.length) return;
+    resultsTouchStartX = e.touches[0].pageX;
+    resultsTouchStartY = e.touches[0].pageY;
+}, { passive:true });
+
+resultsGrid.addEventListener('touchmove', e => {
+    if (!resultsTouchTarget || !e.touches.length) return;
+    const dx = Math.abs(e.touches[0].pageX - resultsTouchStartX);
+    const dy = Math.abs(e.touches[0].pageY - resultsTouchStartY);
+    if (dx > 10 || dy > 10) resultsTouchMoved = true;
+}, { passive:true });
+
+resultsGrid.addEventListener('touchend', e => {
+    if (!resultsTouchTarget) return;
+    const card = resultsTouchTarget;
+    resultsTouchTarget = null;
+
+    if (resultsTouchMoved) return;
+
+    e.preventDefault();
+    suppressResultsClickUntil = Date.now() + 500;
+    openDishCardElement(card);
+}, { passive:false });
+
+resultsGrid.addEventListener('touchcancel', () => {
+    resultsTouchTarget = null;
+    resultsTouchMoved = false;
+});
+
+// ===== INIT =====
+showState('prompt');
+</script>
+</body>
+</html>
