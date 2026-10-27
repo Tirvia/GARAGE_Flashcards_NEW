@@ -6,15 +6,6 @@ const groups=new Map(M.groups.map(g=>[g.id,g]));
 const isLive=s=>s&&s.status==="published"&&groups.get(s.group)?.status==="published";
 const anchors=[...document.querySelectorAll('a[href*="section="]')];
 const listed=new Set();
-for(const a of anchors){
- const section=new URL(a.href,location.href).searchParams.get("section");
- if(!section)continue;listed.add(section);
- const record=byId.get(section);
- const li=a.closest("li.subcategory-item");
- const card=a.closest(".category-card");
- if(!isLive(record)){if(li)li.hidden=true;else if(card)card.hidden=true;continue}
- if(record.name && (a.classList.contains("subcategory-link")))a.textContent=record.name;
-}
 const targets=new Map();
 for(const card of document.querySelectorAll(".category-card")){
  const groupLink=card.querySelector('a[href*="group="],a[href*="section="]');
@@ -22,6 +13,19 @@ for(const card of document.querySelectorAll(".category-card")){
  const params=new URL(groupLink.href,location.href).searchParams;
  const groupId=params.get("group")||byId.get(params.get("section"))?.group;
  if(groupId)targets.set(groupId,card);
+}
+for(const a of anchors){
+ const section=new URL(a.href,location.href).searchParams.get("section");
+ if(!section)continue;
+ const record=byId.get(section);
+ const li=a.closest("li.subcategory-item"),card=a.closest(".category-card");
+ if(!isLive(record)){if(li)li.remove();else if(card)card.hidden=true;continue}
+ if(a.classList.contains("subcategory-link")){
+   a.textContent=record.name;
+   const desired=targets.get(record.group)?.querySelector(".subcategory-list");
+   if(li&&desired&&li.parentElement!==desired)desired.append(li);
+   listed.add(section);
+ }
 }
 for(const group of M.groups){
  if(group.status!=="published")continue;
