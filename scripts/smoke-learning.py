@@ -19,6 +19,8 @@ def complete_questions(page, amount):
         option.click()
         page.locator("#checkBtn").click()
         expect(page.locator("#feedback")).to_be_visible()
+        expect(page.locator("#feedback .answer-explanation")).to_be_visible()
+        assert page.locator("#feedback .answer-explanation").inner_text().strip()
         page.locator("#nextBtn").click()
     expect(page.locator("#summary")).to_be_visible()
     assert page.locator("#resultScore").inner_text()
@@ -89,7 +91,7 @@ with sync_playwright() as p:
     expect(mobile.locator('[data-mode="daily"]')).to_be_visible()
     mobile.locator('[data-mode="daily"]').click()
     expect(mobile.locator("#questionPrompt")).to_be_visible()
-    assert mobile.locator("#choices .choice").count() >= 4
+    assert mobile.locator("#choices .choice").count() >= 2  # comparisons have exactly two answers
     mobile.screenshot(path=str(OUT / "training-mobile.png"), full_page=True)
     check_errors(mobile_errors)
     mobile.close()
