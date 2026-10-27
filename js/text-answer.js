@@ -1,17 +1,133 @@
-(function(){
-const esc=s=>String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
-function wrap(s,cap){const words=s.split(/\s+/),out=[];let line="";for(const w of words){if(line&&(line+" "+w).length>cap){out.push(line);line=w}else line+=(line?" ":"")+w}if(line)out.push(line);return out}
-window.GARAGE_answerSrc=function(c){
-if(!c)return "";const input=(c.composition||c.answerText||"").trim();if(c.compositionNeedsReview && c.back)return c.back;if(!input)return c.back||"";
-const script=document.querySelector("script[src*=menu-data]");
-const bg=script?new URL("../images/composition-background.png",script.src).href:new URL("images/composition-background.png",location.href).href;
-const rows=input.split(/\r?\n/).filter(x=>x.trim()).map(s=>{const minor=/^\s{2,}[-*+]\s/.test(s),center=/^\s*>/.test(s),note=/^\s*\*/.test(s)&&!/^\s*[-*+]\s/.test(s);return {kind:center?"center":minor?"nested":note?"note":"item",value:s.replace(/^\s*>\s*/,"").replace(/^\s*[-*+]\s+/,"").replace(/^\s*\*(.*?)\*\s*$/,"$1").replace(/\*\*/g,"").trim()}});
-function arrange(font){let total=0;const blocks=rows.map(o=>{const size=o.kind==="nested"||o.kind==="note"?font*.82:font;const lineHeight=size*1.32;const width=o.kind==="center"?39:o.kind==="nested"?38:35;const lines=wrap(o.value,width);total+=lines.length*lineHeight+(o.kind==="item"?9:3);return {...o,lines,size,lineHeight}});return {blocks,total}}
-let font=c.compositionFont==="small"?29:38,plan=arrange(font);while(font>17&&plan.total>910){font--;plan=arrange(font)}
-const allCentered=c.compositionAlign==="center"||(c.compositionAlign!=="left"&&rows.length&&rows.every(r=>r.kind==="center"));let y=allCentered?Math.max(220,(1200-plan.total)/2):Math.max(167,Math.min(240,(1200-plan.total)/2));
-const frag=[];for(const b of plan.blocks){const x=allCentered?400:b.kind==="center"?400:b.kind==="nested"?172:120;const marker=allCentered?"":b.kind==="item"?"<circle cx=\"97\" cy=\""+(y+b.size*.55)+"\" r=\"5.5\" fill=\"black\"/>":b.kind==="nested"?"<circle cx=\"146\" cy=\""+(y+b.size*.55)+"\" r=\"4\" fill=\"white\" stroke=\"black\" stroke-width=\"2\"/>":"";frag.push(marker);b.lines.forEach((line,k)=>frag.push("<text x=\""+x+"\" y=\""+(y+b.size+k*b.lineHeight)+"\" font-size=\""+b.size+"\" fill=\"black\" font-family=\"Arial,sans-serif\" "+(allCentered||b.kind==="center"?"text-anchor=\"middle\"":"")+">"+esc(line)+"</text>"));y+=b.lines.length*b.lineHeight+(b.kind==="item"?9:3)}
-const titleLines=wrap(c.title||"",25),ts=titleLines.length>1?43:48;const heading=titleLines.map((line,k)=>"<text x=\"400\" y=\""+(titleLines.length>1?107+k*58:99)+"\" font-size=\""+ts+"\" font-family=\"Arial,sans-serif\" text-anchor=\"middle\" font-weight=\"bold\">"+esc(line)+"</text>").join("");
-const svg="<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 800 1200\" width=\"800\" height=\"1200\">"+heading+frag.join("")+"</svg>";
-return "data:image/svg+xml;charset=utf-8,"+encodeURIComponent(svg);
-};
+/* Composition renderer. Original frame is a CSS background of the back-side image. */
+(function () {
+  'use strict';
+  const xml = value => String(value).replace(/&/g,'&amp;').replace(/</g,'&lt;')
+    .replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&apos;');
+  const canvas = document.createElement('canvas');
+  const ctx = canvas.getContext('2d');
+
+  function width(text,size,italic,bold) {
+    if (!ctx) return Array.from(text).length * size * .56;
+    ctx.font = (italic ? 'italic ' : '') + (bold ? 'bold ' : '') + size + 'px Arial, sans-serif';
+    return ctx.measureText(text).width;
+  }
+
+  function inlines(value) {
+    const chunks=[], pattern=/(\*\*[^*]+\*\*|\*[^*]+\*|_[^_]+_)/g;
+    let last=0;
+    for(const match of value.matchAll(pattern)) {
+      if(match.index>last) chunks.push({text:value.slice(last,match.index),italic:false,bold:false,small:false});
+      const token=match[0],bold=token.startsWith('**');
+      chunks.push({text:token.slice(bold?2:1,bold?-2:-1),italic:!bold,bold,small:!bold});
+      last=match.index+token.length;
+    }
+    if(last<value.length)chunks.push({text:value.slice(last),italic:false,bold:false,small:false});
+    return chunks;
+  }
+
+  function blocks(markdown) {
+    const result=[];
+    for(const original of markdown.split(/\r?\n/)) {
+      if(!original.trim())continue;
+      const trimmed=original.trim();
+      let kind='plain',text=trimmed;
+      if(/^\s*>\s+/.test(original)){kind='center';text=trimmed.replace(/^>\s*/,'');}
+      else if(/^\s{2,}[-+*]\s+/.test(original)){kind='nested';text=original.replace(/^\s*[-+*]\s+/,'');}
+      else if(/^\s*[-+*]\s+/.test(original)){kind='item';text=original.replace(/^\s*[-+*]\s+/,'');}
+      else if(/^\s{2,}/.test(original)||/^\*[^*]+\*$/.test(trimmed)){kind='note';text=trimmed;}
+      else if(/^#{1,4}\s+/.test(trimmed)){kind='center';text=trimmed.replace(/^#{1,4}\s+/,'');}
+      text=text.trim().replace(/<\/?(?:p|em|strong|small)>/g,'');
+      if(text)result.push({kind,fragments:inlines(text)});
+    }
+    return result;
+  }
+
+  function splitHugeWord(word,style,max,size) {
+    const result=[];let rest=word;
+    while(rest) {
+      let cut=1;
+      while(cut<rest.length&&width(rest.slice(0,cut+1),size,style.italic,style.bold)<=max)cut++;
+      result.push(rest.slice(0,cut));rest=rest.slice(cut);
+    }
+    return result;
+  }
+
+  function wrapped(fragments,max,font) {
+    const lines=[];let line=[],used=0;
+    function flush(){if(line.length)lines.push(line);line=[];used=0;}
+    for(const fragment of fragments) {
+      const size=font*(fragment.small?.78:1);
+      for(const chunk of fragment.text.match(/\S+|\s+/g)||[]) {
+        if(!chunk.trim()&&!line.length)continue;
+        const options=width(chunk,size,fragment.italic,fragment.bold)>max
+          ?splitHugeWord(chunk,fragment,max,size):[chunk];
+        for(const token of options){
+          const w=width(token,size,fragment.italic,fragment.bold);
+          if(line.length&&used+w>max){flush();if(!token.trim())continue;}
+          if(!line.length&&!token.trim())continue;
+          line.push({text:token,size,italic:fragment.italic,bold:fragment.bold});used+=w;
+        }
+      }
+    }
+    flush();return lines.length?lines:[[]];
+  }
+
+  function layout(source,font,centered) {
+    let height=0;
+    const result=source.map(block=>{
+      const minor=block.kind==='nested'||block.kind==='note';
+      const base=font*(minor?.78:1),lineHeight=base*1.35;
+      const max=centered||block.kind==='center'?635:minor?555:606;
+      const lines=wrapped(block.fragments,max,base);
+      const gap=block.kind==='item'?font*.18:font*.07;
+      height+=lines.length*lineHeight+gap;
+      return {...block,lines,base,lineHeight,gap};
+    });
+    return {entries:result,height};
+  }
+
+  function textLine(parts,x,y,centered) {
+    let tag='<text x="'+x+'" y="'+y.toFixed(2)+'" fill="black" font-family="Arial,sans-serif"';
+    if(centered)tag+=' text-anchor="middle"';
+    tag+='>';
+    for(const span of parts) {
+      tag+='<tspan font-size="'+span.size.toFixed(2)+'"';
+      if(span.italic)tag+=' font-style="italic"';
+      if(span.bold)tag+=' font-weight="bold"';
+      tag+='>'+xml(span.text)+'</tspan>';
+    }
+    return tag+'</text>';
+  }
+
+  window.GARAGE_answerSrc=function(card) {
+    if(!card)return '';
+    const markdown=String(card.composition||card.answerText||'').trim();
+    if(card.compositionNeedsReview&&!card.compositionEdited&&card.back)return card.back;
+    if(!markdown)return card.back||'';
+    const items=blocks(markdown);
+    if(!items.length)return card.back||'';
+    const center=card.compositionAlign==='center'||
+      (card.compositionAlign!=='left'&&items.every(item=>item.kind==='plain'||item.kind==='center'));
+    const titleLines=wrapped([{text:String(card.title||''),small:false,italic:false,bold:true}],638,44);
+    const headFont=titleLines.length>1?40:44,headTop=titleLines.length>1?89:95;
+    const contentTop=Math.max(160,headTop+(titleLines.length-1)*53+74);
+    const room=1081-contentTop;
+    let font=card.compositionFont==='small'?32:43,render=layout(items,font,center);
+    while(font>17&&render.height>room){font--;render=layout(items,font,center);}
+    let y=center?contentTop+Math.max(0,(room-render.height)/2):contentTop;
+    const svg=[];
+    titleLines.forEach((line,k)=>svg.push(textLine(line.map(span=>({...span,size:headFont,bold:true})),400,headTop+k*53,true)));
+    for(const item of render.entries){
+      const centered=center||item.kind==='center';
+      const x=centered?400:item.kind==='nested'||item.kind==='note'?166:122;
+      if(!centered&&item.kind==='item')
+        svg.push('<circle cx="96" cy="'+(y+item.base*.63).toFixed(2)+'" r="6" fill="black"/>');
+      else if(!centered&&item.kind==='nested')
+        svg.push('<circle cx="144" cy="'+(y+item.base*.63).toFixed(2)+'" r="4.4" fill="white" stroke="black" stroke-width="2.5"/>');
+      item.lines.forEach((line,k)=>svg.push(textLine(line,x,y+item.base+item.lineHeight*k,centered)));
+      y+=item.lines.length*item.lineHeight+item.gap;
+    }
+    const result='<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1200" width="800" height="1200">'+svg.join('')+'</svg>';
+    return 'data:image/svg+xml;charset=utf-8,'+encodeURIComponent(result);
+  };
 })();
