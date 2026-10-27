@@ -42,7 +42,9 @@
   }
   function photoQuestion(card,menu,rng=Math.random){
     const choices=optionsForPhoto(card,menu,rng);if(!choices)return null;
-    return {kind:"photo",cardId:card.id,prompt:"Как называется блюдо на фотографии?",image:card.front,
+    const group=menu.sections.find(s=>s.id===card.section)?.group;
+    const prompt=group==="bar"?"Как называется напиток на фотографии?":"Как называется блюдо на фотографии?";
+    return {kind:"photo",cardId:card.id,prompt,image:card.front,
       choices,correctIds:[card.id],multi:false};
   }
   function ingredientQuestion(card,menu,rng=Math.random){
@@ -120,7 +122,9 @@
     const ranked=dueCards(pool,state,now,rng);
     // Ensure objective tests offer some ingredient / guest questions from approved recipes.
     const wanted=opts.mode==="quiz"||opts.mode==="daily"?Math.min(3,Math.floor(limit/4)):0;
-    const verified=ranked.filter(c=>getIngredients(c).length>=2).slice(0,wanted);
+    const today=localDate(now);
+    const verified=ranked.filter(c=>getIngredients(c).length>=2 &&
+      (!state.cards[c.id]||state.cards[c.id].due<=today||state.cards[c.id].needsRepeat)).slice(0,wanted);
     const seen=new Set(verified.map(x=>x.id));
     return [...verified,...ranked.filter(c=>!seen.has(c.id))].slice(0,limit);
   }
