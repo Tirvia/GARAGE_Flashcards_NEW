@@ -106,13 +106,14 @@
     if(!markdown)return card.back||'';
     const items=blocks(markdown);
     if(!items.length)return card.back||'';
-    const center=card.compositionAlign==='center'||
-      (card.compositionAlign!=='left'&&items.every(item=>item.kind==='plain'||item.kind==='center'));
+    // Layout is inferred from the text itself: no per-card layout controls.
+    // A line prefixed with > is centered, nested lists and italics are smaller.
+    const center=items.every(item=>item.kind==='plain'||item.kind==='center');
     const titleLines=wrapped([{text:String(card.title||''),small:false,italic:false,bold:true}],638,44);
     const headFont=titleLines.length>1?40:44,headTop=titleLines.length>1?89:95;
     const contentTop=Math.max(160,headTop+(titleLines.length-1)*53+74);
     const room=1081-contentTop;
-    let font=card.compositionFont==='small'?32:43,render=layout(items,font,center);
+    let font=43,render=layout(items,font,center);
     while(font>17&&render.height>room){font--;render=layout(items,font,center);}
     let y=center?contentTop+Math.max(0,(room-render.height)/2):contentTop;
     const svg=[];
