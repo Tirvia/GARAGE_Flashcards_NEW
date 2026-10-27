@@ -5,9 +5,9 @@
     const txt=(c.answerText||'').trim();
     if(!txt) return c.back||'';
     const lines=[];
-    for(const para of txt.split(/\\r?\\n/)){
+    for(const para of txt.split(/\r?\n/)){
       let row='';
-      for(const word of para.split(/\\s+/)){
+      for(const word of para.split(/\s+/)){
         if(row && (row+' '+word).length>34){lines.push(row);row=word;} else row+=(row?' ':'')+word;
       }
       if(row) lines.push(row);
