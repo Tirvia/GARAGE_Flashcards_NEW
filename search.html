@@ -430,7 +430,7 @@
 const M=window.GARAGE_MENU;
 const ICONS=Object.fromEntries(M.sections.map(s=>[s.id,s.icon]));
 const SECS=Object.fromEntries(M.sections.map(s=>[s.id,s.name]));
-const ALL=M.cards.filter(c=>c.status==="published").map(c=>({s:c.section,i:c.legacyIndex??0,n:c.title,id:c.id,front:c.front,back:c.back,answerText:c.answerText||"",t:c.tags||[],kb:c.brothNote||false}));
+const ALL=M.cards.filter(c=>c.status==="published").map(c=>({s:c.section,i:c.runtimeIndex??0,n:c.title,id:c.id,front:c.front,back:c.back,answerText:c.answerText||"",t:c.tags||[],kb:c.brothNote||false}));
 
 // ===== ELEMENTS =====
 const searchInput     = document.getElementById('searchInput');
@@ -503,7 +503,7 @@ function openCard(s, i, n) {
     flipNameOverlay.textContent = n;
     cardSectionLbl.textContent  = (ICONS[s]||'') + ' ' + (SECS[s]||s);
     cardFrontImg.src = (ALL.find(x=>x.s===s&&x.i===i)?.front || `images/${s}/${i}.png`);
-    cardBackImg.src  = window.GARAGE_answerSrc(M.cards.find(x=>x.section===s&&x.legacyIndex===i));
+    cardBackImg.src  = window.GARAGE_answerSrc(M.cards.find(x=>x.section===s&&x.runtimeIndex===i));
 
     emptyState.style.display  = 'none';
     cardViewer.style.display  = 'flex';
