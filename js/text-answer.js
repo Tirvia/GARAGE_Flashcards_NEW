@@ -11,7 +11,7 @@ let font=38,plan=arrange(font);while(font>17&&plan.total>910){font--;plan=arrang
 const allCentered=rows.length&&rows.every(r=>r.kind==="center");let y=allCentered?Math.max(220,(1200-plan.total)/2):Math.max(167,Math.min(240,(1200-plan.total)/2));
 const frag=[];for(const b of plan.blocks){const x=b.kind==="center"?400:b.kind==="nested"?172:120;const marker=b.kind==="item"?"<circle cx=\"97\" cy=\""+(y+b.size*.55)+"\" r=\"5.5\" fill=\"black\"/>":b.kind==="nested"?"<circle cx=\"146\" cy=\""+(y+b.size*.55)+"\" r=\"4\" fill=\"white\" stroke=\"black\" stroke-width=\"2\"/>":"";frag.push(marker);b.lines.forEach((line,k)=>frag.push("<text x=\""+x+"\" y=\""+(y+b.size+k*b.lineHeight)+"\" font-size=\""+b.size+"\" fill=\"black\" font-family=\"Arial,sans-serif\" "+(b.kind==="center"?"text-anchor=\"middle\"":"")+">"+esc(line)+"</text>"));y+=b.lines.length*b.lineHeight+(b.kind==="item"?9:3)}
 const titleLines=wrap(c.title||"",25),ts=titleLines.length>1?43:48;const heading=titleLines.map((line,k)=>"<text x=\"400\" y=\""+(titleLines.length>1?107+k*58:99)+"\" font-size=\""+ts+"\" font-family=\"Arial,sans-serif\" text-anchor=\"middle\" font-weight=\"bold\">"+esc(line)+"</text>").join("");
-const svg="<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 800 1200\" width=\"800\" height=\"1200\"><image href=\""+esc(bg)+"\" width=\"800\" height=\"1200\"/>"+heading+frag.join("")+"</svg>";
+const svg="<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 800 1200\" width=\"800\" height=\"1200\">"+heading+frag.join("")+"</svg>";
 return "data:image/svg+xml;charset=utf-8,"+encodeURIComponent(svg);
 };
 })();
