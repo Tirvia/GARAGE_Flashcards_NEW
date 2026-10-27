@@ -698,7 +698,7 @@
 const M=window.GARAGE_MENU;
 const ICONS=Object.fromEntries(M.sections.map(s=>[s.id,s.icon]));
 const SECS=Object.fromEntries(M.sections.map(s=>[s.id,s.name]));
-const ALL=M.cards.filter(c=>c.status==="published").map(c=>({s:c.section,i:c.legacyIndex??0,n:c.title,id:c.id,front:c.front,back:c.back,answerText:c.answerText||"",t:c.tags||[],kb:c.brothNote||false}));
+const ALL=M.cards.filter(c=>c.status==="published").map(c=>({s:c.section,i:c.runtimeIndex??0,n:c.title,id:c.id,front:c.front,back:c.back,answerText:c.answerText||"",t:c.tags||[],kb:c.brothNote||false}));
 
 const TAGS_META=M.tags.filter(t=>t.status==="published").map(t=>({id:t.id,emoji:t.icon,label:t.name}));
 const TAG_EMOJI=Object.fromEntries(M.tags.map(t=>[t.id,t.icon]));
@@ -869,7 +869,7 @@ async function openBrowseCard(s, i, n) {
 
     const dish = ALL.find(d => d.s === s && d.i === i && d.n === n);
     const frontSrc = `images/${s}/${i}.png`;
-    const backSrc  = window.GARAGE_answerSrc(M.cards.find(x=>x.section===s&&x.legacyIndex===i));
+    const backSrc  = window.GARAGE_answerSrc(M.cards.find(x=>x.section===s&&x.runtimeIndex===i));
 
     // Сначала очищаем старые изображения, чтобы при переходе не мелькала предыдущая карточка.
     clearBrowseImages();
@@ -938,7 +938,7 @@ function showLearnCard() {
     const card = learnCards[learnIdx % learnCards.length];
     flipNameLearn.textContent = card.n;
     cardFrontLearn.src = `images/${card.s}/${card.i}.png`;
-    cardBackLearn.src  = window.GARAGE_answerSrc(M.cards.find(x=>x.section===card.s&&x.legacyIndex===card.i));
+    cardBackLearn.src  = window.GARAGE_answerSrc(M.cards.find(x=>x.section===card.s&&x.runtimeIndex===card.i));
 
     // Значки состава + категория без emoji в режиме обучения
     learningCardTags.textContent = (card.t || []).map(tag => TAG_EMOJI[tag] || '').join('') + (card.kb ? ' (на кур.бульоне)' : '');
