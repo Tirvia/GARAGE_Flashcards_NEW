@@ -204,7 +204,7 @@ $(document).ready(function() {
         const idx = parseInt(cardIdx);
 
         // Проверяем наличие изображений
-        const sourceCard=M.cards.find(c=>c.section===sectionName && c.legacyIndex===idx && c.status==="published");
+        const sourceCard=M.cards.find(c=>(c.legacySection===sectionName || c.section===sectionName) && c.legacyIndex===idx && c.status==="published");
         const card=sourceCard?{question:sourceCard.front,answer:window.GARAGE_answerSrc(sourceCard),sectionName:sectionName,imgIndex:idx}:null;
 
         if (!card) {
