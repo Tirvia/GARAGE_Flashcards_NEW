@@ -116,8 +116,7 @@
       ],rng)[0],
       choices:shuffle([...correct,...absent.slice(0,3)],rng),
       correctIds:correct.map(x=>x.id),multi:true,
-      note:"Можно выбрать несколько вариантов.",
-      explanation:"В подтверждённом составе указаны: "+correct.map(x=>x.label).join(", ")+"."};
+      explanation:"В составе блюда: "+correct.map(x=>x.label).join(", ")+"."};
   }
 
   // Exactly one answer is absent; the other three are confirmed ingredients.
@@ -133,7 +132,7 @@
       ],rng)[0],
       choices:shuffle([...included,missing],rng),correctIds:[missing.id],multi:false,
       explanation:"В составе перечислены: "+included.map(i=>i.label).join(", ")+
-        ". «"+missing.label+"» в подтверждённой карточке этого блюда не указан."};
+        ". «"+missing.label+"» в составе этого блюда не указан."};
   }
 
   // A real comparison with precisely two confirmed recipes, not an unverified
@@ -152,7 +151,7 @@
           ],rng)[0],
           choices,correctIds:[card.id],multi:false,
           explanation:"В «"+card.title+"» указан ингредиент «"+item.label+
-            "», а в подтверждённом составе «"+peer.title+"» он не указан."};
+            "», а в составе «"+peer.title+"» он не указан."};
       }
     }
     return null;
@@ -170,8 +169,7 @@
           "Гость уточняет состав: в каком из этих блюд указан ингредиент «"+ingredient.label+"»?"
         ],rng)[0],
         choices,correctIds:[card.id],multi:false,
-        note:"Ответ основан на проверенных карточках. Для пищевых ограничений состав нужно дополнительно уточнить.",
-        explanation:"По подтверждённому составу ингредиент «"+ingredient.label+"» есть в «"+card.title+"»."};
+        explanation:"Ингредиент «"+ingredient.label+"» есть в составе «"+card.title+"»."};
     }
     return null;
   }
@@ -196,7 +194,7 @@
       ],rng)[0],
       choices:shuffle([card,...peers].map(c=>({id:c.id,label:c.title})),rng),
       correctIds:[card.id],multi:false,
-      explanation:"Это «"+card.title+"». В его подтверждённом составе указаны: "+clues.map(x=>x.label).join(", ")+"."};
+      explanation:"Это «"+card.title+"». В состав входят: "+clues.map(x=>x.label).join(", ")+"."};
   }
 
   function recallQuestion(card){return {kind:"recall",cardId:card.id,prompt:"Попробуй вспомнить состав блюда",title:card.title};}
