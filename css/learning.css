@@ -67,6 +67,7 @@ p{line-height:1.48}
 .question-footer{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
 .recall-wrap{display:flex;justify-content:center;margin:14px 0 18px}
 .recall-image{width:min(325px,100%);aspect-ratio:2/3;background:#fff url("../images/composition-background.png") center / 100% 100% no-repeat;border-radius:8px;box-shadow:0 7px 21px rgba(0,0,0,.4);object-fit:fill}
+.recall-fallback{max-width:440px;margin:16px auto;padding:22px;white-space:pre-wrap;overflow-wrap:anywhere;background:#fff;color:#141414;border-radius:10px;font-size:16px;line-height:1.6}
 .result-title{text-align:center}
 .result-score{font-size:45px;font-weight:800;color:#fff;text-align:center;margin:22px 0 4px}
 .result-msg{text-align:center;color:#b6b6b6;margin:0 auto 26px;max-width:570px}
