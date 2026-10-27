@@ -59,6 +59,7 @@ p{line-height:1.48}
 .choice.incorrect .choice-symbol{background:#ae2828;border-color:#ae2828;color:white}
 .feedback{border-radius:10px;background:#191919;border:1px solid #3b3b3b;padding:14px 16px;margin:0 0 16px;line-height:1.45}
 .feedback strong{display:block;margin-bottom:5px}
+.answer-explanation{margin:10px 0 0;color:#dedede;font-size:14px;line-height:1.55;border-top:1px solid #393939;padding-top:10px}
 .feedback.ok{border-color:#368f61}
 .feedback.bad{border-color:#c94e4e}
 .question-footer{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
