@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Предпросмотр состава · GARAGE</title>
+  <style>
+    :root { font-family: Arial, Helvetica, sans-serif; color:#202124; background:#f6f7f8; }
+    * { box-sizing:border-box; }
+    body { margin:0; }
+    header { background:#fff; border-bottom:1px solid #e4e6ea; padding:20px max(20px,calc((100vw - 1120px)/2)); }
+    .overline { font-weight:800; color:#e50000; font-size:12px; letter-spacing:.11em; margin-bottom:5px; }
+    h1 { margin:0 0 7px; font-size:25px; }
+    header p { margin:0; line-height:1.45; color:#60666f; font-size:14px; max-width:840px; }
+    main { width:min(1120px,calc(100% - 32px)); margin:22px auto 40px; }
+    .cols { display:grid; grid-template-columns:minmax(0,1.35fr) minmax(290px,.85fr); gap:20px; align-items:start; }
+    .panel { background:#fff; border:1px solid #e5e7eb; border-radius:14px; padding:20px; box-shadow:0 2px 8px rgba(0,0,0,.025); }
+    label { display:block; font-size:13px; font-weight:700; margin-bottom:8px; }
+    .field { margin-bottom:16px; }
+    select,input,textarea { width:100%; border:1px solid #cfd3d8; border-radius:8px; padding:11px 12px; font:inherit; background:white; }
+    textarea { resize:vertical; min-height:310px; line-height:1.65; font-family:ui-monospace,Consolas,monospace; font-size:14px; }
+    input:focus,textarea:focus,select:focus { outline:2px solid #f3a2a2; border-color:#e90000; }
+    .tools { display:flex; flex-wrap:wrap; gap:7px; margin-bottom:10px; }
+    button,.button { border:1px solid #d4d8df; background:#fff; color:#262626; border-radius:8px; padding:9px 10px; font-size:13px; font-weight:600; cursor:pointer; text-decoration:none; display:inline-flex; align-items:center; justify-content:center; }
+    button:hover,.button:hover { border-color:#e90000; }
+    .primary { background:#e80000; border-color:#e80000; color:white; padding:11px 15px; }
+    .primary:hover { background:#cc0000; color:#fff; }
+    .actions { display:flex; flex-wrap:wrap; gap:8px; margin-top:15px; }
+    .help { font-size:13px; line-height:1.55; color:#59606a; margin-top:10px; }
+    .help code { background:#f2f4f6; padding:1px 5px; border-radius:4px; }
+    .status { font-size:13px; min-height:19px; margin-top:12px; color:#135e30; }
+    .previewPanel { position:sticky; top:16px; }
+    .previewHead { display:flex; align-items:center; justify-content:space-between; gap:10px; margin-bottom:12px; }
+    h2 { margin:0; font-size:18px; }
+    .hint { color:#68707b; font-size:12px; }
+    .cardWrap { display:flex; justify-content:center; }
+    .card { width:min(100%,360px); aspect-ratio:2/3; background:#fff url("images/composition-background.png") center / 100% 100% no-repeat; overflow:hidden; border-radius:5px; box-shadow:0 9px 25px rgba(0,0,0,.12); }
+    .card img { display:block; width:100%; height:100%; object-fit:fill; }
+    a { color:#bf0000; }
+    .below { text-align:center; margin-top:12px; color:#6c737c; font-size:13px; }
+    .below a { display:inline-block; margin-top:5px; }
+    @media(max-width:850px) {
+       .cols { grid-template-columns:1fr; }
+       .previewPanel { position:static; }
+       .panel { padding:15px; }
+       header { padding:18px; }
+       h1 { font-size:22px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="overline">GARAGE · РЕДАКТОР</div>
+    <h1>Предпросмотр состава блюда</h1>
+    <p>Печатай и сразу смотри, как состав будет выглядеть на настоящей флеш-карточке. Здесь ничего не публикуется. После проверки скопируй готовый текст в Pages CMS и сохрани один раз.</p>
+  </header>
+  <main>
+    <div class="cols">
+      <section class="panel">
+        <div class="field">
+          <label for="search">Найти существующее блюдо</label>
+          <input id="search" type="search" placeholder="Начни вводить название..." autocomplete="off">
+        </div>
+        <div class="field">
+          <label for="dish">Карточка для просмотра</label>
+          <select id="dish"></select>
+        </div>
+        <div class="field">
+          <label for="title">Название карточки</label>
+          <input id="title" type="text" placeholder="Название блюда">
+        </div>
+        <div class="field">
+          <label for="composition">Состав блюда</label>
+          <div class="tools" role="group" aria-label="Форматирование состава">
+            <button type="button" id="ingredientBtn" title="Основной ингредиент с маркером">• Ингредиент</button>
+            <button type="button" id="nestedBtn" title="Вложенный ингредиент с мелким шрифтом">◦ Вложенный</button>
+            <button type="button" id="smallBtn" title="Выдели текст, чтобы уменьшить только его">Мелкий текст</button>
+            <button type="button" id="centerBtn" title="Центрировать строку">По центру</button>
+          </div>
+          <textarea id="composition" spellcheck="true" aria-label="Редактируемый состав"></textarea>
+          <div class="help">
+            <strong>Как менять размер:</strong> выдели нужные слова и нажми «Мелкий текст».
+            Основные ингредиенты остаются крупными. Вложенные компоненты — мельче.
+            Размер длинных составов рассчитывается автоматически.
+          </div>
+        </div>
+        <div class="actions">
+          <button id="copyBtn" class="primary" type="button">Скопировать состав</button>
+          <button id="pasteBtn" type="button">Вставить из буфера</button>
+          <a class="button" href="https://app.pagescms.org/" target="_blank" rel="noopener">Открыть Pages CMS</a>
+        </div>
+        <div class="status" id="status" aria-live="polite"></div>
+        <div class="help">После копирования вернись в Pages CMS, открой это блюдо, вставь текст в поле «Состав блюда» через вкладку Source и сохрани. Отдельный push ради проверки больше не нужен.</div>
+      </section>
+      <aside class="panel previewPanel">
+        <div class="previewHead">
+          <h2>Так увидит сотрудник</h2>
+          <span class="hint">Обновляется сразу</span>
+        </div>
+        <div class="cardWrap">
+          <div class="card"><img id="compositionPreview" alt="Обратная сторона флеш-карточки"></div>
+        </div>
+        <div class="below">
+          Оригинальная красная рамка и реальные пропорции карточки.
+          <div><a id="original" href="#" target="_blank" rel="noopener">Открыть исходный состав для сверки</a></div>
+        </div>
+      </aside>
+    </div>
+  </main>
+  <script src="js/menu-data.js"></script>
+  <script src="js/text-answer.js"></script>
+  <script>
+    (function () {
+      "use strict";
+      const menu=window.GARAGE_MENU;
+      const el=id=>document.getElementById(id);
+      const cards=menu.cards.filter(card=>card.status==="published")
+        .sort((a,b)=>a.title.localeCompare(b.title,"ru"));
+      let current=null;
+      const drafts=new Map();
+      function showStatus(text){el("status").textContent=text;}
+      function updatePreview(){
+        if(!current)return;
+        const altered=Object.assign({},current,{
+          title:el("title").value,
+          composition:el("composition").value,
+          compositionEdited:true,
+          compositionNeedsReview:false
+        });
+        el("compositionPreview").src=window.GARAGE_answerSrc(altered);
+        drafts.set(current.id,{title:altered.title,composition:altered.composition});
+      }
+      function fillChoices(query){
+        const q=query.trim().toLocaleLowerCase("ru");
+        const previous=el("dish").value;
+        el("dish").replaceChildren();
+        const matches=cards.filter(card=>!q || card.title.toLocaleLowerCase("ru").includes(q));
+        for(const card of matches){
+          const option=document.createElement("option");
+          option.value=card.id;
+          const section=menu.sections.find(s=>s.id===card.section);
+          option.textContent=card.title+" — "+(section?.name||card.section);
+          el("dish").append(option);
+        }
+        if(matches.some(c=>c.id===previous))el("dish").value=previous;
+        return matches;
+      }
+      function selectCard(id){
+        const card=cards.find(c=>c.id===id);
+        if(!card)return;
+        current=card;
+        const old=drafts.get(card.id);
+        el("title").value=old?.title??card.title;
+        el("composition").value=old?.composition??card.composition??card.answerText??"";
+        el("original").href=card.back||"#";
+        el("original").style.display=card.back?"inline-block":"none";
+        showStatus("");
+        updatePreview();
+      }
+      function editSelection(mode){
+        const area=el("composition"),start=area.selectionStart,end=area.selectionEnd;
+        const full=area.value,chosen=full.slice(start,end);
+        let replacement="",newStart=start,newEnd=end;
+        if(mode==="small"){
+          const selected=chosen||"текст";
+          replacement="*"+selected+"*";
+          newStart=start+1;newEnd=newStart+selected.length;
+        } else {
+          const lineStart=full.lastIndexOf("\n",start-1)+1;
+          const lineEnd=full.indexOf("\n",end);
+          const actualEnd=lineEnd<0?full.length:lineEnd;
+          const lines=full.slice(lineStart,actualEnd);
+          const prefix=mode==="nested"?"  - ":mode==="center"?"> ":"- ";
+          const stripped=lines.split("\n").map(line=>line.replace(/^\s*(?:[-+*]\s+|>\s*)/,""));
+          replacement=stripped.map(line=>line.trim()?prefix+line:line).join("\n");
+          area.setRangeText(replacement,lineStart,actualEnd,"end");
+          area.focus();updatePreview();return;
+        }
+        area.setRangeText(replacement,start,end,"select");
+        area.setSelectionRange(newStart,newEnd);
+        area.focus();updatePreview();
+      }
+      el("ingredientBtn").onclick=()=>editSelection("ingredient");
+      el("nestedBtn").onclick=()=>editSelection("nested");
+      el("smallBtn").onclick=()=>editSelection("small");
+      el("centerBtn").onclick=()=>editSelection("center");
+      el("composition").addEventListener("input",updatePreview);
+      el("title").addEventListener("input",updatePreview);
+      el("search").addEventListener("input",()=>{
+        const choices=fillChoices(el("search").value);
+        if(choices.length)selectCard(el("dish").value);
+        else showStatus("Ничего не найдено. Измени запрос.");
+      });
+      el("dish").addEventListener("change",()=>selectCard(el("dish").value));
+      el("copyBtn").addEventListener("click",async()=>{
+        const value=el("composition").value;
+        try{await navigator.clipboard.writeText(value);showStatus("Состав скопирован. Теперь вставь его в Pages CMS и сохрани один раз.");}
+        catch(error){el("composition").focus();el("composition").select();showStatus("Выделила текст. Нажми Ctrl+C, затем вставь в Pages CMS.");}
+      });
+      el("pasteBtn").addEventListener("click",async()=>{
+        try{el("composition").value=await navigator.clipboard.readText();updatePreview();showStatus("Текст вставлен. Теперь можно оценить его прямо на карточке.");}
+        catch(e){el("composition").focus();showStatus("Браузер ограничил чтение буфера. Вставь текст в поле через Ctrl+V.");}
+      });
+      const params=new URLSearchParams(location.search);
+      const id=params.get("card");
+      fillChoices("");
+      selectCard(cards.some(c=>c.id===id)?id:cards[0]?.id);
+      if(id&&current)el("dish").value=current.id;
+    })();
+  </script>
+</body>
+</html>
