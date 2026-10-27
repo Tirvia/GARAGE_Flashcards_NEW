@@ -3,6 +3,20 @@ window.GARAGE_MENU = {"sections":[{"id":"103BY","name":"Меню состоян�
 
 (function(){
   var root=new URL('../',document.currentScript.src);
+  const used=new Map();
+  for(const c of window.GARAGE_MENU.cards){
+    if(!used.has(c.section)) used.set(c.section,new Set());
+    if(Number.isInteger(c.legacyIndex)) used.get(c.section).add(c.legacyIndex);
+  }
+  for(const c of window.GARAGE_MENU.cards){
+    if(!Number.isInteger(c.legacyIndex)){
+      const numbers=used.get(c.section);
+      let n=1001;
+      while(numbers.has(n)) n+=2;
+      c.legacyIndex=n;
+      numbers.add(n);
+    }
+  }
   for(const c of window.GARAGE_MENU.cards){
     for(const key of ['front','back']){
       if(c[key] && !/^(?:https?:|data:)/i.test(c[key])) c[key]=new URL(c[key].replace(/^\/+/,''),root).href;
