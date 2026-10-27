@@ -423,6 +423,7 @@
 </div>
 
 <script src="js/menu-data.js"></script>
+<script src="js/text-answer.js"></script>
 <script>
 
 const M=window.GARAGE_MENU;
@@ -501,7 +502,7 @@ function openCard(s, i, n) {
     flipNameOverlay.textContent = n;
     cardSectionLbl.textContent  = (ICONS[s]||'') + ' ' + (SECS[s]||s);
     cardFrontImg.src = (ALL.find(x=>x.s===s&&x.i===i)?.front || `images/${s}/${i}.png`);
-    cardBackImg.src  = (ALL.find(x=>x.s===s&&x.i===i)?.back || `images/${s}/${i+1}.png`);
+    cardBackImg.src  = window.GARAGE_answerSrc(M.cards.find(x=>x.section===s&&x.legacyIndex===i));
 
     emptyState.style.display  = 'none';
     cardViewer.style.display  = 'flex';
