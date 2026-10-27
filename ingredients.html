@@ -697,6 +697,8 @@
 // ===== DATA =====
 
 const M=window.GARAGE_MENU;
+const cardImages=window.GARAGE_cardImages;
+const CARD_BY_SLOT=new Map(M.cards.map(card=>[card.section+":"+card.runtimeIndex,card]));
 const ICONS=Object.fromEntries(M.sections.map(s=>[s.id,s.icon]));
 const SECS=Object.fromEntries(M.sections.map(s=>[s.id,s.name]));
 const ALL=M.cards.filter(c=>c.status==="published").map(c=>({s:c.section,i:c.runtimeIndex??0,n:c.title,id:c.id,front:c.front,back:c.back,answerText:c.answerText||"",t:c.tags||[],kb:c.brothNote||false}));
@@ -759,6 +761,8 @@ let browseLoadToken = 0;
 let learnCards = [];
 let learnAll   = [];
 let learnIdx   = 0;
+let learnSwiping = false;
+let learnSwipeTimer = null;
 
 // Swipe state
 let isDragging = false;
@@ -842,22 +846,6 @@ function showResults() {
 }
 
 // ===== BROWSE CARD =====
-function preloadImg(src) {
-    return new Promise(resolve => {
-        const img = new Image();
-        img.onload = () => resolve(true);
-        img.onerror = () => resolve(false);
-        img.src = src;
-    });
-}
-
-function clearBrowseImages() {
-    cardFrontBrowse.classList.add('is-loading');
-    cardBackBrowse.classList.add('is-loading');
-    cardFrontBrowse.removeAttribute('src');
-    cardBackBrowse.removeAttribute('src');
-}
-
 async function openBrowseCard(s, i, n) {
     const token = ++browseLoadToken;
 
@@ -869,11 +857,13 @@ async function openBrowseCard(s, i, n) {
     flipTextBrowse.textContent = 'Посмотреть состав';
 
     const dish = ALL.find(d => d.s === s && d.i === i && d.n === n);
-    const frontSrc = `images/${s}/${i}.png`;
-    const backSrc  = window.GARAGE_answerSrc(M.cards.find(x=>x.section===s&&x.runtimeIndex===i));
+    const record = CARD_BY_SLOT.get(s+":"+i);
+    const frontSrc = record?.front || dish?.front || "";
+    const backSrc = cardImages.answer(record);
 
-    // Сначала очищаем старые изображения, чтобы при переходе не мелькала предыдущая карточка.
-    clearBrowseImages();
+    // The outgoing card becomes invisible immediately; late downloads cannot
+    // overwrite a newer selection even when the user taps very quickly.
+    const paint = cardImages.showPair(cardFrontBrowse, cardBackBrowse, frontSrc, backSrc);
 
     flipNameBrowse.textContent = n;
     cvCardTags.textContent = dish ? dish.t.map(tag => TAG_EMOJI[tag] || '').join('') + (dish.kb ? ' (на кур.бульоне)' : '') : '';
@@ -882,14 +872,8 @@ async function openBrowseCard(s, i, n) {
     showState('card-view');
     window.scrollTo({ top:0, behavior:'smooth' });
 
-    // Дожидаемся загрузки новой пары картинок и применяем только актуальный запрос.
-    await Promise.all([preloadImg(frontSrc), preloadImg(backSrc)]);
+    await paint;
     if (token !== browseLoadToken) return;
-
-    cardFrontBrowse.src = frontSrc;
-    cardBackBrowse.src  = backSrc;
-    cardFrontBrowse.classList.remove('is-loading');
-    cardBackBrowse.classList.remove('is-loading');
 }
 
 function setBrowseFlip(flipped) {
@@ -913,6 +897,9 @@ function shuffle(arr) {
 }
 
 function startLearning() {
+    if (learnSwipeTimer !== null) clearTimeout(learnSwipeTimer);
+    learnSwipeTimer = null;
+    learnSwiping = false;
     learnAll   = [...activeMatches];
     learnCards = shuffle(learnAll);
     learnIdx   = 0;
@@ -938,8 +925,18 @@ function showLearnCard() {
 
     const card = learnCards[learnIdx % learnCards.length];
     flipNameLearn.textContent = card.n;
-    cardFrontLearn.src = `images/${card.s}/${card.i}.png`;
-    cardBackLearn.src  = window.GARAGE_answerSrc(M.cards.find(x=>x.section===card.s&&x.runtimeIndex===card.i));
+    const record = CARD_BY_SLOT.get(card.s+":"+card.i);
+    cardImages.showPair(cardFrontLearn, cardBackLearn,
+        record?.front || card.front, cardImages.answer(record))
+        .then(() => {
+            if (learnCards[learnIdx % learnCards.length] === card) {
+                const upcoming = learnCards.slice(1, 6).map(item => {
+                    const source = CARD_BY_SLOT.get(item.s+":"+item.i);
+                    return { id:item.id, front:source?.front || item.front, source };
+                });
+                cardImages.prefetchNearby(upcoming, 0, upcoming.length);
+            }
+        });
 
     // Значки состава + категория без emoji в режиме обучения
     learningCardTags.textContent = (card.t || []).map(tag => TAG_EMOJI[tag] || '').join('') + (card.kb ? ' (на кур.бульоне)' : '');
@@ -959,7 +956,7 @@ function setLearnFlip(flipped) {
 }
 
 function markRemember() {
-    if (!learnCards.length) return;
+    if (!learnCards.length || learnSwiping) return;
     learnCards.splice(0, 1);
     updateLearningProgress();
     if (!learnCards.length) { animateLearnSwipe('right', true); return; }
@@ -967,13 +964,14 @@ function markRemember() {
 }
 
 function markForget() {
-    if (!learnCards.length) return;
+    if (!learnCards.length || learnSwiping) return;
     const card = learnCards.splice(0, 1)[0];
     learnCards.push(card);
     animateLearnSwipe('left', false);
 }
 
 function animateLearnSwipe(dir, isLast) {
+    learnSwiping = true;
     // Instantly reset flip before swipe
     flipInnerLearn.style.transition = 'none';
     flipContainerLearn.classList.remove('flipped');
@@ -982,8 +980,10 @@ function animateLearnSwipe(dir, isLast) {
 
     const cls = dir === 'right' ? 'swipe-right' : 'swipe-left';
     flipContainerLearn.classList.add(cls);
-    setTimeout(() => {
+    learnSwipeTimer = setTimeout(() => {
+        learnSwipeTimer = null;
         flipContainerLearn.classList.remove(cls, 'like', 'dislike');
+        learnSwiping = false;
         if (isLast) { showCompletion(); }
         else { showLearnCard(); }
     }, 320);
@@ -996,6 +996,9 @@ function showCompletion() {
 }
 
 function exitLearning() {
+    if (learnSwipeTimer !== null) clearTimeout(learnSwipeTimer);
+    learnSwipeTimer = null;
+    learnSwiping = false;
     showResults();
     window.scrollTo({ top:0, behavior:'smooth' });
 }
