@@ -16,7 +16,7 @@ def complete_questions(page, amount):
         expect(page.locator("#questionCounter")).to_contain_text(f"Вопрос {index+1} из {amount}")
         # The photo must only appear for photo questions, not as a broken placeholder
         # in questions about ingredients or guest situations.
-        if page.locator("#questionType").inner_text() == "По фотографии":
+        if (page.locator("#questionType").text_content() or "").strip() == "По фотографии":
             expect(page.locator("#questionImage")).to_be_visible()
             assert page.locator("#questionImage").evaluate("(node) => node.naturalWidth > 0")
         else:
