@@ -14,6 +14,14 @@ def check_errors(errors):
 def complete_questions(page, amount):
     for index in range(amount):
         expect(page.locator("#questionCounter")).to_contain_text(f"Вопрос {index+1} из {amount}")
+        # The photo must only appear for photo questions, not as a broken placeholder
+        # in questions about ingredients or guest situations.
+        if page.locator("#questionType").inner_text() == "По фотографии":
+            expect(page.locator("#questionImage")).to_be_visible()
+            assert page.locator("#questionImage").evaluate("(node) => node.naturalWidth > 0")
+        else:
+            expect(page.locator("#questionImage")).to_be_hidden()
+        expect(page.locator("#questionNote")).to_be_hidden()
         option = page.locator("#choices .choice").first
         expect(option).to_be_visible()
         option.click()
@@ -60,15 +68,48 @@ with sync_playwright() as p:
     page.locator("#homeBtn").click()
     expect(page.locator("#dailyStatus")).to_contain_text("завершена")
 
-    # Self-assessed recipe recall with the original frame underneath.
+    # Recall: start with a real photo, hide the old answer until requested,
+    # and verify that the answer ALWAYS belongs to the title being displayed.
     page.locator('[data-mode="recall"]').click()
-    expect(page.locator("#revealBtn")).to_be_visible()
-    page.locator("#revealBtn").click()
-    expect(page.locator("#recallImage")).to_be_visible()
-    assert page.locator("#recallImage").get_attribute("src")
-    page.locator("#rememberBtn").click()
-    expect(page.locator("#nextBtn")).to_be_visible()
+    for index in range(3):
+        expect(page.locator("#questionCounter")).to_contain_text(f"Вопрос {index+1} из 8")
+        expect(page.locator("#questionImage")).to_be_visible()
+        assert page.locator("#questionImage").evaluate("(node) => node.naturalWidth > 0")
+        expect(page.locator("#recallCard")).to_be_hidden()
+        assert page.locator("#recallCard").evaluate("(node) => getComputedStyle(node).display") == "none"
+        assert page.locator("#recallImage").get_attribute("src") is None
+        page.locator("#revealBtn").click()
+        expect(page.locator("#recallImage")).to_be_visible()
+        expect(page.locator("#recallCard")).to_be_visible()
+        assert page.locator("#recallImage").evaluate("(node) => node.naturalWidth > 0")
+        mapping = page.evaluate("""
+          () => {
+            const title = document.getElementById('questionPrompt').textContent;
+            const card = window.GARAGE_MENU.cards.find(c => c.title === title);
+            const actual = document.getElementById('recallImage');
+            return {
+              id: card && card.id,
+              actualId: actual.dataset.cardId,
+              match: card && actual.src === window.GARAGE_answerSrc(card)
+            };
+          }
+        """)
+        assert mapping["id"] == mapping["actualId"] and mapping["match"], mapping
+        if index == 0:
+            page.screenshot(path=str(OUT / "recall-answer.png"), full_page=True)
+        page.locator("#repeatBtn").click()
+        expect(page.locator("#nextBtn")).to_be_visible()
+        page.locator("#nextBtn").click()
     page.locator("#exitBtn").click()
+    # Regression for the two dishes that were mismatched in the user's screenshot.
+    assert page.evaluate("""
+      () => {
+        const raf = window.GARAGE_MENU.cards.find(c => c.title === 'Раф апельсиновый пирог');
+        const trip = window.GARAGE_MENU.cards.find(c => c.title === 'Карибский трип');
+        return raf && trip && raf.id !== trip.id && raf.back !== trip.back &&
+               window.GARAGE_answerSrc(raf) !== window.GARAGE_answerSrc(trip);
+      }
+    """)
 
     # Updates page should work even before the first menu edit.
     page.locator('[data-mode="changes"]').click()
