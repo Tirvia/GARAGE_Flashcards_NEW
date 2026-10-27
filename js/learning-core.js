@@ -124,7 +124,7 @@
     const wanted=opts.mode==="quiz"||opts.mode==="daily"?Math.min(3,Math.floor(limit/4)):0;
     const today=localDate(now);
     const verified=ranked.filter(c=>getIngredients(c).length>=2 &&
-      (!state.cards[c.id]||state.cards[c.id].due<=today||state.cards[c.id].needsRepeat)).slice(0,wanted);
+      (opts.mode!=="daily"||!state.cards[c.id]||state.cards[c.id].due<=today||state.cards[c.id].needsRepeat)).slice(0,wanted);
     const seen=new Set(verified.map(x=>x.id));
     return [...verified,...ranked.filter(c=>!seen.has(c.id))].slice(0,limit);
   }
