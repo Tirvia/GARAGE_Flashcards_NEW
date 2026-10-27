@@ -8,7 +8,7 @@ $(document).ready(function() {
 
     const M = window.GARAGE_MENU;
     const sectionDisplayNames = Object.fromEntries(M.sections.map(s=>[s.id,s.name]));
-    const CARD_NAMES = Object.fromEntries(M.sections.map(s=>[s.id,Object.fromEntries(M.cards.filter(c=>c.section===s.id && c.status==="published").map(c=>[c.legacyIndex,c.title]))]));
+    const CARD_NAMES = Object.fromEntries(M.sections.map(s=>[s.id,Object.fromEntries(M.cards.filter(c=>c.section===s.id && c.status==="published").map(c=>[c.runtimeIndex,c.title]))]));
     const GROUPS = {dinner:M.groups.find(x=>x.id==="dinner").sections,bar:M.groups.find(x=>x.id==="bar").sections};
     const ALL_SECTIONS = M.sections.filter(s=>s.status==="published").map(s=>s.id);
 
@@ -143,7 +143,7 @@ $(document).ready(function() {
 
     async function loadCardsFromSection(sectionName) {
         const basePath = `../images/${sectionName}/`;
-        const checks = M.cards.filter(c=>c.section===sectionName && c.status==="published").map(c=>Promise.resolve({question:c.front,answer:window.GARAGE_answerSrc(c),sectionName:sectionName,imgIndex:c.legacyIndex,id:c.id}));
+        const checks = M.cards.filter(c=>c.section===sectionName && c.status==="published").map(c=>Promise.resolve({question:c.front,answer:window.GARAGE_answerSrc(c),sectionName:sectionName,imgIndex:c.runtimeIndex,id:c.id}));
         const results = await Promise.all(checks);
         return results.filter(Boolean);
     }
@@ -194,7 +194,7 @@ $(document).ready(function() {
     // ========== VIEW MODE: загрузка одной карточки ==========
     async function loadSingleCard(sectionName, cardIdx) {
         const displayName = sectionDisplayNames[sectionName] || sectionName;
-        const cardName = M.cards.find(c=>(c.legacySection===sectionName || c.section===sectionName) && c.legacyIndex===parseInt(cardIdx))?.title || '';
+        const cardName = M.cards.find(c=>c.legacySection===sectionName && c.legacyIndex===parseInt(cardIdx))?.title || M.cards.find(c=>c.section===sectionName && c.runtimeIndex===parseInt(cardIdx))?.title || '';
         const title = cardName || displayName;
 
         $sectionTitle.text(cardName ? cardName : `Загрузка...`);
@@ -204,8 +204,8 @@ $(document).ready(function() {
         const idx = parseInt(cardIdx);
 
         // Проверяем наличие изображений
-        const sourceCard=M.cards.find(c=>(c.legacySection===sectionName || c.section===sectionName) && c.legacyIndex===idx && c.status==="published");
-        const card=sourceCard?{question:sourceCard.front,answer:window.GARAGE_answerSrc(sourceCard),sectionName:sourceCard.section,imgIndex:idx}:null;
+        const sourceCard=M.cards.find(c=>c.legacySection===sectionName && c.legacyIndex===idx && c.status==="published") || M.cards.find(c=>c.section===sectionName && c.runtimeIndex===idx && c.status==="published");
+        const card=sourceCard?{question:sourceCard.front,answer:window.GARAGE_answerSrc(sourceCard),sectionName:sourceCard.section,imgIndex:sourceCard.runtimeIndex}:null;
 
         if (!card) {
             $sectionTitle.text(`Карточка не найдена`);
