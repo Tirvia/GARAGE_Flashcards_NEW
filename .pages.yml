@@ -19,34 +19,57 @@ content:
       - {name: title, label: "Название", type: string, required: true}
       - name: section
         label: Раздел
-        type: reference
-        options: {collection: sections, value: "{fields.id}", label: "{fields.name}"}
+        type: select
+        required: true
+        options:
+          placeholder: "Выбери раздел"
+          values:
+            # GARAGE_SECTIONS_START
+            - {name: "zavtrak", label: "Завтраки"}
+            - {name: "Detskoe", label: "Детское меню"}
+            - {name: "Salaty", label: "Салаты"}
+            - {name: "Zacuski", label: "Закуски"}
+            - {name: "Supy", label: "Супы"}
+            - {name: "Gor_bluda", label: "Горячие блюда"}
+            - {name: "Draniki", label: "Драники"}
+            - {name: "Pasta", label: "Паста"}
+            - {name: "Burgery_tostada", label: "Бургеры и тостада"}
+            - {name: "Pizza", label: "Пицца"}
+            - {name: "Deserty", label: "Десерты"}
+            - {name: "103BY", label: "Меню состояний"}
+            - {name: "Sogr_napitki", label: "Согревающие напитки"}
+            - {name: "Firm_kofe", label: "Фирменный кофе"}
+            - {name: "Kakao_kofe_matcha", label: "Какао, кофе, матча"}
+            - {name: "Chaj", label: "Чай"}
+            - {name: "Bezalco", label: "Безалкогольные коктейли"}
+            - {name: "alco", label: "Алкогольные коктейли"}
+            - {name: "Alco_1 1", label: "Коктейли 1+1"}
+            - {name: "sezonnoe", label: "Сезонное"}
+            # GARAGE_SECTIONS_END
       - name: tags
         label: Категории состава
-        type: reference
-        options: {collection: tags, multiple: true, value: "{fields.id}", label: "{fields.name}"}
+        type: select
+        options:
+          multiple: true
+          placeholder: "Выбери категории"
+          values:
+            # GARAGE_TAGS_START
+            - {name: "курица", label: "курица"}
+            - {name: "говядина", label: "говядина"}
+            - {name: "свинина", label: "свинина"}
+            - {name: "рыба", label: "рыба"}
+            - {name: "морепродукты", label: "морепродукты"}
+            - {name: "грибы", label: "грибы"}
+            - {name: "индейка", label: "индейка"}
+            - {name: "утка", label: "утка"}
+            - {name: "вегетарианское", label: "вегетарианское"}
+            # GARAGE_TAGS_END
       - {name: front, label: "Фото блюда", type: image}
       - name: composition
         label: "Состав блюда (редактируемый текст)"
         type: rich-text
-        description: "Для мелкого текста выдели нужные слова и выбери курсив (I). Вложенный список тоже отображается меньшим шрифтом. В режиме Source можно заключить фрагмент в *звёздочки*."
+        description: "Для мелкого текста выдели слова и выбери курсив (I). Для предварительного просмотра открой https://tirvia.github.io/GARAGE_Flashcards_NEW/preview.html — можно исправлять без публикации."
         options: {format: markdown, media: false}
-      - name: compositionAlign
-        label: "Расположение текста состава"
-        type: select
-        options:
-          values:
-            - {name: auto, label: "Автоматически"}
-            - {name: center, label: "По центру"}
-            - {name: left, label: "По левому краю"}
-      - name: compositionFont
-        label: "Размер текста состава"
-        type: select
-        options:
-          values:
-            - {name: auto, label: "Автоматически"}
-            - {name: normal, label: "Обычный"}
-            - {name: small, label: "Уменьшенный"}
       - {name: answerText, label: "Дополнительный текст состава (совместимость)", type: text, hidden: true}
       - {name: back, label: "Оригинальное изображение состава (резерв)", type: image, hidden: true}
       - {name: brothNote, label: "На курином бульоне", type: boolean}
@@ -72,9 +95,18 @@ content:
       - {name: name, label: Название, type: string}
       - {name: icon, label: Значок, type: string}
       - name: group
-        label: Группа
-        type: reference
-        options: {collection: groups, value: "{fields.id}", label: "{fields.name}"}
+        label: Группа меню
+        type: select
+        options:
+          values:
+            # GARAGE_GROUPS_START
+            - {name: "breakfast", label: "Завтраки"}
+            - {name: "kids", label: "Детское меню"}
+            - {name: "dinner", label: "Ужин"}
+            - {name: "wellbeing", label: "Меню состояний"}
+            - {name: "seasonal", label: "Сезонное"}
+            - {name: "bar", label: "Бар"}
+            # GARAGE_GROUPS_END
       - {name: order, label: Порядок, type: number}
       - name: status
         label: Статус
