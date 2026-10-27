@@ -1,0 +1,522 @@
+body {
+    background-color: black;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+.wrap-container {
+    background-color: #000000;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.container-fluid {
+    margin: 0;
+    padding: 0;
+    flex: 1;
+}
+
+.section {
+    padding: 10px 15px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.section h2 {
+    text-align: center;
+    color: #f0cece;
+    text-shadow: 2px 2px 2px black;
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+}
+
+/* ========== COMPLETION STATE ==========
+   Когда добавляется класс .completion-state — скрываем все кнопки управления */
+.section.completion-state .desktop-buttons,
+.section.completion-state .mobile-buttons,
+.section.completion-state .learning-buttons,
+.section.completion-state .swipe-hint,
+.section.completion-state .progress-wrapper,
+.section.completion-state .mode-toggle {
+    display: none !important;
+}
+
+/* ========== VIEW MODE STATE ==========
+   Когда добавляется класс .view-mode — скрываем кнопки обучения */
+.section.view-mode .desktop-buttons,
+.section.view-mode .mobile-buttons,
+.section.view-mode .learning-buttons,
+.section.view-mode .swipe-hint,
+.section.view-mode #progressInfo,
+.section.view-mode #modeToggle {
+    display: none !important;
+}
+
+/* Прогресс с кнопками */
+.progress-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+}
+
+.progress-info {
+    color: #ff4d4d;
+    font-size: 1rem;
+    background: rgba(255, 0, 0, 0.2);
+    padding: 6px 16px;
+    border-radius: 20px;
+    display: inline-block;
+}
+
+/* Переключатель режима */
+.mode-toggle {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: #1a1a1a;
+    color: #aaa;
+    border: 1.5px solid #333;
+    border-radius: 20px;
+    padding: 5px 14px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    white-space: nowrap;
+}
+
+.mode-toggle:hover {
+    border-color: #ff0000;
+    color: #fff;
+}
+
+.mode-toggle.active {
+    background: rgba(255, 0, 0, 0.15);
+    border-color: #ff0000;
+    color: #ff4d4d;
+}
+
+.mode-toggle .mode-icon {
+    font-size: 1rem;
+    line-height: 1;
+}
+
+.help-btn {
+    background: #333;
+    color: white;
+    border: none;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s;
+    flex-shrink: 0;
+}
+
+.help-btn:hover {
+    background: #ff0000;
+}
+
+/* ========== VIEW MODE BAR ========== */
+.view-mode-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 500px;
+    margin-bottom: 14px;
+    gap: 10px;
+}
+
+.btn-back-to-menu {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: #1a1a1a;
+    color: #ccc;
+    border: 1.5px solid #333;
+    border-radius: 20px;
+    padding: 6px 16px;
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: all 0.2s;
+    white-space: nowrap;
+}
+
+.btn-back-to-menu:hover {
+    border-color: #ff0000;
+    color: #fff;
+}
+
+.view-mode-label {
+    color: #555;
+    font-size: 0.8rem;
+    font-style: italic;
+}
+
+/* ========== НАЗВАНИЕ КАРТОЧКИ (оверлей поверх фото) ==========
+   Теперь находится внутри .flashcard-front — автоматически скрывается при перевороте */
+.card-name-display {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
+    pointer-events: none;
+
+    color: #ffffff;
+    font-size: 1.1rem;
+    font-weight: bold;
+    text-align: center;
+
+    /* Мягкий градиент сверху, чтобы текст читался на любом фоне */
+    background: linear-gradient(to bottom, rgba(0,0,0,0.78) 0%, rgba(0,0,0,0.35) 60%, rgba(0,0,0,0) 100%);
+    padding: 14px 16px 30px;
+    border-radius: 5px 5px 0 0;
+
+    animation: fadeInName 0.25s ease;
+    letter-spacing: 0.3px;
+    text-shadow: 0 1px 6px rgba(0,0,0,0.95);
+}
+
+@keyframes fadeInName {
+    from { opacity: 0; transform: translateY(-4px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* В режиме просмотра (view mode) название всегда видно */
+.section.view-mode .card-name-display {
+    display: block !important;
+}
+
+/* Модальное окно */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background: white;
+    color: #333;
+    padding: 20px 30px;
+    border-radius: 12px;
+    max-width: 400px;
+    text-align: left;
+    position: relative;
+}
+
+.modal-content h3 {
+    margin-top: 0;
+    text-align: center;
+}
+
+.modal-content ul {
+    padding-left: 20px;
+}
+
+.modal-content li {
+    margin: 8px 0;
+}
+
+.close-modal {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
+    cursor: pointer;
+    color: #888;
+}
+
+.close-modal:hover {
+    color: #ff0000;
+}
+
+/* Кнопки */
+.buttons-container {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    width: 100%;
+    max-width: 800px;
+}
+
+.learning-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 15px;
+    width: 100%;
+}
+
+.btn {
+    font-size: 1.2rem;
+    text-align: center;
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 12px 24px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    min-width: 180px;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn:hover { background-color: #b32e2e; }
+
+.btn-remember { background-color: #2e7d32; }
+.btn-remember:hover { background-color: #1b5e20; }
+
+.btn-forget { background-color: #c62828; }
+.btn-forget:hover { background-color: #b71c1c; }
+
+/* ========== ЭКРАН ЗАВЕРШЕНИЯ ========== */
+.completion-screen {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    text-align: center;
+    animation: fadeInCompletion 0.5s ease;
+}
+
+.section.completion-state .completion-screen {
+    display: flex;
+}
+
+@keyframes fadeInCompletion {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.completion-icon {
+    font-size: 5rem;
+    margin-bottom: 16px;
+    animation: popIn 0.4s ease;
+}
+
+@keyframes popIn {
+    0%   { transform: scale(0.5); opacity: 0; }
+    70%  { transform: scale(1.15); }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+.completion-title {
+    color: #ffffff;
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-bottom: 8px;
+    text-shadow: 0 0 12px rgba(255, 200, 0, 0.5);
+}
+
+.completion-subtitle {
+    color: #ff4d4d;
+    font-size: 1rem;
+    margin-bottom: 32px;
+}
+
+.completion-buttons {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.btn-restart {
+    background-color: #1a6e2a;
+    min-width: 200px;
+}
+
+.btn-restart:hover {
+    background-color: #145520;
+}
+
+.btn-menu-back {
+    background-color: #333;
+    min-width: 200px;
+    color: #fff;
+    border: 1.5px solid #555;
+    font-size: 1.2rem;
+    border-radius: 10px;
+    padding: 12px 24px;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s;
+}
+
+.btn-menu-back:hover {
+    background-color: #555;
+}
+
+/* Карточка */
+.flashcard-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+    width: 100%;
+    perspective: 1000px;
+}
+
+.flashcard {
+    position: relative;
+    overflow: hidden;
+    background: transparent;
+    border-radius: 10px;
+    max-width: 500px;
+    width: 100%;
+    height: auto;
+    display: none;
+    transition: transform 0.2s ease;
+    cursor: grab;
+}
+
+.flashcard:active { cursor: grabbing; }
+
+.flashcard::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 10px;
+    pointer-events: none;
+    transition: background 0.2s;
+    z-index: 1;
+}
+
+.flashcard.like::after { background: rgba(0, 255, 0, 0.25); }
+.flashcard.dislike::after { background: rgba(255, 0, 0, 0.25); }
+
+.flashcard-inner {
+    position: relative;
+    width: 100%;
+    height: auto;
+    text-align: center;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+    border-radius: 10px;
+}
+
+.flipped .flashcard-inner { transform: rotateY(180deg); }
+
+.flashcard-front, .flashcard-back {
+    position: relative;
+    width: 100%;
+    height: auto;
+    backface-visibility: hidden;
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.flashcard-back {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: rotateY(180deg);
+}
+
+.card-image {
+    width: 100%;
+    height: auto;
+    max-height: 400px;
+    object-fit: contain;
+    border-radius: 5px;
+    display: block;
+}
+
+/* Анимации свайпа */
+.flashcard.swipe-right {
+    transform: translateX(500px) rotate(20deg);
+    opacity: 0;
+    transition: 0.4s;
+}
+
+.flashcard.swipe-left {
+    transform: translateX(-500px) rotate(-20deg);
+    opacity: 0;
+    transition: 0.4s;
+}
+
+/* Подсказка */
+.swipe-hint {
+    color: white;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    opacity: 0.7;
+    font-size: 0.9rem;
+}
+
+.mobile-only { display: none; }
+.desktop-only { display: flex; }
+.mobile-buttons { display: none; }
+
+.mobile-buttons-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+}
+
+@media screen and (max-width: 768px) {
+    .desktop-buttons { display: none !important; }
+    .desktop-only { display: none !important; }
+    .mobile-buttons {
+        display: flex !important;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        margin-top: 10px;
+    }
+    .mobile-only { display: block; }
+    .btn {
+        font-size: 1rem;
+        padding: 10px 15px;
+        min-width: 140px;
+    }
+    .flashcard { max-width: 90%; }
+    .card-name-display { font-size: 1rem; }
+    .mode-toggle { font-size: 0.8rem; padding: 5px 10px; }
+
+    .completion-title { font-size: 1.4rem; }
+    .completion-buttons { flex-direction: column; align-items: center; }
+    .btn-restart, .btn-menu-back { min-width: 240px; }
+}
+
+@media screen and (max-width: 480px) {
+    .section h2 { font-size: 1.3rem; }
+    .btn {
+        font-size: 0.9rem;
+        padding: 8px 12px;
+        min-width: 120px;
+    }
+    .card-name-display { font-size: 0.95rem; padding: 10px 12px 26px; }
+}
