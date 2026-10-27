@@ -194,7 +194,7 @@ $(document).ready(function() {
     // ========== VIEW MODE: загрузка одной карточки ==========
     async function loadSingleCard(sectionName, cardIdx) {
         const displayName = sectionDisplayNames[sectionName] || sectionName;
-        const cardName = (CARD_NAMES[sectionName] || {})[parseInt(cardIdx)] || '';
+        const cardName = M.cards.find(c=>(c.legacySection===sectionName || c.section===sectionName) && c.legacyIndex===parseInt(cardIdx))?.title || '';
         const title = cardName || displayName;
 
         $sectionTitle.text(cardName ? cardName : `Загрузка...`);
@@ -205,7 +205,7 @@ $(document).ready(function() {
 
         // Проверяем наличие изображений
         const sourceCard=M.cards.find(c=>(c.legacySection===sectionName || c.section===sectionName) && c.legacyIndex===idx && c.status==="published");
-        const card=sourceCard?{question:sourceCard.front,answer:window.GARAGE_answerSrc(sourceCard),sectionName:sectionName,imgIndex:idx}:null;
+        const card=sourceCard?{question:sourceCard.front,answer:window.GARAGE_answerSrc(sourceCard),sectionName:sourceCard.section,imgIndex:idx}:null;
 
         if (!card) {
             $sectionTitle.text(`Карточка не найдена`);
