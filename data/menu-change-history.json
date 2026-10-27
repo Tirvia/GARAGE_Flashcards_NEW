@@ -1,5 +1,13 @@
 [
   {
+    "cardId": "pizza-025",
+    "title": "GARAGE",
+    "type": "updated",
+    "note": "Изменено: состав",
+    "date": "2026-10-27T14:03:33.647Z",
+    "id": "2f1bd3e6b28e"
+  },
+  {
     "cardId": "bezalco-007",
     "title": "Bubble Tea Малина-анчан",
     "type": "updated",
