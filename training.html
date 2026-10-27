@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#050505">
+  <title>Проверка знаний меню · GARAGE</title>
+  <link rel="stylesheet" href="css/learning.css">
+</head>
+<body>
+  <main class="wrap">
+    <div class="top">
+      <a class="back" href="index.html">← На главную</a>
+      <div class="brand">GARAGE</div>
+    </div>
+
+    <section id="dashboard" class="screen">
+      <h1>Проверка знаний меню</h1>
+      <p class="sub">Выбирай, как потренироваться. Система покажет ошибки и поможет повторить сложные блюда.</p>
+      <div class="filter">
+        <label for="sectionFilter">Раздел для тренировки:</label>
+        <select id="sectionFilter"><option value="">Всё меню</option></select>
+      </div>
+      <div class="stat-row">
+        <div class="stat"><strong id="studiedCount">0</strong><span>Блюд встречалось</span></div>
+        <div class="stat"><strong id="mistakesCount">0</strong><span>Для повторения</span></div>
+        <div class="stat"><strong id="dueCount">0</strong><span>Пора повторить</span></div>
+      </div>
+      <div class="mode-grid">
+        <button type="button" class="mode" data-mode="quiz">
+          <span class="mode-icon" aria-hidden="true">✅</span>
+          <span class="mode-name">Проверка знаний</span>
+          <span class="mode-desc">12 вопросов по фотографиям, названиям и подтверждённым составам. Ответы проверяются автоматически.</span>
+        </button>
+        <button type="button" class="mode" data-mode="daily">
+          <span class="mode-icon" aria-hidden="true">⏱️</span>
+          <span class="mode-name">5 минут на меню</span>
+          <span class="mode-desc">8 коротких вопросов: сначала сложные и давно изученные блюда, затем новые.</span>
+          <span class="mode-stat" id="dailyStatus">Тренировка на сегодня</span>
+        </button>
+        <button type="button" class="mode" data-mode="mistakes">
+          <span class="mode-icon" aria-hidden="true">🔄</span>
+          <span class="mode-name">Повторить ошибки</span>
+          <span class="mode-desc">Только те блюда, по которым были ошибки. Верные ответы убирают их из списка.</span>
+          <span class="mode-stat" id="mistakesStatus">0 блюд</span>
+        </button>
+        <button type="button" class="mode" data-mode="recall">
+          <span class="mode-icon" aria-hidden="true">🧠</span>
+          <span class="mode-name">Вспомнить состав</span>
+          <span class="mode-desc">Назови ингредиенты по памяти, открой состав и оцени себя. Этот режим — тренировка, не автоматический тест.</span>
+        </button>
+        <button type="button" class="mode" data-mode="changes">
+          <span class="mode-icon" aria-hidden="true">🆕</span>
+          <span class="mode-name">Что изменилось в меню</span>
+          <span class="mode-desc">Новые позиции и изменения состава появляются автоматически после обновления меню.</span>
+          <span class="mode-stat" id="changesStatus">Обновления меню</span>
+        </button>
+        <a class="mode" href="flashcards/flashcards.html?all=true">
+          <span class="mode-icon" aria-hidden="true">🃏</span>
+          <span class="mode-name">Привычные карточки</span>
+          <span class="mode-desc">Тот же режим «Запомнил / Не запомнил», к которому ты привык.</span>
+        </a>
+      </div>
+      <div class="note">Вопросы по ингредиентам и просьбам Гостей появляются только для составов, которые были подтверждены в редакторе. Остальные блюда участвуют в проверке по фотографии. Пищевые ограничения всегда уточняйте по актуальным данным.</div>
+    </section>
+
+    <section id="play" class="screen" hidden>
+      <div class="play-card">
+        <div class="progress-top">
+          <button type="button" id="exitBtn" class="secondary small">← К режимам</button>
+          <span id="questionCounter" aria-live="polite">Вопрос 1 из 12</span>
+        </div>
+        <div class="progress"><div id="progressBar"></div></div>
+        <div class="panel">
+          <div class="kicker" id="questionType">Проверка по фото</div>
+          <h2 class="question-title" id="questionPrompt"></h2>
+          <img id="questionImage" class="question-image" alt="Фото блюда" hidden>
+          <p id="questionNote" class="muted" hidden></p>
+          <div id="choices" class="choices" role="group" aria-label="Варианты ответа"></div>
+          <div id="recallArea" hidden>
+            <p class="muted">Сначала перечисли ингредиенты вслух или про себя. Затем открой состав и сравни.</p>
+            <div id="recallCard" class="recall-wrap" hidden>
+              <img id="recallImage" class="recall-image" alt="Состав блюда">
+            </div>
+          </div>
+          <div id="feedback" class="feedback" hidden role="status" aria-live="polite"></div>
+          <div class="question-footer">
+            <button type="button" id="checkBtn" class="primary" disabled>Проверить ответ</button>
+            <button type="button" id="revealBtn" class="primary" hidden>Показать состав</button>
+            <button type="button" id="rememberBtn" class="secondary" hidden>Вспомнил</button>
+            <button type="button" id="repeatBtn" class="secondary" hidden>Повторить</button>
+            <button type="button" id="nextBtn" class="primary" hidden>Следующий вопрос →</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="summary" class="screen" hidden>
+      <div class="panel">
+        <h1 class="result-title">Результат тренировки</h1>
+        <div class="result-score" id="resultScore"></div>
+        <p class="result-msg" id="resultMessage"></p>
+        <h2 id="mistakesTitle">Что повторить</h2>
+        <div class="results-details" id="resultList"></div>
+        <div class="action-row result-actions">
+          <button type="button" class="primary" id="retryErrorsBtn">Повторить ошибки</button>
+          <button type="button" class="secondary" id="againBtn">Пройти ещё раз</button>
+          <button type="button" class="secondary" id="homeBtn">К режимам</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="updates" class="screen" hidden>
+      <h1>Что изменилось в меню</h1>
+      <p class="sub">Обновления появляются здесь после публикации меню. Изучи изменённые блюда, затем проверь знания.</p>
+      <div class="changes-list" id="changesList" aria-live="polite"></div>
+      <div class="action-row">
+        <button type="button" class="primary" id="learnUpdatesBtn">Проверить обновлённые блюда</button>
+        <button type="button" class="secondary" id="backUpdatesBtn">← К режимам</button>
+      </div>
+      <div class="note">Список берётся из истории опубликованных изменений. Архивные и удалённые позиции остаются в истории, но в задания для изучения уже не входят.</div>
+    </section>
+
+    <footer class="footer">
+      Результаты тренировок хранятся только в этом браузере на этом устройстве. Это тренажёр, а не официальная аттестация.
+      При очистке данных браузера прогресс может исчезнуть.
+      <button type="button" id="clearProgressBtn">Сбросить мой прогресс</button>.
+    </footer>
+  </main>
+  <script src="js/menu-data.js"></script>
+  <script src="js/menu-changes.js"></script>
+  <script src="js/text-answer.js"></script>
+  <script src="js/learning-core.js"></script>
+  <script src="js/learning-app.js"></script>
+</body>
+</html>
