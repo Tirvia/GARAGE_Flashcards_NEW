@@ -34,6 +34,76 @@ for(const card of approved){
 }
 assert(ingredients>0,'No objective ingredient questions are available');
 assert(guest>0,'No guest-situation questions are available');
+
+/* Diverse template bank: the correct answer must be unique, and no unverified
+   dish may be used to make a claim about ingredients or their absence. */
+const templateTypes=['ingredients','missing','compare','guest','recipe'];
+const seenTypes=new Set();
+for(const card of approved){
+  for(const [type,fn] of [
+    ['ingredients',engine.ingredientQuestion],['missing',engine.missingQuestion],
+    ['compare',engine.compareQuestion],['guest',engine.guestQuestion],
+    ['recipe',engine.recipeQuestion]
+  ]){
+    const question=fn(card,menu,rng);
+    if(!question)continue;
+    seenTypes.add(type);
+    assert.equal(question.kind,type,'Question type mismatch');
+    assert(question.explanation&&question.explanation.length>15,'Explanations required');
+    assert.equal(question.cardId,card.id);
+    assert.equal(new Set(question.choices.map(x=>x.id)).size,question.choices.length,'Duplicate choices');
+    assert(engine.evaluate(question,question.correctIds),'Correct choices should be accepted');
+    assert(!engine.evaluate(question,[question.choices.find(x=>!question.correctIds.includes(x.id))?.id].filter(Boolean)),
+      'Wrong choice should be rejected');
+    if(type==='missing'){
+      assert.equal(question.choices.length,4);
+      const absent=question.choices.find(x=>x.id===question.correctIds[0]);
+      assert(!engine.isMentioned(card,absent.label),'A missing ingredient appears in the complete recipe');
+      for(const choice of question.choices.filter(x=>x.id!==absent.id)){
+        assert(engine.isMentioned(card,choice.label),'A claimed present ingredient is absent from recipe');
+      }
+    }
+    if(type==='compare'){
+      assert.equal(question.choices.length,2);
+      const other=question.choices.find(x=>x.id!==card.id);
+      assert(menu.cards.find(c=>c.id===other.id).testIngredientsVerified,
+        'Comparison distractors must have an approved recipe');
+    }
+    if(type==='recipe')assert.equal(question.choices.length,4,'Guess-from-ingredients requires four choices');
+    if(type==='guest'){
+      assert.equal(question.choices.length,4,'Guest options must all be confirmed recipes');
+      for(const option of question.choices){
+        assert(menu.cards.find(c=>c.id===option.id)?.testIngredientsVerified,
+          'No unreviewed recipe may appear in guest situations');
+      }
+    }
+  }
+}
+for(const kind of templateTypes)assert(seenTypes.has(kind),'Missing automatically generated template: '+kind);
+const unverified=menu.cards.find(c=>!c.testIngredientsVerified);
+assert(unverified,'Test requires an unreviewed recipe');
+for(const fn of [engine.ingredientQuestion,engine.missingQuestion,engine.compareQuestion,
+  engine.guestQuestion,engine.recipeQuestion]){
+  assert.equal(fn(unverified,menu,rng),null,'Unreviewed recipe must not generate ingredient claims');
+}
+const nested=approved.find(c=>c.id==='draniki-007');
+assert(engine.isMentioned(nested,'Чеснок'),'Nested ingredients must count as present');
+const parentheses=approved.find(c=>c.id==='draniki-005');
+assert(engine.isMentioned(parentheses,'лук'),'Parenthesized ingredients must count as present');
+const rotationState=engine.createProgress();
+const sameRecipe=approved.find(c=>engine.missingQuestion(c,menu,rng) &&
+  engine.compareQuestion(c,menu,rng)&&engine.recipeQuestion(c,menu,rng));
+assert(sameRecipe,'Need at least one verified recipe with several valid templates');
+const makeSingle=()=>engine.makeSession(menu,rotationState,{
+  mode:'quiz',focusIds:[sameRecipe.id],limit:1,rng
+})[0];
+const firstTemplate=makeSingle();
+engine.updateProgress(rotationState,sameRecipe.id,true,new Date(2026,9,27),firstTemplate.kind);
+const nextTemplate=makeSingle();
+assert.notEqual(nextTemplate.kind,firstTemplate.kind,
+  'A previously used question type should rotate for the same dish');
+assert(rotationState.cards[sameRecipe.id].recentKinds.includes(firstTemplate.kind));
+
 const state=engine.createProgress(),date=new Date(2026,9,27);
 const first=menu.cards[0].id;
 const wrong=engine.updateProgress(state,first,false,date);
@@ -56,7 +126,8 @@ for(const mode of ['quiz','daily','recall']){
    assert(menu.cards.some(c=>c.id===q.cardId),'Question refers to a deleted card');
    if(mode==='recall')assert.equal(q.kind,'recall');
    else {
-     assert(q.correctIds.length>=1&&q.choices.length>=4,'Objective question missing options');
+     assert(q.correctIds.length>=1&&q.choices.length>=(q.kind==='compare'?2:4),
+     'Objective question missing options');
      assert(engine.evaluate(q,q.correctIds),'Expected correct answers should pass');
    }
  }
@@ -92,5 +163,5 @@ new (require('vm').Script)(app,{filename:'js/learning-app.js'});
 new (require('vm').Script)(fs.readFileSync(path.join(root,'js/learning-core.js'),'utf8'));
 const index=fs.readFileSync(path.join(root,'index.html'),'utf8');
 assert(index.includes('href="training.html" class="test-button">Проверить знания по всему меню'));
-console.log('OK: 4 learning modes, verified ingredient questions:',ingredients,'guest situations:',guest,
- '12-question checks, daily practice, spaced mistakes, change feed and original homepage copy.');
+console.log('OK: templates:',[...seenTypes].join(', '),'verified ingredients:',ingredients,'guest situations:',guest,
+ '12-question checks, daily practice, spaced mistakes, safe distractors, template rotation and original homepage copy.');
