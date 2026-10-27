@@ -61,7 +61,6 @@
           <span class="mode-desc">Тот же режим «Запомнил / Не запомнил», к которому ты привык.</span>
         </a>
       </div>
-      <div class="note">Вопросы по ингредиентам и просьбам Гостей появляются только для составов, которые были подтверждены в редакторе. Остальные блюда участвуют в проверке по фотографии. Пищевые ограничения всегда уточняйте по актуальным данным.</div>
     </section>
 
     <section id="play" class="screen" hidden>
@@ -80,8 +79,9 @@
           <div id="recallArea" hidden>
             <p class="muted">Сначала перечисли ингредиенты вслух или про себя. Затем открой состав и сравни.</p>
             <div id="recallCard" class="recall-wrap" hidden>
-              <img id="recallImage" class="recall-image" alt="Состав блюда">
+              <img id="recallImage" class="recall-image" alt="Состав блюда" hidden>
             </div>
+            <pre id="recallFallback" class="recall-fallback" hidden></pre>
           </div>
           <div id="feedback" class="feedback" hidden role="status" aria-live="polite"></div>
           <div class="question-footer">
@@ -118,7 +118,6 @@
         <button type="button" class="primary" id="learnUpdatesBtn">Проверить обновлённые блюда</button>
         <button type="button" class="secondary" id="backUpdatesBtn">← К режимам</button>
       </div>
-      <div class="note">Список берётся из истории опубликованных изменений. Архивные и удалённые позиции остаются в истории, но в задания для изучения уже не входят.</div>
     </section>
 
     <footer class="footer">
