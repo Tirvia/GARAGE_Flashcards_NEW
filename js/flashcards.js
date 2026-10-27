@@ -312,6 +312,8 @@ $(document).ready(function() {
 
     function animateSwipe(direction) {
         swiping = true;
+        // The 350ms outgoing swipe is time available to fetch the next image.
+        cardImages.prefetchNearby(learningCards, currentCardIndex, 6);
         // FIX: Мгновенно переворачиваем карточку на сторону вопроса (без анимации переворота),
         // чтобы следующая карточка всегда вылетала со стороны вопроса.
         const $inner = $flashcard.find('.flashcard-inner');
