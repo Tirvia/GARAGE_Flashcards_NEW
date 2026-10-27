@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Изучение меню | GARAGE</title>
+     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23D32F2F' rx='20'/%3E%3Ctext x='50' y='72' font-size='64' font-family='Arial, sans-serif' font-weight='bold' fill='white' text-anchor='middle'%3EG%3C/text%3E%3C/svg%3E">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background: #ffffff !important;
+            padding: 15px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: #000000;
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        header {
+            text-align: center;
+            padding: 30px 0 20px;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            font-size: 2.2rem;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            color: #fff;
+            text-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: #ff4d4d;
+            margin-bottom: 30px;
+        }
+
+        /* ===== SEARCH BANNER ===== */
+        .search-banner {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 14px;
+            background: linear-gradient(135deg, #111 0%, #1a0a0a 100%);
+            border: 2px solid #ff0000;
+            border-radius: 14px;
+            padding: 18px 28px;
+            margin-bottom: 32px;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            box-shadow: 0 4px 20px rgba(255, 0, 0, 0.15);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .search-banner::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(255, 0, 0, 0.06);
+            opacity: 0;
+            transition: opacity 0.25s;
+        }
+
+        .search-banner:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 28px rgba(255, 0, 0, 0.3);
+            border-color: #ff3333;
+        }
+
+        .search-banner:hover::before { opacity: 1; }
+
+        .search-banner-icon {
+            font-size: 1.8rem;
+            flex-shrink: 0;
+        }
+
+        .search-banner-text {
+            flex: 1;
+        }
+
+        .search-banner-title {
+            color: #fff;
+            font-size: 1.15rem;
+            font-weight: bold;
+            letter-spacing: 0.3px;
+        }
+
+        .search-banner-sub {
+            color: #888;
+            font-size: 0.82rem;
+            margin-top: 3px;
+        }
+
+        .search-banner-arrow {
+            color: #ff0000;
+            font-size: 1.4rem;
+            flex-shrink: 0;
+            transition: transform 0.2s;
+        }
+
+        .search-banner:hover .search-banner-arrow {
+            transform: translateX(4px);
+        }
+
+        @media (max-width: 600px) {
+            .search-banner {
+                padding: 11px 14px;
+                gap: 10px;
+                margin-bottom: 14px;
+                border-radius: 12px;
+            }
+            .search-banner-icon { font-size: 1.3rem; }
+            .search-banner-title { font-size: 0.92rem; }
+            .search-banner-sub { font-size: 0.72rem; margin-top: 1px; }
+            .search-banner-arrow { font-size: 1rem; }
+        }
+
+        /* ===== CATEGORIES GRID (как в index(12).html) ===== */
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .category-card {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            color: #333;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .category-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: #ff0000;
+        }
+
+        .category-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 20px rgba(255, 0, 0, 0.2);
+            border-color: #ff0000;
+        }
+
+        .category-title {
+            font-size: 1.3rem;
+            margin-bottom: 12px;
+            color: #000;
+            display: flex;
+            align-items: center;
+        }
+
+        .category-title .icon {
+            margin-right: 8px;
+            font-size: 1.5rem;
+        }
+
+        .subcategory-list {
+            list-style-type: none;
+            margin-top: 10px;
+        }
+
+        .subcategory-item {
+            padding: 6px 0;
+            border-bottom: 1px dashed #eee;
+            display: flex;
+            align-items: center;
+            font-size: 0.9rem;
+        }
+
+        .subcategory-item:last-child { border-bottom: none; }
+
+        .subcategory-item::before {
+            content: "•";
+            color: #ff0000;
+            font-weight: bold;
+            margin-right: 8px;
+        }
+
+        .subcategory-link {
+            color: inherit;
+            text-decoration: none;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .subcategory-link:hover {
+            color: #cc0000;
+            text-decoration: underline;
+        }
+
+        .link-active {
+            display: inline-block;
+            color: #cc0000;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.2s;
+            padding: 8px 15px;
+            border-radius: 6px;
+            background: rgba(255, 0, 0, 0.1);
+            margin-top: 10px;
+            border: 1px solid #ff0000;
+        }
+
+        .link-active:hover {
+            background: rgba(255, 0, 0, 0.2);
+            text-decoration: none;
+            transform: scale(1.05);
+        }
+
+        .test-button-container {
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        .test-button {
+            display: inline-block;
+            background: #ff0000;
+            color: white;
+            font-size: 1.2rem;
+            font-weight: bold;
+            padding: 15px 30px;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(255, 0, 0, 0.3);
+            border: 2px solid #ff0000;
+        }
+
+        .test-button:hover {
+            background: #cc0000;
+            transform: translateY(-3px);
+        }
+
+        .motivation-section {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 25px;
+            text-align: center;
+            margin-top: 30px;
+            border-left: 4px solid #ff0000;
+        }
+
+        .motivation-text {
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            color: #fff;
+        }
+
+        .tip-text {
+            font-size: 0.9rem;
+            color: #ff4d4d;
+            font-style: italic;
+        }
+
+        footer {
+            text-align: center;
+            padding: 25px 0;
+            margin-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #aaa;
+        }
+
+        .logo { color: #ff0000; font-weight: bold; }
+
+        /* Медиа-запрос для мобильных устройств */
+        @media (max-width: 768px) {
+            .container { padding: 15px; }
+            
+            /* Уменьшаем заголовок в 2 раза (2.2rem → 1.1rem) */
+            h2 {
+                font-size: 1.1rem;
+                margin-bottom: 5px;
+            }
+            /* Подзаголовок тоже уменьшаем в 2 раза (1.2rem → 0.6rem) */
+            .subtitle {
+                font-size: 0.6rem;
+                margin-bottom: 12px; /* уменьшаем отступ перед баннерами */
+            }
+            
+            .categories-grid {
+                grid-template-columns: 1fr;
+            }
+            .category-title { font-size: 1.6rem; }
+            .subcategory-item { font-size: 1.1rem; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <header>
+        <h2>Изучение меню GARAGE</h2>
+        <p class="subtitle">Выбери раздел для изучения</p>
+    </header>
+
+    <!-- SEARCH BANNER -->
+    <a href="search.html" class="search-banner">
+        <span class="search-banner-icon">🔍</span>
+        <span class="search-banner-text">
+            <span class="search-banner-title">Поиск блюда или напитка</span>
+        </span>
+        <span class="search-banner-arrow">→</span>
+    </a>
+
+    <!-- INGREDIENTS BANNER -->
+    <a href="ingredients.html" class="search-banner" style="border-color:#2a5c2a; box-shadow:0 4px 20px rgba(0,180,0,0.1);">
+        <span class="search-banner-icon">🧪</span>
+        <span class="search-banner-text">
+            <span class="search-banner-title">Учить по составу</span>
+        </span>
+        <span class="search-banner-arrow" style="color:#4caf50;">→</span>
+    </a>
+
+    <div class="categories-grid">
+        <!-- Завтраки -->
+        <div class="category-card">
+            <h3 class="category-title"><span class="icon">🍳</span> Завтраки</h3>
+            <p>Начни день с наших вкусных завтраков!</p>
+            <a href="flashcards/flashcards.html?section=zavtrak" class="link-active">Учить завтраки →</a>
+        </div>
+
+        <!-- Детское меню -->
+        <div class="category-card">
+            <h3 class="category-title"><span class="icon">👶</span> Детское меню</h3>
+            <p>Любимые блюда для маленьких гостей</p>
+            <a href="flashcards/flashcards.html?section=Detskoe" class="link-active">Учить детское меню →</a>
+        </div>
+
+        <!-- Ужин -->
+        <div class="category-card">
+            <h3 class="category-title"><span class="icon">🍽️</span> Ужин</h3>
+            <p>Полное меню для вечернего посещения</p>
+            <a href="flashcards/flashcards.html?group=dinner" class="link-active">🍽️ Учить всё меню ужина →</a>
+            <ul class="subcategory-list">
+                <li class="subcategory-item"><a href="flashcards/flashcards.html?section=Salaty" class="subcategory-link">Салаты</a></li>
+                <li class="subcategory-item"><a href="flashcards/flashcards.html?section=Zacuski" class="subcategory-link">Закуски</a></li>
+                <li class="subcategory-item"><a href="flashcards/flashcards.html?section=Supy" class="subcategory-link">Супы</a></li>
+                <li class="subcategory-item"><a href="flashcards/flashcards.html?section=Gor_bluda" class="subcategory-link">Горячие блюда</a></li>
+                <li class="subcategory-item"><a href="flashcards/flashcards.html?section=Draniki" class="subcategory-link">Драники</a></li>
+                <li class="subcategory-item"><a href="flashcards/flashcards.html?section=Pasta" class="subcategory-link">Паста</a></li>
+                <li class="subcategory-item"><a href="flashcards/flashcards.html?section=Burgery_tostada" class="subcategory-link">Бургеры и тостада</a></li>
+                <li class="subcategory-item"><a href="flashcards/flashcards.html?section=Pizza" class="subcategory-link">Пицца</a></li>
+                <li class="subcategory-item"><a href="flashcards/flashcards.html?section=Deserty" class="subcategory-link">Десерты</a></li>
+            </ul>
+        </div>
+
+        <!-- 103.BY -->
+        <div class="category-card">
+            <h3 class="category-title"><span class="icon">🥗</span> Меню состояний</h3>
+            <p>Наши блюда для здорового питания</p>
+            <a href="flashcards/flashcards.html?section=103BY" class="link-active">Учить меню состояний →</a>
+        </div>
+
+        <!-- Сезонное -->
+        <div class="category-card">
+            <h3 class="category-title"><span class="icon">🍂</span> Сезонное</h3>
+            <p>Сезонные предложения</p>
+             <a href="flashcards/flashcards.html?section=sezonnoe" class="link-active">Учить сезонное меню →</a>
+        </div>
+
+        <!-- Бар -->
+        <div class="category-card">
+            <h3 class="category-title"><span class="icon">🍹</span> Бар</h3>
+            <p>Напитки и коктейли на любой вкус</p>
+            <a href="flashcards/flashcards.html?group=bar" class="link-active">🍹 Учить всё меню бара →</a>
+            <ul class="subcategory-list">
+                <li class="subcategory-item"><a href="flashcards/flashcards.html?section=Sogr_napitki" class="subcategory-link">Согревающие напитки</a></li>
+                <li class="subcategory-item"><a href="flashcards/flashcards.html?section=Firm_kofe" class="subcategory-link">Фирменный кофе</a></li>
+                <li class="subcategory-item"><a href="flashcards/flashcards.html?section=Kakao_kofe_matcha" class="subcategory-link">Какао, кофе, матча</a></li>
+                <li class="subcategory-item"><a href="flashcards/flashcards.html?section=Chaj" class="subcategory-link">Чай</a></li>
+                <li class="subcategory-item"><a href="flashcards/flashcards.html?section=Bezalco" class="subcategory-link">Безалкогольные коктейли</a></li>
+        
+                <li class="subcategory-item"><a href="flashcards/flashcards.html?section=alco" class="subcategory-link">Алкогольные коктейли</a></li>
+                <li class="subcategory-item"><a href="flashcards/flashcards.html?section=Alco_1 1" class="subcategory-link">Коктейли 1+1</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="test-button-container">
+        <a href="flashcards/flashcards.html?all=true" class="test-button">Проверить знания по всему меню</a>
+    </div>
+
+    <div class="motivation-section">
+        <p class="motivation-text">Знание меню — ключ к успешной работе и довольным Гостям!</p>
+        <p class="tip-text">Начни с одного раздела и постепенно изучай остальные</p>
+    </div>
+
+    <footer>
+        <p>Сеть кафе <span class="logo">GARAGE</span></p>
+        <p>Изучай меню и становись лучшим!</p>
+        <p style="margin-top: 15px;">
+            <a href="http://213.184.251.78:7767/user/profile.php?id=4"
+               target="_blank"
+               style="color: #ff4d4d; text-decoration: none; border: 1px solid #ff4d4d; padding: 8px 16px; border-radius: 6px; display: inline-block; transition: all 0.3s;">
+               Сообщить об ошибке
+            </a>
+        </p>
+    </footer>
+</div>
+</body>
+</html>
