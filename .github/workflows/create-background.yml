@@ -1,0 +1,27 @@
+name: Create composition background from original image
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ['scripts/create-background.py', '.github/workflows/create-background.yml']
+permissions:
+  contents: write
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - run: python -m pip install Pillow
+      - run: python scripts/create-background.py
+      - name: Commit source-preserving background
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add images/composition-background.png
+          if ! git diff --cached --quiet; then
+            git commit -m "Generate original red composition frame"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
