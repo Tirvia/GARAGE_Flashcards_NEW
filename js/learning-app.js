@@ -10,7 +10,11 @@
   const cardById=new Map(menu.cards.map(c=>[c.id,c]));
   const sectionNames=new Map(menu.sections.map(s=>[s.id,s.name]));
   let state=loadProgress(),session=null,selected=new Set(),answered=false,imageTicket=0;
-  const typeNames={photo:"По фотографии",ingredients:"По составу",guest:"Вопрос от Гостя",recall:"Вспомнить состав"};
+  const typeNames={
+    photo:"По фотографии",ingredients:"По составу",missing:"Найди лишний ингредиент",
+    compare:"Сравнение блюд",guest:"Вопрос от Гостя",
+    recipe:"Угадай блюдо по составу",recall:"Вспомнить состав"
+  };
   const modeNames={quiz:"Проверка знаний",daily:"5 минут на меню",mistakes:"Повторить ошибки",recall:"Вспомнить состав",updatesQuiz:"По изменениям меню"};
   function loadProgress(){
     try{
@@ -145,7 +149,8 @@
   }
   function recordResult(correct,subjective=false){
     const q=session.questions[session.index],card=cardById.get(q.cardId);
-    core.updateProgress(state,q.cardId,correct);
+    // The next test can use a different template for this same dish.
+    core.updateProgress(state,q.cardId,correct,new Date(),q.kind);
     if(correct)session.passed++;
     else {
       session.failed++;
@@ -172,7 +177,14 @@
     const detail=document.createElement('span');
     detail.textContent=correct?'Правильный ответ сохранён. Следующее повторение будет позже.':
       (q.multi?'Правильные ингредиенты: ':'Правильный ответ: ')+names.join(', ');
-    box.append(title,detail);box.hidden=false;
+    box.append(title,detail);
+    if(q.explanation){
+      const explanation=document.createElement('p');
+      explanation.className='answer-explanation';
+      explanation.textContent=q.explanation;
+      box.append(explanation);
+    }
+    box.hidden=false;
     el('checkBtn').hidden=true;
     el('nextBtn').hidden=false;
     el('nextBtn').textContent=session.index===session.questions.length-1?'Посмотреть результат':'Следующий вопрос →';
