@@ -143,7 +143,7 @@ $(document).ready(function() {
 
     async function loadCardsFromSection(sectionName) {
         const basePath = `../images/${sectionName}/`;
-        const checks = M.cards.filter(c=>c.section===sectionName && c.status==="published").map(c=>Promise.resolve({question:c.front,answer:c.back,sectionName:sectionName,imgIndex:c.legacyIndex,id:c.id}));
+        const checks = M.cards.filter(c=>c.section===sectionName && c.status==="published").map(c=>Promise.resolve({question:c.front,answer:window.GARAGE_answerSrc(c),sectionName:sectionName,imgIndex:c.legacyIndex,id:c.id}));
         const results = await Promise.all(checks);
         return results.filter(Boolean);
     }
@@ -205,7 +205,7 @@ $(document).ready(function() {
 
         // Проверяем наличие изображений
         const sourceCard=M.cards.find(c=>c.section===sectionName && c.legacyIndex===idx && c.status==="published");
-        const card=sourceCard?{question:sourceCard.front,answer:sourceCard.back,sectionName:sectionName,imgIndex:idx}:null;
+        const card=sourceCard?{question:sourceCard.front,answer:window.GARAGE_answerSrc(sourceCard),sectionName:sectionName,imgIndex:idx}:null;
 
         if (!card) {
             $sectionTitle.text(`Карточка не найдена`);
