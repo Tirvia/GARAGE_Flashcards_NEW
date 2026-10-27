@@ -21,3 +21,39 @@ for(const f of fs.readdirSync(path.join(root,"content/cards")).filter(f=>f.endsW
 }
 if(ocr!==files)console.log("Recipe text missing on",files-ocr,"cards; legacy images remain available");
 console.log("OK:",data.cards.length,"published cards,",ocr,"editable recipes, unique slots, valid paths");
+
+
+/* Regression: every published composition must render without losing its content.
+   In particular, prior bug showed only black bullet dots on a blank flip side. */
+const measureCtx={font:"43px Arial",measureText(s){
+  const m=/([\d.]+)px/.exec(this.font);
+  return {width:[...String(s)].length*Number(m?m[1]:43)*.55};
+}};
+const renderSandbox={
+  window:{},
+  document:{createElement:()=>({getContext:()=>measureCtx})},
+  encodeURIComponent
+};
+vm.runInNewContext(fs.readFileSync(path.join(root,"js/text-answer.js"),"utf8"),renderSandbox);
+const render=renderSandbox.window.GARAGE_answerSrc;
+let rendered=0,legacy=0;
+for(const card of data.cards){
+  const src=render(card);
+  if(!src)throw Error("Blank composition "+card.id);
+  if(src.startsWith("data:image/svg+xml")){
+    const svg=decodeURIComponent(src.slice(src.indexOf(",")+1));
+    if(!svg.startsWith("<svg ")||!svg.endsWith("</svg>")||!svg.includes("<tspan"))throw Error("Invalid composition SVG "+card.id);
+    rendered++;
+  }else if(card.compositionNeedsReview&&!card.compositionEdited&&src===card.back){
+    legacy++;
+  }else if(src===card.back&&!(card.composition||"").trim()){
+    legacy++;
+  }else{
+    throw Error("Unexpected composition source "+card.id);
+  }
+}
+for(const id of ["draniki-001","draniki-003","draniki-005","draniki-007","draniki-009"]){
+  const c=data.cards.find(x=>x.id===id);
+  if(!c || !render(c).startsWith("data:image/svg+xml"))throw Error("Draники should use corrected text: "+id);
+}
+console.log("Composition test:",rendered,"text cards,",legacy,"originals awaiting review");
