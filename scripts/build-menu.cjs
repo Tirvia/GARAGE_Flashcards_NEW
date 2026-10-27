@@ -1,6 +1,6 @@
 const fs=require('fs'),path=require('path');
 const base=path.resolve(__dirname,'..');
-function read(dir){return fs.readdirSync(path.join(base,'content',dir)).filter(n=>n.endsWith('.json')).map(n=>{const x=JSON.parse(fs.readFileSync(path.join(base,'content',dir,n),'utf8'));if(!x.id)x.id=(dir==='cards'?'new-':'')+n.replace(/\\.json$/,'');if(!x.status)x.status='published';return x})}
+function read(dir){return fs.readdirSync(path.join(base,'content',dir)).filter(n=>n.endsWith('.json')).map(n=>{const x=JSON.parse(fs.readFileSync(path.join(base,'content',dir,n),'utf8'));if(!x.id)x.id=(dir==='cards'?'new-':'')+n.replace(/\.json$/,'');if(!x.status)x.status='published';return x})}
 const cards=read('cards').sort((a,b)=>(a.order??9999)-(b.order??9999)),sections=read('sections').sort((a,b)=>(a.order??9999)-(b.order??9999)),groups=read('groups').sort((a,b)=>(a.order??9999)-(b.order??9999)),tags=read('tags').sort((a,b)=>(a.order??9999)-(b.order??9999));
 function unique(a,field){const v=a.map(x=>x[field]);if(new Set(v).size!==v.length)throw Error('Duplicate '+field)}
 unique(cards,'id');unique(sections,'id');unique(groups,'id');unique(tags,'id');
