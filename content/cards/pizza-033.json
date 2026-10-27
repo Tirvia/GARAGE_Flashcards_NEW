@@ -13,8 +13,8 @@
   "order": 98,
   "legacySection": "Pizza",
   "legacyIndex": 33,
-  "composition": "- ® Соус сырный\n- ® Сыр deta\n- ® Сыр Дор Блю\n- ® Сыр проволоне\n- ® Сыр Чеддер\n- ® Колбаса пепперони\n- ® Тесто для пиццы\n- ® Сыр моцарелла\n- ® Мука семола\n- ® Масло розмариновое (содержит\n- чеснок)",
+  "composition": "- Соус сырный\n- Сыр deta\n- Сыр Дор Блю\n- Сыр проволоне\n- Сыр Чеддер\n- Колбаса пепперони\n- Тесто для пиццы\n- Сыр моцарелла\n- Мука семола\n- Масло розмариновое (содержит\n- чеснок)",
   "compositionSource": "/images/Pizza/34.png",
   "compositionOcrConfidence": 87.5,
-  "compositionNeedsReview": false
+  "compositionNeedsReview": true
 }

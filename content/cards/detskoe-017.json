@@ -13,7 +13,7 @@
   "order": 23,
   "legacySection": "Detskoe",
   "legacyIndex": 17,
-  "composition": "- картофельным пюре и\n> овощами\n- e Биточки куриные\n- e Масло растительное\n- + Картофельное пюре:\n  - о Картофель\n  - о Масло сливочное\n  - © Молоко\n- « Томат черри\n- ® Огурец свежий",
+  "composition": "- картофельным пюре и\n> овощами\n- Биточки куриные\n- Масло растительное\n- + Картофельное пюре:\n  - Картофель\n  - Масло сливочное\n  - Молоко\n- Томат черри\n- Огурец свежий",
   "compositionSource": "/images/Detskoe/18.png",
   "compositionOcrConfidence": 86.0,
   "compositionNeedsReview": false

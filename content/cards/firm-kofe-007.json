@@ -11,7 +11,7 @@
   "order": 131,
   "legacySection": "Firm_kofe",
   "legacyIndex": 7,
-  "composition": "- Эспрессо\n- » Молоко\n- « Сироп Шоколадное печенье\n- » Топпинг шоколад\n- » Печенье Орео\n- © Сливки взбитые",
+  "composition": "- Эспрессо\n- Молоко\n- Сироп Шоколадное печенье\n- Топпинг шоколад\n- Печенье Орео\n- Сливки взбитые",
   "compositionSource": "/images/Firm_kofe/8.png",
   "compositionOcrConfidence": 75.5,
   "compositionNeedsReview": true

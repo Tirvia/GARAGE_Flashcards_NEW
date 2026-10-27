@@ -14,8 +14,8 @@
   "order": 92,
   "legacySection": "Pizza",
   "legacyIndex": 21,
-  "composition": "- ® Огурец консервированный\n- ® Шампиньоны\n- ® Сыр deta\n- ® Томат свежий\n- ® Лук красный\n- e Цукини\n- e Петрушка\n- Соус барбекю\n- ® Тесто для пиццы\n- ¢ Сыр моцарелла\n- ® Мука семола\n- ® Масло розмариновое (содержит\n  - чеснок)",
+  "composition": "- Огурец консервированный\n- Шампиньоны\n- Сыр deta\n- Томат свежий\n- Лук красный\n- Цукини\n- Петрушка\n- Соус барбекю\n- Тесто для пиццы\n- Сыр моцарелла\n- Мука семола\n- Масло розмариновое (содержит\n  - чеснок)",
   "compositionSource": "/images/Pizza/22.png",
   "compositionOcrConfidence": 78.1,
-  "compositionNeedsReview": false
+  "compositionNeedsReview": true
 }

@@ -11,7 +11,7 @@
   "order": 132,
   "legacySection": "Firm_kofe",
   "legacyIndex": 9,
-  "composition": "- ® Эспрессо\n- ®* Молоко",
+  "composition": "- Эспрессо\n- * Молоко",
   "compositionSource": "/images/Firm_kofe/10.png",
   "compositionOcrConfidence": 68.7,
   "compositionNeedsReview": true

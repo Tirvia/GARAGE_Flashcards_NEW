@@ -13,7 +13,7 @@
   "order": 99,
   "legacySection": "Deserty",
   "legacyIndex": 1,
-  "composition": "- ¢ Шоколадный фондан\n- « Какао\n- Соус для фондана:\n  - о Сметана\n  - о Сахарная пудра\n  - о Цедра лимона",
+  "composition": "- Шоколадный фондан\n- Какао\n- Соус для фондана:\n  - Сметана\n  - Сахарная пудра\n  - Цедра лимона",
   "compositionSource": "/images/Deserty/2.png",
   "compositionOcrConfidence": 75.3,
   "compositionNeedsReview": true

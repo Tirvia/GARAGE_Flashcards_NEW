@@ -13,7 +13,7 @@
   "order": 86,
   "legacySection": "Pizza",
   "legacyIndex": 9,
-  "composition": "- ® Масло базилик\n  - © Масло растительное\n  - о Соус Песто\n- ® Тесто для пиццы\n- ¢ Сыр моцарелла\n- ® Мука семола\n- ® Пицца-соус томатный\n- ® Масло розмариновое (содержит\n  - чеснок)",
+  "composition": "- Масло базилик\n  - Масло растительное\n  - Соус Песто\n- Тесто для пиццы\n- Сыр моцарелла\n- Мука семола\n- Пицца-соус томатный\n- Масло розмариновое (содержит\n  - чеснок)",
   "compositionSource": "/images/Pizza/10.png",
   "compositionOcrConfidence": 85.2,
   "compositionNeedsReview": false

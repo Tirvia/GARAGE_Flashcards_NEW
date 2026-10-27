@@ -11,8 +11,8 @@
   "order": 168,
   "legacySection": "alco",
   "legacyIndex": 19,
-  "composition": "- ® Джин\n- e Швепс тоник\n- ® Соклимона\n- ®» Лимон свежий",
+  "composition": "- Джин\n- Швепс тоник\n- Соклимона\n- » Лимон свежий",
   "compositionSource": "/images/alco/20.png",
   "compositionOcrConfidence": 76.6,
-  "compositionNeedsReview": false
+  "compositionNeedsReview": true
 }

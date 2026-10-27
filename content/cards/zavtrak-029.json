@@ -13,8 +13,8 @@
   "order": 14,
   "legacySection": "zavtrak",
   "legacyIndex": 29,
-  "composition": "- ® Хлеб сандвичный\n- » Салат айсберг\n- » Огурец консервированный\n- ® Сыр моцарелла\n- » Говядина котлета\n- ® Соус Бургер\n- ®» Сыр Чеддер",
+  "composition": "- Хлеб сандвичный\n- Салат айсберг\n- Огурец консервированный\n- Сыр моцарелла\n- Говядина котлета\n- Соус Бургер\n- » Сыр Чеддер",
   "compositionSource": "/images/zavtrak/30.png",
   "compositionOcrConfidence": 85.1,
-  "compositionNeedsReview": false
+  "compositionNeedsReview": true
 }

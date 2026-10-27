@@ -13,7 +13,7 @@
   "order": 103,
   "legacySection": "Deserty",
   "legacyIndex": 9,
-  "composition": "- e Наполеон\n  - о Мука\n  - о Масло сливочное\n  - о Яйцо\n  - о Сметана\n  - о Молоко\n  - о Экстрат ванили\n  - о Сгущенное молоко\n  - о Крахмал\n- e Шоколадная стружка",
+  "composition": "- Наполеон\n  - Мука\n  - Масло сливочное\n  - Яйцо\n  - Сметана\n  - Молоко\n  - Экстрат ванили\n  - Сгущенное молоко\n  - Крахмал\n- Шоколадная стружка",
   "compositionSource": "/images/Deserty/10.png",
   "compositionOcrConfidence": 90.5,
   "compositionNeedsReview": false
