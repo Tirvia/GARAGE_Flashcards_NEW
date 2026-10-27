@@ -93,24 +93,21 @@
         frontElement.style.visibility = 'hidden';
         backElement.style.visibility = 'hidden';
 
-        return Promise.all([preload(frontSrc), preload(backSrc)]).then(([frontOK, backOK]) => {
-            // Rapid navigation can complete older image loads out of order.
+        // Paint the front as soon as it is decoded; a slower answer-side image
+        // must not delay the photo that the learner is actually looking at.
+        function display(element, src, ready) {
             if (versions.get(frontElement) !== version) return false;
-
-            if (frontOK) {
-                frontElement.src = frontSrc;
-                frontElement.style.visibility = 'visible';
+            if (ready) {
+                element.src = src;
+                element.style.visibility = 'visible';
             } else {
-                frontElement.removeAttribute('src');
+                element.removeAttribute('src');
             }
-            if (backOK) {
-                backElement.src = backSrc;
-                backElement.style.visibility = 'visible';
-            } else {
-                backElement.removeAttribute('src');
-            }
-            return frontOK && backOK;
-        });
+            return ready;
+        }
+        const frontReady = preload(frontSrc).then(ok => display(frontElement, frontSrc, ok));
+        const backReady = preload(backSrc).then(ok => display(backElement, backSrc, ok));
+        return Promise.all([frontReady, backReady]).then(([a, b]) => a && b);
     }
 
     window.GARAGE_cardImages = { preload, answer, prefetch, prefetchNearby, showPair };
