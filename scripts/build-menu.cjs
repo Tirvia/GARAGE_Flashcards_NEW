@@ -1,7 +1,7 @@
 const fs=require('fs'),path=require('path');
 const base=path.resolve(__dirname,'..');
 function read(dir){return fs.readdirSync(path.join(base,'content',dir)).filter(n=>n.endsWith('.json')).map(n=>JSON.parse(fs.readFileSync(path.join(base,'content',dir,n),'utf8')))}
-const cards=read('cards'),sections=read('sections'),groups=read('groups'),tags=read('tags');
+const cards=read('cards').sort((a,b)=>(a.order??9999)-(b.order??9999)),sections=read('sections').sort((a,b)=>(a.order??9999)-(b.order??9999)),groups=read('groups').sort((a,b)=>(a.order??9999)-(b.order??9999)),tags=read('tags').sort((a,b)=>(a.order??9999)-(b.order??9999));
 function unique(a,field){const v=a.map(x=>x[field]);if(new Set(v).size!==v.length)throw Error('Duplicate '+field)}
 unique(cards,'id');unique(sections,'id');unique(groups,'id');unique(tags,'id');
 for(const c of cards){if(!sections.some(s=>s.id===c.section))throw Error('Missing section '+c.id);if(!c.title||!c.front)throw Error('Incomplete '+c.id);for(const t of c.tags||[])if(!tags.some(x=>x.id===t))throw Error('Missing tag '+t)}
