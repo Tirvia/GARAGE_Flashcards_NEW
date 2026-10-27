@@ -7,6 +7,7 @@ $(document).ready(function() {
     const viewMode = cardParam !== null;
 
     const M = window.GARAGE_MENU;
+    const cardImages = window.GARAGE_cardImages;
     const sectionDisplayNames = Object.fromEntries(M.sections.map(s=>[s.id,s.name]));
     const CARD_NAMES = Object.fromEntries(M.sections.map(s=>[s.id,Object.fromEntries(M.cards.filter(c=>c.section===s.id && c.status==="published").map(c=>[c.runtimeIndex,c.title]))]));
     const GROUPS = {dinner:M.groups.find(x=>x.id==="dinner").sections,bar:M.groups.find(x=>x.id==="bar").sections};
@@ -17,6 +18,7 @@ $(document).ready(function() {
     let currentCardIndex = 0;
     let showNames = false;
     let currentTitle = '';
+    let swiping = false;
 
     let isDragging = false;
     let startX = 0;
@@ -143,9 +145,9 @@ $(document).ready(function() {
 
     async function loadCardsFromSection(sectionName) {
         const basePath = `../images/${sectionName}/`;
-        const checks = M.cards.filter(c=>c.section===sectionName && c.status==="published").map(c=>Promise.resolve({question:c.front,answer:window.GARAGE_answerSrc(c),sectionName:sectionName,imgIndex:c.runtimeIndex,id:c.id}));
-        const results = await Promise.all(checks);
-        return results.filter(Boolean);
+        // Keep the original order; generate and decode each answer only on demand.
+        return M.cards.filter(c=>c.section===sectionName && c.status==="published")
+            .map(c=>({question:c.front,source:c,sectionName, imgIndex:c.runtimeIndex,id:c.id}));
     }
 
     async function loadCardsFromSections(sectionsList, title) {
@@ -205,7 +207,7 @@ $(document).ready(function() {
 
         // Проверяем наличие изображений
         const sourceCard=M.cards.find(c=>c.legacySection===sectionName && c.legacyIndex===idx && c.status==="published") || M.cards.find(c=>c.section===sectionName && c.runtimeIndex===idx && c.status==="published");
-        const card=sourceCard?{question:sourceCard.front,answer:window.GARAGE_answerSrc(sourceCard),sectionName:sourceCard.section,imgIndex:sourceCard.runtimeIndex}:null;
+        const card=sourceCard?{question:sourceCard.front,source:sourceCard,sectionName:sourceCard.section,imgIndex:sourceCard.runtimeIndex,id:sourceCard.id}:null;
 
         if (!card) {
             $sectionTitle.text(`Карточка не найдена`);
@@ -219,10 +221,8 @@ $(document).ready(function() {
         $sectionTitle.text(title);
         $flashcard.show();
 
-        // Показываем карточку
-        $frontImg.attr('src', card.question);
-        $backImg.attr('src', card.answer);
-        updateCardName();
+        // Both sides become visible only after the new images have decoded.
+        showCurrentCard();
     }
 
     function setButtonsDisabled(disabled) {
@@ -271,13 +271,19 @@ $(document).ready(function() {
 
         $flipBtn.text('Посмотреть состав');
         $('#flipCard-mobile').text('Посмотреть состав');
-        $frontImg.attr('src', card.question);
-        $backImg.attr('src', card.answer);
+        cardImages.showPair($frontImg[0], $backImg[0], card.question,
+            card.source ? cardImages.answer(card.source) : card.answer)
+            .then(() => {
+                // Preload the next few cards instead of waiting for the next click.
+                if (learningCards[currentCardIndex] === card) {
+                    cardImages.prefetchNearby(learningCards, currentCardIndex + 1, 5);
+                }
+            });
         updateCardName();
     }
 
     function showRandomCard() {
-        if (!learningCards.length) return;
+        if (!learningCards.length || swiping) return;
         let newIndex = Math.floor(Math.random() * learningCards.length);
         if (newIndex === currentCardIndex && learningCards.length > 1)
             newIndex = (newIndex + 1) % learningCards.length;
@@ -287,7 +293,7 @@ $(document).ready(function() {
 
     // ========== ACTIONS ==========
     function markKnown() {
-        if (!learningCards.length) return;
+        if (!learningCards.length || swiping) return;
         learningCards.splice(currentCardIndex, 1);
         updateProgressInfo();
         if (!learningCards.length) { showCurrentCard(); return; }
@@ -296,7 +302,7 @@ $(document).ready(function() {
     }
 
     function markUnknown() {
-        if (!learningCards.length) return;
+        if (!learningCards.length || swiping) return;
         const card = learningCards.splice(currentCardIndex, 1)[0];
         learningCards.push(card);
         updateProgressInfo();
@@ -305,6 +311,7 @@ $(document).ready(function() {
     }
 
     function animateSwipe(direction) {
+        swiping = true;
         // FIX: Мгновенно переворачиваем карточку на сторону вопроса (без анимации переворота),
         // чтобы следующая карточка всегда вылетала со стороны вопроса.
         const $inner = $flashcard.find('.flashcard-inner');
@@ -323,6 +330,7 @@ $(document).ready(function() {
         setTimeout(() => {
             $flashcard.removeClass(className);
             $flashcard.removeClass('like dislike');
+            swiping = false;
             showCurrentCard();
         }, 350);
     }
