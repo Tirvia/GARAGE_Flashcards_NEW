@@ -16,5 +16,6 @@
   "composition": "- Драники\n  *(лук, картофель, яйцо, мука)*\n- Масло растительное\n- Риет из судака:\n  - Филе судака\n  - Сок лимона\n  - Петрушка\n  - Сыр творожный\n  - Хрен\n  - Сметана\n  - Масло растительное\n  - Соус Свит Чили\n  - Жидкий дым\n- Огурцы кимчи\n  *(содержит чеснок, уксус, соевый соус, паприку красную, соус Кимчи)*\n- Масло зеленое\n  *(шпинат, петрушка, укроп, масло растительное)*\n- Петрушка",
   "compositionSource": "/images/Draniki/10.png",
   "compositionOcrConfidence": 87.9,
-  "compositionNeedsReview": false
+  "compositionNeedsReview": false,
+  "testIngredientsVerified": true
 }
