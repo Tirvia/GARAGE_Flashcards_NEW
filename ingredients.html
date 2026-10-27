@@ -690,6 +690,7 @@
 </div>
 
 <script src="js/menu-data.js"></script>
+<script src="js/text-answer.js"></script>
 <script>
 // ===== DATA =====
 
@@ -867,7 +868,7 @@ async function openBrowseCard(s, i, n) {
 
     const dish = ALL.find(d => d.s === s && d.i === i && d.n === n);
     const frontSrc = `images/${s}/${i}.png`;
-    const backSrc  = `images/${s}/${i + 1}.png`;
+    const backSrc  = window.GARAGE_answerSrc(M.cards.find(x=>x.section===s&&x.legacyIndex===i));
 
     // Сначала очищаем старые изображения, чтобы при переходе не мелькала предыдущая карточка.
     clearBrowseImages();
@@ -936,7 +937,7 @@ function showLearnCard() {
     const card = learnCards[learnIdx % learnCards.length];
     flipNameLearn.textContent = card.n;
     cardFrontLearn.src = `images/${card.s}/${card.i}.png`;
-    cardBackLearn.src  = `images/${card.s}/${card.i + 1}.png`;
+    cardBackLearn.src  = window.GARAGE_answerSrc(M.cards.find(x=>x.section===card.s&&x.legacyIndex===card.i));
 
     // Значки состава + категория без emoji в режиме обучения
     learningCardTags.textContent = (card.t || []).map(tag => TAG_EMOJI[tag] || '').join('') + (card.kb ? ' (на кур.бульоне)' : '');
