@@ -1,5 +1,9 @@
 name: Import original GARAGE images
-on: workflow_dispatch
+on:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/import-images.yml']
+  workflow_dispatch:
 permissions: {contents: write}
 jobs:
   import:
