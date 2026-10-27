@@ -9,7 +9,7 @@
   const el=id=>document.getElementById(id);
   const cardById=new Map(menu.cards.map(c=>[c.id,c]));
   const sectionNames=new Map(menu.sections.map(s=>[s.id,s.name]));
-  let state=loadProgress(),session=null,selected=new Set(),answered=false,imageTicket=0;
+  let state=loadProgress(),session=null,selected=new Set(),answered=false,imageTicket=0,recallTicket=0;
   const typeNames={
     photo:"По фотографии",ingredients:"По составу",missing:"Найди лишний ингредиент",
     compare:"Сравнение блюд",guest:"Вопрос от Гостя",
@@ -91,15 +91,30 @@
     if(next?.kind==='photo'&&next.image){const img=new Image();img.src=next.image;}
   }
   function clearControls(){
+    // Cancel requests from the previous question before displaying a new one.
+    imageTicket++;
+    recallTicket++;
     for(const id of ['checkBtn','revealBtn','rememberBtn','repeatBtn','nextBtn'])el(id).hidden=true;
     el('feedback').hidden=true;
     el('feedback').className='feedback';
     el('choices').replaceChildren();
     el('recallCard').hidden=true;
+    const recall=el('recallImage');
+    recall.hidden=true;
+    recall.removeAttribute('src');
+    recall.removeAttribute('data-card-id');
+    el('recallFallback').hidden=true;
+    el('recallFallback').textContent='';
     el('recallArea').hidden=true;
-    el('questionImage').hidden=true;
-    el('questionImage').removeAttribute('src');
+    const photo=el('questionImage');
+    photo.onload=null;
+    photo.onerror=null;
+    photo.hidden=true;
+    photo.removeAttribute('src');
     el('questionNote').hidden=true;
+    el('questionNote').textContent='';
+    el('revealBtn').disabled=false;
+    el('revealBtn').textContent='Показать состав';
   }
   function showQuestion(){
     const q=session?.questions[session.index];if(!q){finish();return;}
@@ -108,13 +123,26 @@
     el('progressBar').style.width=(100*session.index/session.questions.length)+'%';
     el('questionType').textContent=typeNames[q.kind]||'Проверка знаний';
     el('questionPrompt').textContent=q.kind==='recall'?q.title:q.prompt;
-    if(q.note){el('questionNote').hidden=false;el('questionNote').textContent=q.note;}
-    if(q.kind==='photo'&&q.image){
-      const img=el('questionImage'),ticket=++imageTicket;
-      img.onload=()=>{if(ticket===imageTicket)img.hidden=false;};
-      img.onerror=()=>{if(ticket===imageTicket){img.hidden=true;el('questionNote').hidden=false;el('questionNote').textContent='Фото сейчас недоступно. Можно перейти к следующему вопросу.';}};
-      img.src=q.image;
-      if(img.complete&&img.naturalWidth)img.hidden=false;
+    // Show a real photo in the photo quiz AND during recipe recall.
+    // Never show the broken "Фото блюда" icon for other question types.
+    if(q.kind==='photo'||q.kind==='recall'){
+      const current=cardById.get(q.cardId);
+      const src=q.kind==='photo'?q.image:current?.front;
+      if(src){
+        const img=el('questionImage'),ticket=++imageTicket;
+        img.alt='Фото: '+(current?.title||'блюдо');
+        img.onload=()=>{if(ticket===imageTicket&&session?.questions[session.index]===q)img.hidden=false;};
+        img.onerror=()=>{
+          if(ticket!==imageTicket||session?.questions[session.index]!==q)return;
+          img.hidden=true;
+          if(q.kind==='photo'){
+            el('questionNote').hidden=false;
+            el('questionNote').textContent='Не удалось загрузить фотографию.';
+          }
+        };
+        img.src=src;
+        if(img.complete&&img.naturalWidth>0)img.hidden=false;
+      }
     }
     if(q.kind==='recall'){
       el('recallArea').hidden=false;
@@ -191,13 +219,63 @@
   }
   function revealRecall(){
     if(!session||answered)return;
-    const q=session.questions[session.index],card=cardById.get(q.cardId);
-    const image=el('recallImage');
-    image.src=window.GARAGE_answerSrc(card);
-    el('recallCard').hidden=false;
-    el('revealBtn').hidden=true;
-    el('rememberBtn').hidden=false;
-    el('repeatBtn').hidden=false;
+    const q=session.questions[session.index];
+    if(q.kind!=='recall')return;
+    const card=cardById.get(q.cardId);
+    const source=card?window.GARAGE_answerSrc(card):'';
+    const ticket=++recallTicket;
+    const button=el('revealBtn');
+    button.disabled=true;
+    button.textContent='Загружаем состав...';
+    // Each answer belongs to a single card. Never reuse the previous image.
+    const isCurrent=()=>ticket===recallTicket &&
+      session?.questions[session.index]===q && card?.id===q.cardId;
+    const finish=()=>{
+      if(!isCurrent())return;
+      const image=el('recallImage');
+      image.src=source;
+      image.dataset.cardId=card.id;
+      image.alt='Состав: '+card.title;
+      image.hidden=false;
+      el('recallCard').hidden=false;
+      el('recallFallback').hidden=true;
+      button.hidden=true;
+      button.disabled=false;
+      el('rememberBtn').hidden=false;
+      el('repeatBtn').hidden=false;
+    };
+    const fail=()=>{
+      if(!isCurrent())return;
+      if(card?.composition && !card.compositionNeedsReview){
+        el('recallFallback').textContent=card.composition;
+        el('recallFallback').hidden=false;
+        el('recallCard').hidden=true;
+        button.hidden=true;
+        el('rememberBtn').hidden=false;
+        el('repeatBtn').hidden=false;
+      }else{
+        el('questionNote').hidden=false;
+        el('questionNote').textContent='Состав временно недоступен. Попробуй ещё раз.';
+        button.disabled=false;
+        button.textContent='Показать состав';
+      }
+    };
+    if(!source){fail();return;}
+    const loader=new Image();
+    let done=false;
+    loader.onload=()=>{
+      if(done)return;
+      done=true;
+      if(typeof loader.decode==='function'){
+        loader.decode().then(finish,()=>loader.naturalWidth>0?finish():fail());
+      }else finish();
+    };
+    loader.onerror=()=>{
+      if(done)return;
+      done=true;
+      fail();
+    };
+    loader.src=source;
   }
   function markRecall(correct){
     if(!session||answered)return;
