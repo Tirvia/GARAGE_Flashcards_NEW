@@ -422,5 +422,40 @@
         </p>
     </footer>
 </div>
+<script src="js/menu-data.js"></script>
+<script>
+/* Названия обновляются из единого каталога. При исходных названиях DOM и тексты не меняются. */
+(function(){
+  const data=window.GARAGE_MENU;
+  if(!data)return;
+  const original={"zavtrak":"Завтраки","Detskoe":"Детское меню","Salaty":"Салаты","Zacuski":"Закуски","Supy":"Супы","Gor_bluda":"Горячие блюда","Draniki":"Драники","Pasta":"Паста","Burgery_tostada":"Бургеры и тостада","Pizza":"Пицца","Deserty":"Десерты","103BY":"Меню состояний","Sogr_napitki":"Согревающие напитки","Firm_kofe":"Фирменный кофе","Kakao_kofe_matcha":"Какао, кофе, матча","Chaj":"Чай","Bezalco":"Безалкогольные коктейли","alco":"Алкогольные коктейли","Alco_1 1":"Коктейли 1+1","sezonnoe":"Сезонное"};
+  const sm=new Map(data.sections.map(x=>[x.id,x]));
+  document.querySelectorAll('a.subcategory-link[href*="section="]').forEach(a=>{
+    const id=new URL(a.href,location.href).searchParams.get('section');
+    const s=sm.get(id);
+    if(s && s.name!==original[id])a.textContent=s.name;
+  });
+  const groupNames={dinner:'Ужин',bar:'Бар'};
+  const findCurrentGroup=card=>{
+    const link=card.querySelector('a[href*="group="],a[href*="section="]');
+    if(!link)return null;
+    const p=new URL(link.href,location.href).searchParams;
+    const group=p.get('group');
+    if(group)return data.groups.find(g=>g.id===group)||null;
+    const section=p.get('section');
+    return data.groups.find(g=>g.sections.includes(section))||null;
+  };
+  document.querySelectorAll('.category-card').forEach(card=>{
+    const g=findCurrentGroup(card);if(!g)return;
+    let initial=groupNames[g.id]||{"breakfast":"Завтраки","kids":"Детское меню","wellbeing":"Меню состояний","seasonal":"Сезонное"}[g.id];
+    if(!initial||g.name===initial)return;
+    const heading=card.querySelector('.category-title');
+    if(!heading)return;
+    for(const node of heading.childNodes){
+      if(node.nodeType===3 && node.textContent.trim()===initial){node.textContent=' '+g.name;break;}
+    }
+  });
+})();
+</script>
 </body>
 </html>
